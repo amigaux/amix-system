@@ -1,0 +1,34 @@
+#  Console screen configuration file
+#
+#  field 1:	screen device name
+#  field 2:	function key group to bind screen to
+#  field 3:	screen modes (usually 0)
+#  field 4:	x resolution desired (width in pixels)
+#  field 5:	y resolution desired (height in pixels)
+#  field 6:	z resolution desired (bit planes)
+#  field 7:	color list (comma separated hex)
+#               (z=1: background,foreground)
+#               (z=2: background,foreground,cursor background,cursor foreground)
+#  field 8:	font name to load
+#  field 10:	reserved
+#  field 11:	reserved
+#  field 12:	reserved
+#  field 13:	screen labels for screen menu program on Alt-Esc
+#               %t to list ttyname, %u to list username, %p to list process
+#
+# Turn screens on with:   pmadm -e -p screens -s SCREENNAME
+# Turn screens off with:  pmadm -d -p screens -s SCREENNAME
+#
+# Example:  pmadm -e -p screens -s con9
+#
+
+console:    1:0: 800: 600:1:ffaaa,00000:::::%10t %10u %p
+term/con2:  2:0: 800: 600:1:ffaaa,00000:::::%10t %10u %p
+term/con3:  3:0: 800: 600:2:aaaaa,fffff,00000,ccccc:courier13::::%10t %10u %p
+term/con4:  4:0: 800: 600:2:aaaaa,fffff,00000,ccccc:courier13::::%10t %10u %p
+term/con5:  5:0: 800: 300:1:aaaaa,00000:::::%10t %10u %p
+term/con6:  6:0: 800: 300:1:aaaaa,00000:::::%10t %10u %p
+term/con7:  7:0: 800: 600:1:ff800,00aaa:newtopaz11::::%10t %10u %p
+term/con8:  8:0: 800: 600:1:ff800,00aaa:newtopaz11::::%10t %10u %p
+term/con9:  9:0:1024:1024:1:00468,fffc8:::::%10t %10u %p
+term/con10:10:0:1024:1024:1:00468,fffc8:::::%10t %10u %p

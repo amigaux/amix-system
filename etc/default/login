@@ -1,0 +1,10 @@
+#ident	"@(#)login:login.dfl	1.1.1.1"
+#TIMEZONE=EST5EDT
+HZ=60
+#ULIMIT=4096
+#CONSOLE=/dev/console
+PASSREQ=NO
+ALTSHELL=YES
+#
+# Uncomment following line to disable password expiration:
+#NOEXPIRE

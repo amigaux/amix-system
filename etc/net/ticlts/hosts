@@ -1,0 +1,4 @@
+#ident	"@(#)rpcsvc:net_files/hosts	1.2"
+# RPC Hosts
+
+localhost localhost

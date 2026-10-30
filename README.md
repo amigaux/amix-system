@@ -13,6 +13,7 @@ installation made them.
 |------|------|
 | `kernels/2.1/unix` | the retail AMIX 2.1 kernel, `stand/unix` as shipped |
 | `kernels/2.1c/unix` | an AMIX 2.1c kernel; 2.1c is relinked on the machine at install time, so this is one such link, the one the 68040/68060 port patches |
+| `etc/` | the stock `/etc` at 2.1p2a as the packages ship it plus the patch disk's changes; owners, modes, hard links, empty directories and the three named pipes git cannot hold are listed in `etc.md` |
 | `usr/sys` | the relink kit: the top `Makefile`, `master.d` and the pre-linked objects the 68030 kernel is cut from |
 | `usr/include` | the system headers |
 | `usr/lib`, `usr/ccs` | the libraries, startup objects and the C compilation system |
@@ -20,6 +21,8 @@ installation made them.
 | `floppies/2.1/amix_21_boot.adf` | the retail 2.1 boot floppy: the bootstrap and the installation kernel |
 | `floppies/2.1/amix_21_root.adf` | the retail 2.1 root floppy: the miniroot the installer runs from |
 | `floppies/2.1/amix_21_patch.adf` | the patch disk: a shell script and a compressed archive of patches that bring an installed 2.1 to 2.1p2a; it holds no kernel, and the 2.1c kernel is relinked on the machine when the patches are applied |
+
+The `etc/` tree is not an installed system's copy: it has no site edits, users or keys (see `etc.md`).
 
 The `usr/` tree is AMIX 2.1c at patch level 2a, as installed, with symbolic
 links kept as the installation made them (several point at absolute paths on

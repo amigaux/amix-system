@@ -1,0 +1,18 @@
+#	file-system-table format:
+#
+#	column 1:	special- block special device or resource name
+#	column 2: 	fsckdev- char special device for fsck 
+#	column 3:	mountp- mount point
+#	column 4:	fstype- File system type
+#	column 5:	fsckpass- number if to be checked automatically
+#	column 6:	automnt-	yes/no for automatic mount
+#	column 7:	mntopts- -o specific mount options
+
+#	White-space separates columns.
+#	Lines beginning with "#" are comments.  Empty lines are ignored.
+#	a '-' in any field is a no-op.
+
+/dev/dsk/c0d0s1	/dev/rdsk/c0d0s1	/	s5	1	no	-
+proc		-			/proc	proc	0	no	-
+fd		-			/dev/fd	fd	0	no	-
+

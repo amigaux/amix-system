@@ -1,0 +1,10 @@
+# VERSION=1
+con2:u:root:reserved:reserved:reserved:/dev/term/con2:::/usr/bin/login::con:ldterm,ttcompat:con2 login\: ::#
+con3:u:root:reserved:reserved:reserved:/dev/term/con3:::/usr/bin/login::con:ldterm,ttcompat:con3 login\: ::#
+con4:u:root:reserved:reserved:reserved:/dev/term/con4:::/usr/bin/login::con:ldterm,ttcompat:con4 login\: ::#
+con5:u:root:reserved:reserved:reserved:/dev/term/con5:::/usr/bin/login::con:ldterm,ttcompat:con5 login\: ::#
+con6:u:root:reserved:reserved:reserved:/dev/term/con6:::/usr/bin/login::con:ldterm,ttcompat:con6 login\: ::#
+con7:u:root:reserved:reserved:reserved:/dev/term/con7:::/usr/bin/login::con:ldterm,ttcompat:con7 login\: ::#
+con8:u:root:reserved:reserved:reserved:/dev/term/con8:::/usr/bin/login::con:ldterm,ttcompat:con8 login\: ::#
+con9:u:root:reserved:reserved:reserved:/dev/term/con9:::/usr/bin/login::con:ldterm,ttcompat:con9 login\: ::#
+con10:u:root:reserved:reserved:reserved:/dev/term/con10:::/usr/bin/login::con:ldterm,ttcompat:con10 login\: ::#

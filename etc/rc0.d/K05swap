@@ -1,0 +1,61 @@
+#!/bin/sh
+#	Automatic swap areas
+
+# List of files to add
+FILES=" /SWAPFILE /usr/src/SWAPFILE "
+
+# List of drives to search for swap partitions
+# DRIVES=" c2d0 "
+
+case $1 in
+start)
+    for file in $FILES
+    do
+	if [ -f $file ]
+	then
+	    set -- `ls -ldgo $file`
+	    size=`expr $3 / 512`
+	    /usr/sbin/swap -a $file 0 $size &&
+	    echo "Added swap file ${file}, $size blocks."
+	fi
+    done
+
+    for drive in $DRIVES
+    do
+	P=0
+	/usr/amiga/bin/rdb /dev/rdsk/${drive}s0 |
+	while read name start size
+	do
+	    P=`expr $P + 1`
+	    case "$name" in
+	    *[Ss]wap*|*SWAP*)
+		/usr/sbin/swap -a /dev/dsk/${drive}s$P 0 $size &&
+		echo "Added swap partition /dev/dsk/${drive}s$P ($name), $size blocks."
+		;;
+	    esac
+	done
+    done
+
+    ;;
+stop)
+    swap -l |
+    while read path dev swaplo blocks free
+    do  case "$path" in
+	/dev/*)	;;
+	*)	swap -d $path $swaplo;;
+	esac
+    done
+
+    swap -l |
+    {
+	read headers
+	read firstline
+	while read path dev swaplo blocks free
+	do  swap -d $path $swaplo
+	done
+    }
+
+    ;;
+esac
+
+#swap -l

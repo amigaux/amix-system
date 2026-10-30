@@ -1,0 +1,6 @@
+# VERSION=1
+ql00:ux:root:reserved:reserved:reserved:/dev/term/ql00:bhr:0:/usr/bin/login:150:9600M:ldterm,ttcompat:ql00 login\: ::#
+ql01:ux:root:reserved:reserved:reserved:/dev/term/ql01:bhr:0:/usr/bin/login:150:9600M:ldterm,ttcompat:ql01 login\: ::#
+ql02:ux:root:reserved:reserved:reserved:/dev/term/ql02:bhr:0:/usr/bin/login:150:9600M:ldterm,ttcompat:ql02 login\: ::#
+ql03:ux:root:reserved:reserved:reserved:/dev/term/ql03:bhr:0:/usr/bin/login:150:9600M:ldterm,ttcompat:ql03 login\: ::#
+ser:ux:root:reserved:reserved:reserved:/dev/term/ser:bhr:0:/usr/bin/login:150:9600M:ldterm,ttcompat:ser login\: ::#

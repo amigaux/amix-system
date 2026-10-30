@@ -1,0 +1,19 @@
+# First Amiga/Ameristar Ethernet board
+# (automatically determines if board is in system)
+/usr/amiga/bin/aen -S &&
+    /usr/sbin/slink addaen /dev/aen0 aen0 &&
+	/usr/sbin/ifconfig aen0 `uname -n` up -trailers
+
+# A second Ethernet board (uncomment to use)
+#/usr/sbin/slink addaen /dev/aen1 aen1 &&
+#    /usr/sbin/ifconfig aen1 myname-on-othernet up -trailers
+
+
+# SLIP interfaces for dynamic allocation
+#/usr/sbin/slink addslip /dev/sld0 sl0
+#/usr/sbin/slink addslip /dev/sld1 sl1
+#/usr/sbin/slink addslip /dev/sld2 sl2
+#/usr/sbin/slink addslip /dev/sld3 sl3
+
+# Permanent SLIP connection to remoteaddr via term/ql05
+#/usr/amiga/bin/slattach 19200 localaddr remoteaddr < /dev/term/ql05 &

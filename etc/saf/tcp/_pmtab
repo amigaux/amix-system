@@ -1,0 +1,6 @@
+# VERSION=4
+lpd::root:reserved:reserved:reserved:\x000202037f0000010000000000000000::p::/var/spool/lp/fifos/listenBSD#
+lp::root:reserved:reserved:reserved:::p::/var/spool/lp/fifos/listenS5#
+0::listen:reserved:reserved:reserved:\x00020ace7f0000010000000000000000::::/usr/lib/saf/nlps_server #NLPS Server
+1::listen:reserved:reserved:reserved:\x00020acf7f0000010000000000000000::::/usr/slan/lib/ttysrv -m tirdwr #Login service
+101::uucp:reserved:reserved:reserved:\x000204017f0000010000000000000000:::tirdwr:/usr/lib/uucp/uucico #uucico

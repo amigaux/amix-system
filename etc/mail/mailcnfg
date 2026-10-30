@@ -1,0 +1,11 @@
+#  See the guide "Administering the Mail Subsystem" for instructions on
+#  what can go in this file.  Also see 'man mailcnfg'.
+#
+# Mail addresses that we cannot resolve on this machine will be
+# sent to the "smart host", if it is defined.
+#
+# You must uncomment the line in /etc/mail/mailsurr which looks like
+#	'.+'	'!(.+)'			'Translate R=!%X!\\1'
+# for SMARTERHOST to work.  You must also uncomment the following line
+# after filling in the actual hostname.
+# SMARTERHOST=host

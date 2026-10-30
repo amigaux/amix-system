@@ -1,0 +1,26 @@
+#	inet startup
+
+[ -d /usr/bin ] || exit 1		# /usr must be mounted
+
+case $1 in
+'start')
+
+    # Exit if already done.
+    /usr/sbin/ifconfig lo0 >/dev/null 2>/dev/null && exit
+
+    /usr/sbin/slink &&
+	/usr/sbin/ifconfig lo0 localhost up
+
+    . /etc/inet/network-config
+
+    # run startup script
+    exec /bin/sh /etc/inet/rc.inet
+    ;;
+
+'stop')
+    /usr/sbin/slink -u
+    ;;
+
+*)
+    exit 1
+esac

@@ -1,0 +1,10 @@
+#
+#  List of directories to be searched first by ttyname()
+#  Presence of /dev causes a one-level search only
+#  All of /dev will be searched if tty is not found with this list
+#
+/dev/term
+/dev/pts
+/dev/xt
+/dev/sxt
+/dev

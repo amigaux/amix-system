@@ -1,0 +1,8 @@
+# Autopush setup for console screens (/dev/console and /dev/con*)
+# and other devices provided with Amiga Unix
+#
+# major	minor	lastminor	modules
+
+    0	  -1	    0		ldterm ttcompat
+    5	  -1	    0		ldterm ttcompat
+    13	  -1	    0		ldterm ttcompat

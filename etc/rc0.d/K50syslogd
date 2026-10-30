@@ -1,0 +1,45 @@
+#	syslogd control
+#
+# Patchlevel:	syslogd_1.0
+#
+
+#
+#TO USE SYSLOGD, COMMENT OR REMOVE THE exit ON THE NEXT LINE:
+exit
+
+#
+#	When it starts, syslogd writes its process id in this file
+#
+pid=`cat -s /etc/syslog.pid`
+
+case $1 in
+'start')
+	#
+	#	Syslogd won't run if the config file is missing
+	#
+	if [ -x /usr/sbin/syslogd -a -r /etc/syslog.conf ]
+	then
+	    #
+	    #	Test for the presense of a running syslogd
+	    #
+	    kill -0 $pid 2> /dev/null
+	    #
+	    #	If there wasn't a pid to kill, or the process
+	    #	did not exists, start syslogd
+	    #
+	    if [ -z "$pid" -o $? -ne 0 ]
+	    then
+		/usr/sbin/syslogd
+	    fi
+	fi
+	;;
+
+'stop')
+	kill $pid 2> /dev/null
+	;;
+
+*)
+	echo "usage: /etc/init.d/syslogd {start|stop}"
+	;;
+
+esac

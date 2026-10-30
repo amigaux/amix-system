@@ -1,0 +1,86 @@
+#!/bin/sh
+
+# /etc/sysinit
+#
+# Patchlevel: sysinit_1.1
+#
+# /etc/sysinit is run from a sysinit line in /etc/inittab, and
+# performs all system setup that needs to be done before entering
+# single-user mode.
+trap ""  2 3
+
+PATH=/usr/amiga/bin:/bin:/sbin:/usr/sbin; export PATH
+
+
+# Check filesystems, etc.
+/etc/bcheckrc
+
+
+# Read date/time from battery-backed-up clock
+/usr/amiga/bin/setclk > /dev/null
+date
+
+
+# Initialize name of system from name stored in /etc/nodename.
+uname -S `cat /etc/nodename`
+domainname `cat /etc/domain`
+echo "Node: `uname -n``domainname`"
+
+
+# Perform installation configuration, if needed.
+# Let user break out of system.setup only
+trap "trap '' 2"  2
+if [ -x /usr/amiga/bin/system.setup ]
+then
+	sh /usr/amiga/bin/system.setup
+fi
+trap "" 2
+
+# Load the default keymap
+# default.kmap should be a link to whichever keymap is desired.
+if [ -f /usr/amiga/lib/kmap/default.kmap ]
+then
+	sioc setdefkmap /usr/amiga/lib/kmap/default.kmap < /dev/console
+	echo "Default keymap loaded."
+fi
+
+
+# Load the default font
+# default.font should be a link to whichever font is desired.
+if [ -f /usr/amiga/lib/font/default.font ]
+then
+	sioc setdeffont /usr/amiga/lib/font/default.font < /dev/console
+	echo "Default font loaded."
+fi
+
+
+# Configure overscan.
+# Parameters are: horizontal offset, vertical offset,
+#   horizontal overscan amount, vertical overscan amount.
+# Amount units are lores pixels and MUST BE MULTIPLES OF 16,
+#   offset units are 2 lores pixels.
+# This example moves the display 24 lores pixels to the left,
+#   and enables 32 lores pixels of overscan in each axis.
+#sioc setdisplayadjust -12 0 32 32
+#
+# This example is for A2024 or Moniterm moniters:
+#sioc setdisplayadjust 0 0 16 0
+# To pick up new overscan, log out or type Ctrl-d at the login prompt.
+# The Alt-F1 console screen has fixed overscan.
+
+# Tell the system if an A2024 monitor is attached.
+if A2024
+then
+	sioc setdisplaytype +4 < /dev/console
+fi
+
+
+# Start amiga floppy daemon
+/usr/bin/setpgrp /usr/amiga/etc/flopd < /dev/null > /dev/null 2>&1 &
+sleep 10
+
+
+# Start Amiga screen menu daemon
+/usr/bin/setpgrp /usr/amiga/etc/scrmenu < /dev/null > /dev/null 2>&1 &
+
+trap  2 3

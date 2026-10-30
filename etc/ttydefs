@@ -1,0 +1,32 @@
+# VERSION=1
+38400:38400 cs8 -istrip -parenb hupcl erase ^h kill ^u:38400 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::19200
+19200:19200 cs8 -istrip -parenb hupcl erase ^h kill ^u:19200 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::9600
+9600:9600 cs8 -istrip -parenb hupcl erase ^h kill ^u:9600 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::4800
+4800:4800 cs8 -istrip -parenb hupcl erase ^h kill ^u:4800 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::2400
+2400:2400 cs8 -istrip -parenb hupcl erase ^h kill ^u:2400 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::1200
+1200:1200 cs8 -istrip -parenb hupcl erase ^h kill ^u:1200 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::300
+300:300 cs8 -istrip -parenb hupcl erase ^h kill ^u:300 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::19200
+
+300M:300 cs8 -istrip -parenb hupcl erase ^h kill ^u:300 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::300M
+1200M:1200 cs8 -istrip -parenb hupcl erase ^h kill ^u:1200 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::1200M
+2400M:2400 cs8 -istrip -parenb hupcl erase ^h kill ^u:2400 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::2400M
+4800M:4800 cs8 -istrip -parenb hupcl erase ^h kill ^u:4800 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::4800M
+9600M:9600 cs8 -istrip -parenb hupcl erase ^h kill ^u:9600 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::9600M
+19200M:19200 cs8 -istrip -parenb hupcl erase ^h kill ^u:19200 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::19200M
+38400M:38400 cs8 -istrip -parenb hupcl erase ^h kill ^u:38400 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::38400M
+
+auto:hupcl cs8 -istrip -parenb erase ^h kill ^u:sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u:A:9600
+
+console:38400 cs8 -istrip -parenb -hupcl opost onlcr cs8 -parenb -istrip erase ^h kill ^u:38400 sane cs8 -istrip -parenb -hupcl ixany tab0 cs8 -istrip -parenb erase ^h kill ^u::console
+con:38400 cs8 -istrip -parenb hupcl opost onlcr cs8 -parenb -istrip erase ^h kill ^u:38400 sane cs8 -istrip -parenb hupcl ixany tab0 cs8 -parenb -istrip erase ^h kill ^u::con
+
+pty:9600 cs8 -istrip -parenb hupcl opost onlcr erase ^h kill ^u:9600 sane cs8 -istrip -parenb ixany tab3 erase ^h kill ^u::pty
+
+4800H:4800 cs8 -istrip -parenb erase ^h kill ^u:4800 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::9600H
+9600H:9600 cs8 -istrip -parenb erase ^h kill ^u:9600 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::19200H
+19200H:19200 cs8 -istrip -parenb erase ^h kill ^u:19200 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::38400H
+38400H:38400 cs8 -istrip -parenb erase ^h kill ^u:38400 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::2400H
+2400H:2400 cs8 -istrip -parenb erase ^h kill ^u:2400 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::1200H
+1200H:1200 cs8 -istrip -parenb erase ^h kill ^u:1200 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::300H
+300H:300 cs8 -istrip -parenb erase ^h kill ^u:300 sane cs8 -istrip -parenb ixany tab3 hupcl erase ^h kill ^u::4800H
+

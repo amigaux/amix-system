@@ -1,0 +1,9 @@
+# VERSION=1
+
+inetd:inetd::0:/usr/sbin/inetd	#
+tcp:listen::0:/usr/lib/saf/listen tcp	#
+serial:ttymon::0:/usr/lib/saf/ttymon	#
+screens:ttymon::0:/usr/amiga/lib/scrmon	#
+xdm:xdm:x:0:/usr/X/bin/xdm	#
+# The xdm server is disabled when its field 3 contains an x in this file.
+# First edit /usr/X/lib/xdm/Xservers to select an X mode.

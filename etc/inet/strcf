@@ -1,0 +1,129 @@
+#ident	"@(#)cmd-inet:etc/strcf	1.3"
+
+#
+# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# 		PROPRIETARY NOTICE (Combined)
+# 
+# This source code is unpublished proprietary information
+# constituting, or derived under license from AT&T's UNIX(r) System V.
+# In addition, portions of such source code were derived from Berkeley
+# 4.3 BSD under license from the Regents of the University of
+# California.
+# 
+# 
+# 
+# 		Copyright Notice 
+# 
+# Notice of copyright on this source code product does not indicate 
+# publication.
+# 
+# 	(c) 1986,1987,1988.1989  Sun Microsystems, Inc
+# 	(c) 1983,1984,1985,1986,1987,1988,1989  AT&T.
+# 	          All rights reserved.
+#  
+#
+
+#
+#	Copyright 1987, 1988 Lachman Associates, Incorporated (LAI)
+#	All Rights Reserved.
+#
+#	The copyright above and this notice must be preserved in all
+#	copies of this source code.  The copyright above does not
+#	evidence any actual or intended publication of this source
+#	code.
+#
+#	This is unpublished proprietary trade secret source code of
+#	Lachman Associates.  This source code may not be copied,
+#	disclosed, distributed, demonstrated or licensed except as
+#	expressly authorized by Lachman Associates.
+#
+#	System V STREAMS TCP was jointly developed by Lachman
+#	Associates and Convergent Technologies.
+#
+
+#
+# tp - configure transport provider (i.e. tcp, udp, icmp)
+# usage: tp devname
+#
+tp {
+	p = open $1
+	ip = open /dev/ip
+	link p ip
+}
+
+#
+# linkint - link interface to ip or arp
+# usage: linkint top bottom ifname
+#
+linkint {
+	x = link $1 $2
+	sifname $1 x $3
+}
+
+#
+# aplinkint - like linkint, but app is pushed on dev
+# usage: aplinkint top bottom ifname
+#
+aplinkint {
+	push $2 app
+	linkint $1 $2 $3
+}
+
+
+#
+# loopback - configure loopback interface
+# usage: loopback
+#
+loopback {
+	ip = open /dev/ip
+	dev = open /dev/loop
+	linkint ip dev lo0
+}
+
+#
+# addaen - configure an Amiga/Ameristar Ethernet interface
+# usage: addaen /dev/aenN enN
+#
+addaen {
+	ip = open /dev/ip
+	dev = open $1
+	aplinkint ip dev $2
+	dev = open $1
+	arp = open /dev/arp
+	linkint arp dev $2
+}
+
+#
+# addslip - configure a slip interface
+# usage: addslip /dev/sldN slN
+#
+addslip {
+	ip = open /dev/ip
+	dev = open $1
+	linkint ip dev $2
+}
+
+#
+# boot - boot time configuration
+#
+boot {
+	#
+	# queue params
+	#
+#	initqp /dev/udp rq 8192 40960
+#	initqp /dev/ip muxrq 8192 40960 rq 8192 40960
+
+	#
+	# transport
+	#
+	tp /dev/tcp
+	tp /dev/udp
+	tp /dev/icmp
+	tp /dev/rawip
+
+	#
+	# interfaces (Other interfaces are added in subsequent invocations
+	# in /etc/inet/network-config.)
+	#
+	loopback
+}

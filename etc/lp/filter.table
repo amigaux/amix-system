@@ -1,0 +1,14 @@
+:PS,PSR,PS-b,PS-r,PS-br:any:postscript:download:postdown:fast:/usr/lib/lp/postscript/download:PRINTER * = -p*
+:PS:any:postdown:postio:PS:fast:/usr/lib/lp/postscript/postio 2>>$ERRFILE:
+:PSR:any:postdown:postior:PS:fast:/usr/lib/lp/postscript/postreverse | /usr/lib/lp/postscript/postio 2>>$ERRFILE:
+:PS-b:any:postdown:postio_b:PS:fast:/usr/lib/lp/bin/lp.cat 0 2>>$ERRFILE:
+:PS-br:any:postdown:postio_br:PS:fast:/usr/lib/lp/postscript/postreverse | /usr/lib/lp/bin/lp.cat 0 2>>$ERRFILE:
+:PSR,PS-r:any:postdown:postio_r:PS:fast:/usr/lib/lp/postscript/postreverse | /usr/lib/lp/postscript/postio 2>>$ERRFILE:
+:any:any:matrix:postmd:postscript:slow:/usr/lib/lp/postscript/postmd:PAGES * = -o*,COPIES * = -c*,LENGTH * = -l*,MODES group = -n2,MODES group\=\\([2-9]\\) = -n\\1,MODES portrait = -pp,MODES landscape = -pl,MODES x\=\\(\\-*[\\.0-9]*\\) = -x\\1,MODES y\=\\(\\-*[\\.0-9]*\\) = -y\\1,MODES magnify\=\\([\\.0-9]*\\) = -m\\1,MODES dimen\=\\([1-9]*x*[1-9]*\\) = -d\\1,MODES interval\=\\(-*[0-9]*\\)/*\\(-*[0-9]*\\)/*\\(-*[0-9]*\\) = -i\\1\,\\2\,\\3
+:any:any:plot:postplot:postscript:slow:/usr/lib/lp/postscript/postplot:PAGES * = -o*,COPIES * = -c*,MODES group = -n2,MODES portrait = -pp,MODES landscape = -pl
+:any:any:simple:postprint:postscript:slow:/usr/lib/lp/postscript/postprint:PAGES * = -o*,COPIES * = -c*,LENGTH * = -l*,MODES group = -n2,MODES group\=\\([2-9]\\) = -n\\1,MODES portrait = -pp,MODES landscape = -pl,MODES x\=\\(\\-*[\\.0-9]*\\) = -x\\1,MODES y\=\\(\\-*[\\.0-9]*\\) = -y\\1,MODES magnify\=\\([\\.0-9]*\\) = -m\\1
+:any:any:postscript,post:postreverse:postscript:slow:/usr/lib/lp/postscript/postreverse:PAGES * = -o*
+:any:any:tek4014:posttek:postscript:slow:/usr/lib/lp/postscript/posttek:PAGES * = -o*,COPIES * = -c*,LENGTH * = -l*,MODES group = -n2,MODES group\=\\([2-9]\\) = -n\\1,MODES portrait = -pp,MODES landscape = -pl,MODES x\=\\(\\-*[0-9][\\.0-9]\\) = -x\\1,MODES y\=\\(\\-*[0-9][\\.0-9]\\) = -y\\1,MODES magnify\=\\([0-9][\\.0-9]\\) = -m\\1
+:any:any:troff:dpost:postscript:slow:/usr/lib/lp/postscript/dpost:PAGES * = -o*,COPIES * = -c*,LENGTH * = -l*,MODES group = -n2,MODES group\=\\([2-9]\\) = -n\\1,MODES portrait = -pp,MODES landscape = -pl,MODES x\=\\(\\-*[\\.0-9]*\\) = -x\\1,MODES y\=\\(\\-*[\\.0-9]*\\) = -y\\1,MODES magnify\=\\([\\.0-9]*\\) = -m\\1
+:any:any:daisy:postdaisy:postscript:slow:/usr/lib/lp/postscript/postdaisy:PAGES * = -o*,COPIES * = -c*,MODES group = -n2,MODES group\=\\([2-9]\\) = -n\\1,MODES portrait = -pp,MODES landscape = -pl,MODES x\=\\(\\-*[\\.0-9]*\\) = -x\\1,MODES y\=\\(\\-*[\\.0-9]*\\) = -y\\1,MODES magnify\=\\([\\.0-9]*\\) = -m\\1
+:any:any:dmd:postdmd:postscript:slow:/usr/lib/lp/postscript/postdmd:PAGES * = -o*,COPIES * = -c*,LENGTH * = -l*,MODES group = -n2,MODES group\=\\([2-9]\\) = -n\\1,MODES portrait = -pp,MODES landscape = -pl,MODES x\=\\(\\-*[\\.0-9]*\\) = -x\\1,MODES y\=\\(\\-*[\\.0-9]*\\) = -y\\1,MODES magnify\=\\([\\.0-9]*\\) = -m\\1

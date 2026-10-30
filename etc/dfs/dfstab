@@ -1,0 +1,8 @@
+
+#	place share(1M) commands here for automatic execution
+#	on entering init state 3.
+#
+#	share [-F fstype] [ -o options] [-d "<text>"] <pathname> <resource>
+#	.e.g,
+#	share -F rfs -d "/var/news"  /var/news NEWS
+

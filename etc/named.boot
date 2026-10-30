@@ -1,0 +1,1 @@
+/etc/inet/named.boot

@@ -1,0 +1,34 @@
+#	news control
+#
+# Patchlevel:	news_1.1
+#
+case $1 in
+'start')
+
+	echo "`cat /etc/nodename``domainname`" >/usr/public/lib/news/mailname
+	rm -f /usr/public/lib/news/whoami
+	ln -s /etc/nodename /usr/public/lib/news/whoami
+
+	# Normal shutdown removes LOCKmtdaemon: fasthalt, haltsys,... do not
+	rm -f /usr/public/lib/news/trn/LOCKmtdaemon
+
+	if [ -x /usr/public/lib/newsbin/trn/mthreads ]
+	then
+		/usr/public/lib/newsbin/trn/mthreads -d -e0230 -a -z
+	fi
+
+	if [ -x /usr/public/lib/newsbin/maint/newsboot ]
+	then
+		su news -c /usr/public/lib/newsbin/maint/newsboot
+	fi
+	;;
+
+'stop')
+	/usr/public/lib/newsbin/trn/mthreads -k
+	;;
+
+*)
+	echo "usage: /etc/init.d/news {start|stop}"
+	;;
+
+esac

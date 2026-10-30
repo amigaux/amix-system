@@ -1,0 +1,49 @@
+#ident	"@(#)uucp:Permissions	2.2"
+# This entry for public login.
+# It provides the default permissions.
+# See the Basic Networking Utilities Guide for more information.
+# 
+# Each line can contain the following options:
+# 
+# LOGNAME=  
+#	For incoming calls only.  This is the login name a remote system can 
+#	use to log into your system.  A line that starts with LOGNAME specifies
+#	the permissions a remote "user" has on your system.
+#
+# MACHINE=
+#	For outgoing calls only.  This entry is the name of a machine
+#	you can call.  A line that starts with MACHINE specifies the
+#	permissions you have on the remote system.  
+#
+# REQUEST= 
+#	Determines whether a remote system can transfer files from your system.
+#	No is the default answer.
+#
+# CALLBACK=
+#	Used with LOGNAME entries.  If it =yes, your system must call back
+#	the remote system before transferring files.  The remote system makes
+#	the request, but your system must call it back. 
+#
+# SENDFILES=
+#	Used with LOGNAME entries.  Specifies whether the remote system can 
+# 	take work that you have queued for it.  If it =yes, you can send the
+#	queued work to the remote system.  If it =call, you can only send the 
+#	files when you initiate the call.  call is the default.
+#
+# READ= WRITE=
+#	These are the places where uucico can read and write files.  The
+#	default for both is /var/spool/uucppublic.  Separate multiple paths
+#	with commas. 
+#
+# COMMANDS= 
+#	Used with MACHINE entries.  Specifies commands a remote system can run
+#	on your system.  You can specify paths to commands.  Separate commands
+#	with a comma.  	
+#
+# See The "System Administrator's Guide, Basic Networking Utilites" for more
+# information.  	
+	
+LOGNAME=nuucp REQUEST=yes CALLBACK=no SENDFILES=yes READ=/ WRITE=/usr/spool/uucppublic
+LOGNAME=uucp REQUEST=yes CALLBACK=no SENDFILES=yes READ=/ WRITE=/usr/spool/uucppublic
+LOGNAME=OTHER REQUEST=yes CALLBACK=no SENDFILES=yes READ=/ WRITE=/usr/spool/uucppublic
+MACHINE=OTHER REQUEST=yes CALLBACK=no SENDFILES=yes READ=/ WRITE=/usr/spool/uucppublic COMMANDS=rnews:rmail:uucp
