@@ -1,0 +1,36 @@
+#define xsol_format 1
+#define xsol_width 24
+#define xsol_height 24
+#define xsol_ncolors 3
+#define xsol_chars_per_pixel 1
+static char * xsol_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#000000000000",
+"X" , "#FFFFFFFFFFFF"
+} ;
+static char * xsol_pixels[] = {
+"   .................    ",
+"  .XXXXXXXXXXXXXXXXX.   ",
+"  .XX.XXXXXXXXXXXXXX.   ",
+"  .X.X.XXXXXXXXXXXXX.   ",
+"  .X...XXXXXXXXXXXXX.   ",
+"  .X.X.XXXXXXXXXXXXX.   ",
+"  .XXXXXXXX.XXXXXXXX.   ",
+"  .XXXXXXX...XXXXXXX.   ",
+"  .XXXXXX.....XXXXXX.   ",
+"  .XXXXX.......XXXXX.   ",
+"  .XXXXX.......XXXXX.   ",
+"  .XXXX.........XXXX.   ",
+"  .XXXX.........XXXX.   ",
+"  .XXXX.........XXXX.   ",
+"  .XXXXX..X.X..XXXXX.   ",
+"  .XXXXXXXX.XXXXXXXX.   ",
+"  .XXXXXXX...XXXXXXX.   ",
+"  .XXXXX.......XXXXX.   ",
+"  .XXXXXXXXXXXXX.X.X.   ",
+"  .XXXXXXXXXXXXX...X.   ",
+"  .XXXXXXXXXXXXX.X.X.   ",
+"  .XXXXXXXXXXXXXX.XX.   ",
+"  .XXXXXXXXXXXXXXXXX.   ",
+"   .................    "
+} ;

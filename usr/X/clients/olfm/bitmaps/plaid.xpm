@@ -1,0 +1,41 @@
+#define plaid_format 1
+#define plaid_width 24
+#define plaid_height 24
+#define plaid_ncolors 8
+#define plaid_chars_per_pixel 1
+static char * plaid_colors[] = {
+" " , "#000000000000",
+"." , "#FFFFFFFFFFFF",
+"X" , "#0000AAAA0000",
+"o" , "#00000000FFFF",
+"O" , "#0000FFFFFFFF",
+"+" , "#0000AAAAFFFF",
+"@" , "#0000FFFF0000",
+"#" , "#00000000AAAA"
+} ;
+static char * plaid_pixels[] = {
+"                        ",
+" ..X.o....O++O....o.X.. ",
+" ..X.o....O++O....o.X.. ",
+" ..X.o....O++O....o.X.. ",
+" XX.X.XXXX....XXXX.@.XX ",
+" OO#O#OOOO####OOOO#O#OO ",
+" oo.o.oooo....oooo.o.oo ",
+" ..X.o....O++O....o.X.. ",
+" ..X.o....O++O....o.X.. ",
+" ..X.o....O++O....o.X.. ",
+" OO.O.OOOO....OOOO.O.OO ",
+" XX#X#XXXX.##.XXXX#X#XX ",
+" XX#X#XXXX.##.XXXX#X#XX ",
+" OO.O.OOOO....OOOO.O.OO ",
+" ..X.o....O++O....o.X.. ",
+" ..X.o....O++O....o.X.. ",
+" ..X.o....O++O....o.X.. ",
+" oo.o.oooo....oooo.o.oo ",
+" OO#O#OOOO####OOOO#O#OO ",
+" XX.X.XXXX....XXXX.X.XX ",
+" ..X.o....O++O....o.X.. ",
+" ..X.o....O++O....o.X.. ",
+" ..X.o....O++O....o.X.. ",
+"                        "
+} ;

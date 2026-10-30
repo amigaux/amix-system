@@ -1,0 +1,1 @@
+The "Undo" choices are used to enable/disable "undo" feature in the File Manager. The possible values are, Enable: to enable the user to undo last operation, and Disable: to turn off the undo capability. You click SELECT on one of the boxes and on the "Apply" button to set the desired choice. The default is "Enable"

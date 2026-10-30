@@ -1,0 +1,40 @@
+#define b_format 1
+#define b_width 24
+#define b_height 24
+#define b_ncolors 7
+#define b_chars_per_pixel 1
+static char * b_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#00000000AAAA",
+"X" , "#FFFFFFFF0000",
+"o" , "#AAAAFFFF5555",
+"O" , "#FFFF00000000",
+"+" , "#AAAA55550000",
+"@" , "#00000000FFFF"
+} ;
+static char * b_pixels[] = {
+"           ...          ",
+"         .......        ",
+"       .....XX....      ",
+"     .....XXXXXX....    ",
+"   .....XXXX...XX.....  ",
+"  .....XXX.XXX..XX..... ",
+"  o.....XX...X........O ",
+"  ooo....XXX........OOO ",
+"  ooooo....XX.....OOOOO ",
+"  oo++ooo.......OOOO@@O ",
+"  oo++++ooo...OOOOOO@@O ",
+"  oo++o++ooooOOOOOOO@@O ",
+"  oo++oo++oooO@@OOOO@OO ",
+"  oo++oo++oooO@@OOO@@OO ",
+"  oo++oo++oooOO@@OO@@OO ",
+"  oo++oo++oooOO@@OO@OOO ",
+"  oo++oo++oooOOO@@@@OOO ",
+"  ooo++o++oooOOOO@@OOOO ",
+"   oooo++ooooOOOOOOOOO  ",
+"     ooooooooOOOOOOO    ",
+"       ooooooOOOOO      ",
+"         ooooOOO        ",
+"           ooO          ",
+"                        "
+} ;

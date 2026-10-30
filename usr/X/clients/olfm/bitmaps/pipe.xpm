@@ -1,0 +1,39 @@
+#define pipe_format 1
+#define pipe_width 24
+#define pipe_height 24
+#define pipe_ncolors 6
+#define pipe_chars_per_pixel 1
+static char * pipe_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#FFFFFFFFFFFF",
+"X" , "#000000000000",
+"o" , "#AAAA55550000",
+"O" , "#FFFFFFFF0000",
+"+" , "#FFFF00000000"
+} ;
+static char * pipe_pixels[] = {
+"                        ",
+"                        ",
+"                  .     ",
+"                  .     ",
+"                  . .   ",
+"                . . .   ",
+"                .   .   ",
+"X              .  . .   ",
+"XXX            . .  .   ",
+" XXX          .. . .    ",
+"   Xoo         . . .    ",
+"    ooo                 ",
+"      ooo       OOO     ",
+"       oooo   oO+++Oo   ",
+"         ooo  ooOOOoo   ",
+"           oooooooooo   ",
+"            ooooooooo   ",
+"              ooooooo   ",
+"               ooooo    ",
+"                ooo     ",
+"                        ",
+"                        ",
+"                        ",
+"                        "
+} ;

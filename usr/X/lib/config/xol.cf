@@ -1,0 +1,30 @@
+#ifndef XolClientDepLibs
+#define XolClientDepLibs 
+#endif
+
+#ifndef XolClientLibs
+#define XolClientLibs $(XOLLIB) $(XTOOLLIB) $(XLIB)
+#endif
+
+#define StandardIncludes	-I. -I$(TOP)/X11
+#define ExtraIncludes		-I$(TOP)/olit/lib -I$(TOP)/olit/lib/Xol
+#define ATTDestDir		/usr/X
+#define BuildOlit		YES
+#define AwkCmd		/usr/bin/awk
+#define PrCmd		/bin/pr
+#define ChmodCmd	/bin/chmod
+#define ChownCmd	/bin/chown
+#define ChgrpCmd	/bin/chgrp
+#define SedCmd		/bin/sed
+#define CdCmd		cd
+
+       ATTDESTDIR = ATTDestDir		/* root of ATT OL install */
+              AWK = AwkCmd
+               CD = CdCmd
+               PR = PrCmd
+            CHMOD = ChmodCmd
+            CHOWN = ChownCmd
+            CHGRP = ChgrpCmd
+              SED = SedCmd
+
+#include <xol.rules>

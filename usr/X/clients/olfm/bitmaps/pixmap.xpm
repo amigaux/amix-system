@@ -1,0 +1,48 @@
+#define pixmap_format 1
+#define pixmap_width 24
+#define pixmap_height 24
+#define pixmap_ncolors 15
+#define pixmap_chars_per_pixel 1
+static char * pixmap_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#000000000000",
+"X" , "#FFFFFFFFFFFF",
+"o" , "#AAAA0000AAAA",
+"O" , "#FFFF0000FFFF",
+"+" , "#00000000AAAA",
+"@" , "#0000FFFFFFFF",
+"#" , "#AAAA55550000",
+"$" , "#FFFFFFFF0000",
+"%" , "#FFFF00000000",
+"&" , "#00000000FFFF",
+"*" , "#FFFFAAAA0000",
+"=" , "#0000AAAA0000",
+"-" , "#AAAAFFFF5555",
+";" , "#0000FFFF0000"
+} ;
+static char * pixmap_pixels[] = {
+"                        ",
+"                        ",
+"                        ",
+"           ......       ",
+"         ..XXXXX.       ",
+"       ..XXXXoXX..    ..",
+"      .XXoOOXoXX.   ... ",
+"     .X++oOOXXX.   ..   ",
+"    .XX++XXXXXX. .....  ",
+"  ..XX@@XXXXXXX...X.X.  ",
+"  .XXO@@XXXX....XX.XX.  ",
+" .XXXOOXXXXX...X..XXX.  ",
+" .X##XXXXXX.. .XXXXX..  ",
+".XX##XXXX...  .X  XX.   ",
+".X$$XXX%%.XX..XX  X..   ",
+".X$$XX%%XXXXXXX&&XX.    ",
+".X**X%XXXXXXXX$$XX.     ",
+".X**XXXXXXXX==$$X.      ",
+" .X%%XXXXXX&&=XXX.      ",
+" .X%%=XX-XX&&XX..       ",
+"  .XX=@@-;;XXX.         ",
+"  ..XX@@X;;XX..         ",
+"    ..XXXXX..           ",
+"      .....             "
+} ;

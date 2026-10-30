@@ -1,0 +1,28 @@
+#ident	"@(#)olwm:olwm.ad	1.2"
+
+*Refresh.accelerator:	Ctrl Alt<l>
+*Refresh.mnemonic:	E
+*Owner?.accelerator:	Shift Ctrl <F8>
+*Owner?.mnemonic:	W
+*Dismiss.mnemonic:	D
+*This Window.accelerator:	Ctrl<F9>
+*This Window.mnemonic:	T
+*All Pop-ups.accelerator:	Shift Ctrl<F9>
+*All Pop-ups.mnemonic:	A
+*Back.accelerator:	Ctrl<F3>
+*Back.mnemonic:	B
+*Close.accelerator:	Ctrl<F5>
+*Close.mnemonic:	C
+*Full Size.accelerator:	Ctrl<F10>
+*Full Size.mnemonic:	F
+*Move.accelerator:	Ctrl<F7>
+*Move.mnemonic:	M
+*Open.accelerator:	Ctrl<F5>
+*Open.mnemonic:	O
+*Quit.accelerator:	Ctrl<F4>
+*Quit.mnemonic:	Q
+*Resize.accelerator:	Ctrl<F8>
+*Resize.mnemonic:	S
+*Restore Size.accelerator:	Ctrl<F10>
+*Restore Size.mnemonic:	R
+*moveOpaque:	false

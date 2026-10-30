@@ -1,0 +1,38 @@
+#define x_format 1
+#define x_width 24
+#define x_height 24
+#define x_ncolors 5
+#define x_chars_per_pixel 1
+static char * x_colors[] = {
+" " , "#00000000AAAA",
+"." , "#FFFFFFFFFFFF",
+"X" , "#FFFF00000000",
+"o" , "#0000AAAAFFFF",
+"O" , "#FFFFAAAA0000"
+} ;
+static char * x_pixels[] = {
+"                        ",
+" ... XXXXXXXXXXXXXX ... ",
+" .   XXXXXXXXXXXXXX   . ",
+" . XXXXXXXXXXXXXXXXXX . ",
+"   oooooooooooooooooo   ",
+" ...................... ",
+" .OOOOOOOOOOOOOOOOOOOO. ",
+" .OOOOOOOOOOOOOOOOOOOO. ",
+" .OOOOOOOOOOOOOOOOOOOO. ",
+" .OOOOOOOOOOOOOOOOOOOO. ",
+" .OOOOOOOOOOOOOOOOOOOO. ",
+" .OOOOOOOOOOOOOOOOOOOO. ",
+" .OOOOOOOOOOOOOOOOOOOO. ",
+" .OOOOOOOOOOOOOOOOOOOO. ",
+" .OOOOOOOOOOOOOOOOOOOO. ",
+" .OOOOOOOOOOOOOOOOOOOO. ",
+" .OOOOOOOOOOOOOOOOOOOO. ",
+" .OOOOOOOOOOOOOOOOOOOO. ",
+" ...................... ",
+"   ..................   ",
+" . .................. . ",
+" .   ..............   . ",
+" ... .............. ... ",
+"                        "
+} ;

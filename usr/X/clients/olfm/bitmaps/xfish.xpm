@@ -1,0 +1,41 @@
+#define xfish_format 1
+#define xfish_width 24
+#define xfish_height 24
+#define xfish_ncolors 8
+#define xfish_chars_per_pixel 1
+static char * xfish_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#000000000000",
+"X" , "#FFFFFFFF0000",
+"o" , "#FFFFFFFFFFFF",
+"O" , "#00000000FFFF",
+"+" , "#FFFF00000000",
+"@" , "#FFFFAAAA0000",
+"#" , "#AAAA55550000"
+} ;
+static char * xfish_pixels[] = {
+"                        ",
+"       ..XXXX         . ",
+"      ...XXXXXX      .. ",
+"    .....XXXXXXX   ...  ",
+"   ..o...XOOOXXXX....   ",
+"  .......OOOOXXXXX...   ",
+"   ......OOOXXXX.....   ",
+"     ....XXXXXX.   ...  ",
+"      ...XXXX..     ... ",
+"        .....        .. ",
+"                      . ",
+"                      . ",
+"                        ",
+"        +O@O            ",
+" +      +@O@O           ",
+"  +     +@@O@@@@O++     ",
+"  O+    +@@O@@@@O++++   ",
+"  OO+  O@@@OO@@@OOXX++  ",
+"   O@++O@@@@O@@@@OX#+++ ",
+"   O@++OO@@@OO@@@OO@@+  ",
+"  OO+  +O@@@@O@@@@O@.   ",
+"  O+    +O@@@O@@@@..    ",
+"  +       +O......      ",
+" +                      "
+} ;

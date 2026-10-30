@@ -1,0 +1,1 @@
+The "Pattern" field is used to limit the display of files in the directory pane.  After you have entered the pattern in the "Pattern" field, select the "Match" field to display the files that matches the desired pattern along with all sub-directories.

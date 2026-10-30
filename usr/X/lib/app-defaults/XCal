@@ -1,0 +1,64 @@
+XCal.MarkForeground: Black
+XCal.MarkBackground: White
+XCal.edit.geometry: 300x150
+XCal.memo.geometry: 300x300
+XCal.alarm.geometry: 300x100+0+150
+XCal*help.geometry: 600x300
+XCal.fontToday: lucidasanstypewriter-12
+XCal*Font: lucidasanstypewriter-12
+XCal*info.Font: lucidasans-10
+XCal*alarmText*Font: 12x24
+XCal*alarmText*scrollVertical: WhenNeeded
+XCal*alarmText*wrap: word
+XCal*display.scrollVertical: WhenNeeded
+XCal*display.scrollHorizontal: WhenNeeded
+XCal*display.cursor: dot
+XCal*text.scrollVertical: WhenNeeded
+XCal*text.scrollHorizontal: WhenNeeded
+XCal*text.autoFill: True
+XCal*helpText.scrollVertical: Always
+XCal*helpText.scrollHorizontal: WhenNeeded
+XCal*helpText.autoFill: True
+XCal*back.Label: <
+XCal*quit.Label: Quit
+XCal*next.Label: >
+XCal*help.Label: Help
+XCal*newdate.Label: Enter mmm yyyy?
+XCal*newdate.ok.Label: ok
+XCal*newdate.cancel.Label: cancel
+XCal*exit.Label: Really exit?
+XCal*exit.yes.Label: yes
+XCal*exit.no.Label: no
+XCal*noedit.ok.Label: ok
+XCal*edit.quit.Label: Quit
+XCal*edit.save.Label: Save
+XCal*edit.help.Label: Help
+XCal*check.Label: Save file?
+XCal*check.yes.Label: yes
+XCal*check.no.Label: no
+XCal*help*helpQuit.Label: quit
+XCal*alarmQuit.Label: Unpin
+XCal*alarmHold.Label: Stick
+XCal*memoTitle.Label: Edit the memo file
+!
+! Colours from reed wade@cs.utk.edu
+!
+!XCal*background:        LightSteelBlue
+!XCal*foreground:        SaddleBrown
+!XCal.MarkForeground: Black
+!XCal.MarkBackground: CornflowerBlue
+!XCal.edit.background: CornflowerBlue
+!XCal.edit.foreground: OliveGreen
+!XCal*exit.background: MediumTurquoise
+!XCal*exit.foreground: SlateGrey
+!XCal*check.background:  lavender
+!XCal*help*background: wheat
+!XCal*help*foreground: blue
+!XCal*newdate*background: plum
+!XCal*newdate*foreground: red
+!XCal*quit.background:   SteelBlue
+!XCal*quit.background:   green
+!XCal*back.background: yellow
+!XCal*next.background: yellow
+!XCal*no.background: DarkKhaki
+!XCal*yes.background: PapayaWhip

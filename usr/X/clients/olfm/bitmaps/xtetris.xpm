@@ -1,0 +1,37 @@
+#define xtetris_format 1
+#define xtetris_width 24
+#define xtetris_height 24
+#define xtetris_ncolors 4
+#define xtetris_chars_per_pixel 1
+static char * xtetris_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#FFFF00000000",
+"X" , "#FFFFFFFF0000",
+"o" , "#FFFFAAAA0000"
+} ;
+static char * xtetris_pixels[] = {
+"                        ",
+"            ...         ",
+"            ...         ",
+"            ...         ",
+"         ......         ",
+"         ......         ",
+"         ......         ",
+"            ...         ",
+"            ...         ",
+"            ...         ",
+"                        ",
+"                        ",
+"   ...               ...",
+"   ...               ...",
+"   ...               ...",
+"......            XXX...",
+"......            XXX...",
+"......            XXX...",
+"XXX...   oooooo   XXX...",
+"XXX...   oooooo   XXX...",
+"XXX...   oooooo   XXX...",
+"XXXXXXXXXooooooXXXXXX...",
+"XXXXXXXXXooooooXXXXXX...",
+"XXXXXXXXXooooooXXXXXX..."
+} ;

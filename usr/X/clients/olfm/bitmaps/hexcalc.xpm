@@ -1,0 +1,39 @@
+#define hexcalc_format 1
+#define hexcalc_width 24
+#define hexcalc_height 24
+#define hexcalc_ncolors 6
+#define hexcalc_chars_per_pixel 1
+static char * hexcalc_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#FFFFFFFFFFFF",
+"X" , "#AAAAAAAAAAAA",
+"o" , "#000000000000",
+"O" , "#FFFF0000FFFF",
+"+" , "#AAAA0000AAAA"
+} ;
+static char * hexcalc_pixels[] = {
+" ...................... ",
+" .XXXXXXXXXXXXXXXXXXXXo ",
+" .XooooooooooooooooooXo ",
+" .Xo................oXo ",
+" .Xo................oXo ",
+" .Xo................oXo ",
+" .XooooooooooooooooooXo ",
+" .XXXXXXXXXXXXXXXXXXXXo ",
+" .XXXXXXXOXXXOXXXXXXXXo ",
+" .X++oXXXOXXOXXXXX++oXo ",
+" .X++oXXXOXOXOOXXX++oXo ",
+" .XoooXXXOXOXXOXXXoooXo ",
+" .XXXXXXXOXXOOXXXXXXXXo ",
+" .XXXXXXXXXXXXXXXXXXXXo ",
+" .X++oXXXXXXXXXXXX++oXo ",
+" .X++oXX++oXX++oXX++oXo ",
+" .XoooXXoooXXoooXXoooXo ",
+" .XXXXXXXXXXXXXXXXXXXXo ",
+" .XXXXXXXXXXXXXXXXXXXXo ",
+" .X++oXX++oXX++oXX++oXo ",
+" .X++oXX++oXX++oXX++oXo ",
+" .XoooXXoooXXoooXXoooXo ",
+" .XXXXXXXXXXXXXXXXXXXXo ",
+" .ooooooooooooooooooooo "
+} ;

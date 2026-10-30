@@ -1,0 +1,36 @@
+#define maze_format 1
+#define maze_width 24
+#define maze_height 24
+#define maze_ncolors 3
+#define maze_chars_per_pixel 1
+static char * maze_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#00000000AAAA",
+"X" , "#FFFFFFFF0000"
+} ;
+static char * maze_pixels[] = {
+"                        ",
+" ...................... ",
+" .XXXXXX.XXXXXXXXXXXXX. ",
+" .XXXXXX.XXXXXXXXXXXXX. ",
+" .XX..........XX....XX. ",
+" .XX.XXXXXX.XXXXXXX.XX. ",
+" .XX.XXXXXX.XXXXXXX.XX. ",
+" .XX.XX.......XX.XX.XX. ",
+" .XXXXX.XXXXXXXX.XX.XX. ",
+" .XXXXX.XXXXXXXX....XX. ",
+" .XX.XX.XX....XX.XX.XX. ",
+" .XX.XX....XXXXX.XX.XX. ",
+" ....XX.XX.XXXXX.XX.XX. ",
+" .XX.XXXXX.XX.XX.XX.... ",
+" .XX.XXXXX.XXXXX.XX.XX. ",
+" .XX.XX.XX.XXXXX.XX.XX. ",
+" .XX.XX.....XX...XX.XX. ",
+" .XXXXXX.XXXXXXXXXX.XX. ",
+" .XXXXXX.XXXXXXXXXX.XX. ",
+" .XX.......XX...XX..XX. ",
+" .XXXX.XXXXXXX.XXXXXXX. ",
+" .XXXX.XXXXXXX.XXXXXXX. ",
+" ...................... ",
+"                        "
+} ;

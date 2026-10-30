@@ -1,0 +1,1 @@
+The "Order" choices are used to set the ordering of multi-column listing of the files in the Directory Pane.  The available choices are: Row major, and Column Major.  You click SELECT on one of the boxes and on the "Apply" button to set the desired order.  The default is "Column Major".

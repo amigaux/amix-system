@@ -1,0 +1,29 @@
+The "View" button is used to change the "Sort" order used to display the objects in the directory pane, the amount of "Detail" to be displayed in the directory pane and (when multiple column display is possible) the matrix "Order" of the columns.
+
+The "Sort" button stack on the "View" menu invokes the Sort menu.  You use the Sort menu to select the sort order of the file objects in the directory pane as follows:
+
+Name:  To list the files and directories in alphabetical order.  This is the default selection.
+
+Newest:  To list the files and directories by the order of most recently created to first created.
+
+Oldest:  To list the files and directories by the order of first created to the most recently created.
+
+Largest:  To list the files and directories in order of largest-sized file first to the smallest-sized file last.
+
+Smallest:  To list the files and directories in order of smallest-sized first to largest-sized file last.
+
+Type:  To list files and directories grouped by the glyphs that identify them.
+
+The "Detail" button stack on the "View" menu invokes the Detail menu.  You use the Detail menu to select the format for the display in the pane, as follows:
+
+Name:  To list the files and directories with name and glyph only.  This is the default selection.
+
+Brief:  To list the files and directories with the permissions, dates, and time of creation.
+
+Full:  To list the files and directories with all of the above information plus the user and group names.
+
+The "Order" button stack on the "View" menu invokes the Order menu.  You use the Order menu to select the format for horizontal or vertical display of file objects, as follows:
+
+Row Major:  To list the files and directories in rows (horizontal by sort order).
+
+Column Order:  To list the files and directories in columns (vertical by sort order).  This is effective only when multiple columns are displayed.  This is the default selection.

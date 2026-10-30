@@ -1,0 +1,33 @@
+/**/#	Copyright (c) 1990 UNIX System Laboratories, Inc.
+/**/#	Copyright (c) 1988 AT&T
+/**/#	  All Rights Reserved
+
+/**/#	THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF
+/**/#	UNIX System Laboratories, Inc.
+/**/#	The copyright notice above does not evidence any
+/**/#	actual or intended publication of such source code.
+
+/**/#ident	"@(#)tutorial:examples/tutorial/Imakefile	1.11"
+
+	OLCSRC = $(TOP)/clients/lib
+	OLCLIB = $(OLCSRC)/libolc.a
+
+       INCLUDES = -I$(LIBSRC) -I$(OLCSRC)
+
+all:	s_button \
+	s_composite \
+	s_menu \
+	s_sampler
+
+NormalProgramTarget(s_button, s_button.o, XolClientDepLibs, XolClientLibs, $(SYS_LIBRARIES))
+NormalProgramTarget(s_composite, s_composite.o, XolClientDepLibs, XolClientLibs, $(SYS_LIBRARIES))
+NormalProgramTarget(s_menu, s_menu.o, XolClientDepLibs, XolClientLibs, $(SYS_LIBRARIES))
+NormalProgramTarget(s_sampler, s_sampler.o, XolClientDepLibs, $(OLCLIB) XolClientLibs, $(SYS_LIBRARIES))
+
+SRCS = s_button.c s_composite.c s_menu.c s_sampler.c statictext.text form.help icon.xpm
+BINS = s_button s_composite s_menu s_sampler
+
+SRCDIR = $(DESTDIR)/lib/tutorial/Xol
+
+InstallMultiple ($(SRCS),$(SRCDIR))
+InstallMultiple ($(BINS), $(BINDIR))

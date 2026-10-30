@@ -1,0 +1,36 @@
+#define csource_format 1
+#define csource_width 24
+#define csource_height 24
+#define csource_ncolors 3
+#define csource_chars_per_pixel 1
+static char * csource_colors[] = {
+" " , "#000000000000",
+"." , "#0000AAAAFFFF",
+"X" , "#FFFFFFFFFFFF"
+} ;
+static char * csource_pixels[] = {
+"                  ......",
+" XXXXXXXXXXXXXXXX  .....",
+" XXXXXXXXXXXXXXXX X ....",
+" XXXXXXXXXXXXXXXX  X ...",
+" XXXXXXXXXXXXXXXX X X ..",
+" XXXXXXXXXXXXXXXX  X X .",
+" XXXXXXXXXXXXXXXX       ",
+" XXXXXXXXXXXXXXXXXXXXXX ",
+" XXXXXXXXXX    XXXXXXXX ",
+" XXXXXXXX        XXXXXX ",
+" XXXXXXX   XXXX   XXXXX ",
+" XXXXXX   XXXXXX  XXXXX ",
+" XXXXXX  XXXXXXXXXXXXXX ",
+" XXXXX  XXXXXXXXXXXXXXX ",
+" XXXXX  XXXXXXXXXXXXXXX ",
+" XXXXX  XXXXXXXXXXXXXXX ",
+" XXXXX  XXXXXXXXXXXXXXX ",
+" XXXXXX  XXXXXXXXXXXXXX ",
+" XXXXXX   XXXXXXX  XXXX ",
+" XX   XX   XXXXX   XXXX ",
+" XX   XXX         XXXXX ",
+" XX   XXXXX     XXXXXXX ",
+" XXXXXXXXXXXXXXXXXXXXXX ",
+"                        "
+} ;

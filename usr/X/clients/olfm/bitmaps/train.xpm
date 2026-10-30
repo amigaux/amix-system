@@ -1,0 +1,39 @@
+#define train_format 1
+#define train_width 24
+#define train_height 24
+#define train_ncolors 6
+#define train_chars_per_pixel 1
+static char * train_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#AAAAAAAAAAAA",
+"X" , "#FFFFFFFFFFFF",
+"o" , "#000000000000",
+"O" , "#FFFF00000000",
+"+" , "#FFFFFFFF0000"
+} ;
+static char * train_pixels[] = {
+"        .X.XX.XX        ",
+"      ..X.XX.X. ..      ",
+"     .X.     ..         ",
+"    ooooo               ",
+"     ooo                ",
+"     ooo      ooo    ooo",
+"     ooo     o...o  o...",
+"    oooooooooooooooooooo",
+"    ooooooooooooooOooooo",
+"   ooooOOOoooooooooooooo",
+"  +oooooOoOoOoOoooOoOooo",
+"  ++ooooOoOOoOoOooOoOOOo",
+"  +oooooOoOooOoOooOoOoOo",
+"   oooooOoOoooOoOoOoOoOo",
+"    oooooooooooooooooooo",
+"   ooooooooooooooooooooo",
+"  ooo ooo  .  ooo   ooo ",
+" ooo ooooo . oo.......oo",
+"oooo oo.oo .....oo ooooo",
+"oooo ooooo   ooooo ooooo",
+"      ooo     ooo   ooo ",
+"........................",
+"oooooooooooooooooooooooo",
+"                        "
+} ;

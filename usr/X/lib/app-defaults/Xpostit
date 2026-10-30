@@ -1,0 +1,44 @@
+!
+! $Header: /tmp_mnt/net/sparky.a/davy/progs/xpostit/RCS/Xpostit.ad,v 1.2 90/06/14 14:00:35 davy Exp $
+!
+! Xpostit application defaults
+!
+! David A. Curry
+! SRI International
+! 333 Ravenswood Avenue
+! Menlo Park, CA 94025
+! davy@itstd.sri.com
+!
+
+!
+! Fonts
+!
+Xpostit*Command*font:	-adobe-helvetica-bold-r-normal--*-120-*-*-*-*-*-*
+Xpostit*Menu*font:	-adobe-helvetica-medium-r-normal--*-120-*-*-*-*-*-*
+Xpostit*Text*font:	-b&h-lucidatypewriter-medium-r-normal-*-*-120-*-*-*-*-*-*
+
+!
+! Colors
+!
+!Xpostit*Background:		PeachPuff
+!Xpostit*Foreground:		NavyBlue
+!Xpostit*Text*Background:	Yellow
+!Xpostit*Text*Foreground:	Black
+!Xpostit*Plaid*Background:	Red
+!Xpostit*Plaid*Foreground:	Black
+
+!
+! Automatically wrap long lines at word boundaries.
+!
+Xpostit*Text*wrap:		word
+
+!
+! Make the command buttons oval-shaped.
+!
+Xpostit*Command*shapeStyle:	oval
+
+!
+! For some window managers like pswm under OpenWindows,
+! which don't pass the input focus.
+!
+Xpostit*input:			true

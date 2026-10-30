@@ -1,0 +1,36 @@
+#define muncher_format 1
+#define muncher_width 24
+#define muncher_height 24
+#define muncher_ncolors 3
+#define muncher_chars_per_pixel 1
+static char * muncher_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#FFFFFFFF0000",
+"X" , "#FFFF00000000"
+} ;
+static char * muncher_pixels[] = {
+"                        ",
+"                        ",
+"                        ",
+"                        ",
+"                        ",
+"        .......         ",
+"      ...........       ",
+"     .......XX....      ",
+"    ........XX.....     ",
+"    .............       ",
+"   ............         ",
+"   ..........           ",
+"   ........             ",
+"   .........            ",
+"   ...........          ",
+"   .............        ",
+"    ..............      ",
+"    ...............     ",
+"     .............      ",
+"      ...........       ",
+"        .......         ",
+"                        ",
+"                        ",
+"                        "
+} ;

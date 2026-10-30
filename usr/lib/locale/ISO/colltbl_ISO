@@ -1,0 +1,13 @@
+# codeset for "ISO" locale
+
+codeset		LC_COLLATE
+
+order is	\x01;...;\
+A;À;...;Æ;B;C;Ç;D;Ð;E;È;...;Ë;F;G;H;I;Ì;...;Ï;\
+J;...;N;Ñ;O;Ò;...;Ö;Ø;P;...;T;Þ;U;Ù;...;Ü;V;...;Y;Ý;Z;\
+...;\
+a;à;...;æ;b;c;ç;d;ð;e;è;...;ë;f;g;h;i;ì;...;ï;\
+j;...;n;ñ;o;ò;...;ö;ø;p;...;t;þ;u;ù;...;ü;v;...;y;ý;ÿ;z;\
+...;\xbf;\xd7;\xf7
+
+substitute	"ß" with "ss"

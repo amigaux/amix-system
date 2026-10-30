@@ -1,0 +1,37 @@
+#define xlock_format 1
+#define xlock_width 24
+#define xlock_height 24
+#define xlock_ncolors 4
+#define xlock_chars_per_pixel 1
+static char * xlock_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#FFFFFFFFFFFF",
+"X" , "#AAAAAAAAAAAA",
+"o" , "#000000000000"
+} ;
+static char * xlock_pixels[] = {
+"         .......        ",
+"       ..XXXXXXX..      ",
+"      .XX       XX.     ",
+"     .XX         XXX    ",
+"     .X           XX    ",
+"     .X           XX    ",
+"     .X           XX    ",
+"     .X           XX    ",
+"     .X           XX    ",
+"     .X           XX    ",
+"    .XX...........XXo   ",
+"    .XXXXXXXXXXXXXXXo   ",
+"    .XXXXXXXXXXXXXXXo   ",
+"    .XXXXXXXXXXXXXXXo   ",
+"    .XXXXXXXoXXXXXXXo   ",
+"    .XXXXXXoooXXXXXXo   ",
+"    .XXXXXXoooXXXXXXo   ",
+"    .XXXXXXXoXXXXXXXo   ",
+"    .XXXXXXXoXXXXXXXo   ",
+"    .XXXXXXXoXXXXXXXo   ",
+"    .XXXXXXXXXXXXXXXo   ",
+"    .XXXXXXXXXXXXXXXo   ",
+"    .XXXXXXXXXXXXXXXo   ",
+"    ooooooooooooooooo   "
+} ;

@@ -1,0 +1,38 @@
+#define compress_format 1
+#define compress_width 24
+#define compress_height 24
+#define compress_ncolors 5
+#define compress_chars_per_pixel 1
+static char * compress_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#000000000000",
+"X" , "#AAAAAAAAAAAA",
+"o" , "#AAAAFFFF5555",
+"O" , "#0000FFFF0000"
+} ;
+static char * compress_pixels[] = {
+"                        ",
+"                        ",
+"          ....          ",
+"      ............      ",
+"          ....          ",
+"         ......         ",
+"          ....          ",
+"         ......         ",
+"          ....          ",
+"     XX  ......  XX     ",
+"    ................    ",
+"    ................    ",
+"     XX  oooooo  XX     ",
+"     XX  oOoooo  XX     ",
+"     XX  ooOOoo  XX     ",
+"     XX  ooooOO  XX     ",
+"     XX  oOOOOo  XX     ",
+"     XX  ooOOoo  XX     ",
+"     XX  oOOooo  XX     ",
+"     XX  oooOOo  XX     ",
+"     XX  oooooo  XX     ",
+"    ................    ",
+"    ................    ",
+"     XX          XX     "
+} ;

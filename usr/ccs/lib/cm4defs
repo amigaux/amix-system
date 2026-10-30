@@ -1,0 +1,39 @@
+
+.ident	"@(#)as:m32/cm4defs	1.2"
+define(_SCR1,d0)dnl
+define(_SCR2,d1)dnl
+define(_SCR3,a0)dnl
+define(_SCR4,a1)dnl
+define(_1STREG,d2)dnl
+define(_2NDREG,d3)dnl
+define(_3RDREG,d4)dnl
+define(_4THREG,d5)dnl
+define(_5THREG,d6)dnl
+define(_6THREG,d7)dnl
+define(_1STARG,8(%fp))dnl
+define(_2NDARG,12(%fp))dnl
+define(_3RDARG,16(%fp))dnl
+define(_4THARG,20(%fp))dnl
+define(_5THARG,24(%fp))dnl
+define(C_PROLOGUE,`define(`_RET_NO',incr(_RET_NO))define(`_F_NAME',$1)dnl
+	.text;dnl
+	.globl	$1;dnl
+$1:	save	&ifelse($2,,6,$2)')dnl
+define(A_PROLOGUE,`define(`_RET_NO',incr(_RET_NO))define(`_F_NAME',$1)dnl
+	.text;dnl
+	.globl	$1;dnl
+$1:')dnl
+define(I_RETURN,`define(`_RET_LAB',.RET`'_RET_NO)	jmp	_RET_LAB')dnl
+define(C_RETURN,`ifelse(_RET_LAB,`_RET_LAB',,_RET_LAB:undefine(`_RET_LAB'))dnl
+	rts	&ifelse($1,,6,$1);dnl
+	.type	_F_NAME, @function;dnl
+	.size	_F_NAME, . - _F_NAME')dnl
+define(A_EPILOGUE,`ifelse(_RET_LAB,`_RET_LAB',,_RET_LAB:undefine(`_RET_LAB'))dnl
+	.type	_F_NAME, @function;dnl
+	.size	_F_NAME, . - _F_NAME')dnl
+define(C_CALL,`ifelse($2,,,`	mov.l	$2,-(%sp);')ifelse($3,,,`	mov.l	$3,-(%sp);')ifelse($4,,,`	mov.l	$4,-(%sp);')ifelse($5,,,`	mov.l	$5,-(%sp);')ifelse($6,,,`	mov.l	$6,-(%sp);')	jsr	$1;dnl
+	add.w	&eval(0+ifelse($2,,0,1)+ifelse($3,,0,1)+ifelse($4,,0,1)+ifelse($5,,0,1)+ifelse($6,,0,1))*4,%sp')dnl
+define(A_CALL,`	jsr	$1;dnl
+	add.w	&$2*4,%sp')dnl
+define(_RESULT,r0)dnl
+define(_TARGET,r2)dnl

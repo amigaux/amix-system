@@ -1,0 +1,37 @@
+#define fplot_format 1
+#define fplot_width 24
+#define fplot_height 24
+#define fplot_ncolors 4
+#define fplot_chars_per_pixel 1
+static char * fplot_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#000000000000",
+"X" , "#FFFF00000000",
+"o" , "#FFFFFFFF0000"
+} ;
+static char * fplot_pixels[] = {
+"                        ",
+"                        ",
+"  .                  X  ",
+"  .                 oX  ",
+"  ..                o   ",
+"  .                oo   ",
+"  .                o    ",
+"  ..              oo    ",
+"  .              oo     ",
+"  .              o      ",
+"  ..    X       oo      ",
+"  .    oXo     oo       ",
+"  .  ooo oo    o        ",
+"  ..ooo   oo  oo        ",
+"  .Xo      oo o         ",
+"  .X        oXo         ",
+"  ..         X          ",
+"  .                     ",
+"  .  .  .  .  .  .  .   ",
+"  ..................... ",
+"                        ",
+"                        ",
+"                        ",
+"                        "
+} ;

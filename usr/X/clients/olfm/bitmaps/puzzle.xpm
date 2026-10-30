@@ -1,0 +1,37 @@
+#define puzzle_format 1
+#define puzzle_width 24
+#define puzzle_height 24
+#define puzzle_ncolors 4
+#define puzzle_chars_per_pixel 1
+static char * puzzle_colors[] = {
+" " , "#0000FFFFFFFF",
+"." , "#000000000000",
+"X" , "#0000FFFF0000",
+"o" , "#0000AAAAFFFF"
+} ;
+static char * puzzle_pixels[] = {
+"       .XXXXXXX.       o",
+"   .   .XX...XX.   ..  o",
+"   .   .X.XX.XX.  .  . o",
+"   .   .XXX.XXX.    .. o",
+"   .   .XX.XXXX.  .  . o",
+"   .   .X....XX.   ..  o",
+"       .XXXXXXX.       o",
+".......................o",
+"XXXXXXX.       .XXXXXXXo",
+"X.XX.XX.  ...  .XXXX.XXo",
+"X.XX.XX.  .    .XXX.XXXo",
+"X.....X.  ...  .XX....Xo",
+"XXXX.XX.     . .XX.XX.Xo",
+"XXXX.XX.  ...  .XXX..XXo",
+"XXXXXXX.       .XXXXXXXo",
+".......................o",
+"       .XXXXXXX........o",
+" ....  .XXX..XX........o",
+"    .  .XX.XX.X........o",
+"   .   .XXX..XX........o",
+"  .    .XX.XX.X........o",
+"  .    .XXX..XX........o",
+"       .XXXXXXX........o",
+"oooooooooooooooooooooooo"
+} ;

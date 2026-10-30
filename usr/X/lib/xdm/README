@@ -1,0 +1,9 @@
+XDM lets you leave your monitor connected to the color graphics card
+and run X Windows without switching its cable frequently from port to port.
+
+To use xdm:
+
+1. Select a color mode.  Uncomment a line in /usr/X/lib/xdm/Xservers.
+
+2. Run "amixadm" and select "Configure xdm" to enable/disable xdm.
+

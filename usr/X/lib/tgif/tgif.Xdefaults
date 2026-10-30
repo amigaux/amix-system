@@ -1,0 +1,94 @@
+#
+# This file is for reference only; it may not be
+# suitable for appending to any .Xdefaults file.
+#
+# @(#)$Header: /amnt/kona/tangram/u/william/X11/TGIF2/RCS/tgif.Xdefaults,v 2.10 92/02/06 00:29:02 william Exp $
+#
+Tgif*Geometry:			640x512-40+20
+Tgif*IconGeometry:		-224+82
+Tgif*Foreground:		Black
+Tgif*Background:		Aquamarine
+Tgif*BorderColor:		Aquamarine
+Tgif*ReverseVideo:		on
+Tgif*InitialFont:		Times
+Tgif*InitialFontStyle:		Roman
+Tgif*InitialFontJust:		Center
+Tgif*InitialFontDPI:		75
+Tgif*InitialFontSizeIndex:	4
+Tgif*MsgFontSizeIndex:		4
+Tgif*DefaultCursor:		arrow
+Tgif*DrawCursor:		arrow
+Tgif*DragCursor:		hand2
+Tgif*VertexCursor:		dotbox
+Tgif*RubberBandColor:		Aquamarine
+Tgif*PrintCommand:		lpr
+Tgif*WhereToPrint:		EPS
+#Tgif*PrintDirectory:		/tmp
+Tgif*NoTgifIcon:		false
+Tgif*DontShowVersion:		false
+Tgif*XBmReverseVideo:		false
+Tgif*AskForXBmSpec:		false
+Tgif*AskForXPmSpec:		false
+Tgif*StripEPSComments:		true
+Tgif*GuessXPmBgColor:		false
+Tgif*XPmOutputVersion:		1
+Tgif*ConstrainedMove:		false
+Tgif*DoubleQuoteDoubleQuote:	false
+Tgif*GridSystem:		English
+Tgif*InitialGrid:		-1
+Tgif*DropObsIconAttrWhenUpdate:	false
+Tgif*UseRecentDupDistance:	true
+Tgif*SplineTolerance:		7
+Tgif*SplineRubberband:		true
+Tgif*Synchronize:		off
+Tgif*DoubleClickUnIconify:	true
+Tgif*MainMenuPinDistance:	80
+Tgif*DoubleClickInterval:	300
+Tgif*HandleSize:		2
+Tgif*HistoryDepth:		10
+Tgif*SaveTmpOnReturn:		false
+Tgif*ImportFromLibrary:		false
+Tgif*WarpToWinCenter:		false
+Tgif*MaxColors:			8
+Tgif*Color0:			yellow
+Tgif*Color1:			red
+Tgif*Color2:			green
+Tgif*Color3:			blue
+Tgif*Color4:			magenta
+Tgif*Color5:			cyan
+Tgif*Color6:			white
+Tgif*Color7:			black
+Tgif*DefaultColorIndex:		0
+Tgif*ShortCuts:			!<Key>A:SelectAll() \n\
+				!<Key>C:Center() \n\
+				!<Key>L:Left() \n\
+				!<Key>R:Right() \n\
+				!<Key>X:Delete() \n\
+				!<Key>Q:Quit()
+Tgif*MaxLineWidths:		7
+Tgif*DefaultLineWidth:		0
+Tgif*LineWidth0:		1
+Tgif*LineWidth1:		2
+Tgif*LineWidth2:		3
+Tgif*LineWidth3:		4
+Tgif*LineWidth4:		5
+Tgif*LineWidth5:		6
+Tgif*LineWidth6:		7
+Tgif*ArrowWidth0:		8
+Tgif*ArrowWidth1:		10
+Tgif*ArrowWidth2:		12
+Tgif*ArrowWidth3:		14
+Tgif*ArrowWidth4:		18
+Tgif*ArrowWidth5:		20
+Tgif*ArrowWidth6:		22
+Tgif*ArrowHeight0:		3
+Tgif*ArrowHeight1:		4
+Tgif*ArrowHeight2:		5
+Tgif*ArrowHeight3:		6
+Tgif*ArrowHeight4:		7
+Tgif*ArrowHeight5:		8
+Tgif*ArrowHeight6:		9
+#Tgif*MaxDomains:		1
+#Tgif*Domain0:			DRAWING
+#Tgif*DefaultDomain:		1
+#	Don't forget to set the TGIF_DRAWING environment variable.

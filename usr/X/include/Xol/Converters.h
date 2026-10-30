@@ -1,0 +1,55 @@
+/*	Copyright (c) 1990 UNIX System Laboratories, Inc.	*/
+/*	Copyright (c) 1988 AT&T	*/
+/*	  All Rights Reserved  	*/
+
+/*	THIS IS UNPUBLISHED PROPRIETARY SOURCE CODE OF     	*/
+/*	UNIX System Laboratories, Inc.                     	*/
+/*	The copyright notice above does not evidence any   	*/
+/*	actual or intended publication of such source code.	*/
+
+/* XOL SHARELIB - start */
+/* This header file must be included before anything else */
+#ifdef SHARELIB
+#include <Xol/libXoli.h>
+#endif
+/* XOL SHARELIB - end */
+
+#ifndef	NOIDENT
+#ident	"@(#)olmisc:Converters.h	1.5"
+#endif
+
+#define DeclareConversionClass(display,type,class) \
+	XtAppContext	__app	= XtDisplayToApplicationContext(display);\
+	String		__type	= type;				\
+	String		__class	= (class? class : "OlToolkitError")
+
+#define DeclareDestructionClass(app,type,class) \
+	XtAppContext	__app	= app;				\
+	String		__type	= type;				\
+	String		__class	= (class? class : "OlToolkitError")
+
+#define ConversionError(name,dflt,params,num_params) \
+	XtAppErrorMsg (__app, name, __type, __class, dflt, params, num_params)
+
+#define ConversionWarning(name,dflt,params,num_params) \
+	XtAppWarningMsg (__app, name, __type, __class, dflt, params, num_params)
+
+#define DestructionWarning	ConversionWarning
+#define DestructionError	ConversionError
+
+#define ConversionDone(type,value) \
+{								\
+	if (to->addr) {						\
+		if (to->size < sizeof(type)) {			\
+			to->size = sizeof(type);		\
+			return (False);				\
+		}						\
+		*(type *)(to->addr) = (value);			\
+	} else {						\
+		static type		static_value;		\
+								\
+		static_value = (value);				\
+		to->addr = (XtPointer)&static_value;		\
+	}							\
+	to->size = sizeof(type);				\
+} return (True)

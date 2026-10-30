@@ -1,0 +1,5 @@
+The "File" button is used to complete the action for the file service window.  The meaning of the default button is appliction defined.
+
+<first button in menu>: Is labeled by the application used to bring up this window.  Selecting this menu performs the action associated with the button using the file(s) selected in the directory pane.
+
+Cancel: Select this button to cancel proceedings.

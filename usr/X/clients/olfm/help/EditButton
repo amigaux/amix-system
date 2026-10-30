@@ -1,0 +1,34 @@
+The "Edit" button is used to "Select All" of the objects in the directory pane, to "Delete" selected objects, to change "File Properties", to change File Manager "Properties", and to "Undo" previous command.
+
+"Select All" is used to quickly select all of the objects currently displayed in the directory pane.
+
+"Delete" is used to remove the selected files or directories from the system.  As delete procedures begin, a notice window with an "Abort" button appears.  If you select "Abort" then the delete action will be canceled as if you never selected "Delete" from the "Edit" menu.
+
+"File Properties" invokes the Files property window to allow changes to the file name, the owner name, and the group name and permissions on the file.  You enter the name in the Name, the Owner, or the Group field to change the file name, the owner name, or the group name respectively.  You select the Read, Write, or Execute boxes to change one or all of owner access, group access, or other access permissions.
+
+Apply button:  Select this button to incorporate your changes.
+Reset button:  Select this button to return to the default properties.
+
+"Properties" invokes the File Manager property window to allow changes to the File Manager property settings as follows:
+
+Sort:  The factory default is "Name".  You can change it to any of the available choices.
+
+Detail:  The factory default is "Name".  You can change it to any of the available choices.
+
+Order:  The factory default is "Column Major".  You can change it to the other choice.
+
+Show Hidden Files:  This setting gives you the option of showing the files, such as ".profile", which are not normally displayed.  You select the Yes box to display hidden files.  The factory default is "No".
+
+Notice on Delete:  This setting gives you the option of receiving or not receiving a notice verification when you delete a file.  The factory default is "Yes".
+
+Update Timer:  This setting determines how often the system checks for changes you have made to the data within the File Manager.  The factory default is "Sometimes".  You select Often, or Never boxes to update the display every time the data is changed or never to change the display.
+
+Apply: Select this button to incorporate your changes.
+
+Reset: Select this button to return to the previously set properties.
+
+Reset to factory: Select this button to set properties to factory default values.
+
+Set Defaults: Select this button to permanently store your applied settings to be used in subsequent File Manager windows.
+
+"Undo" is used to undo the changes made by previous operation, such as Copy, Delete, Move, Link, or Create Directory.  Any file that was over-written during the Copy or Move operation can not be restored by "Undo".

@@ -1,0 +1,36 @@
+#define bitmap_format 1
+#define bitmap_width 24
+#define bitmap_height 24
+#define bitmap_ncolors 3
+#define bitmap_chars_per_pixel 1
+static char * bitmap_colors[] = {
+" " , "#000000000000",
+"." , "#0000AAAAFFFF",
+"X" , "#FFFFFFFFFFFF"
+} ;
+static char * bitmap_pixels[] = {
+"                       .",
+" X X X X X X X X X X X .",
+"                       .",
+" X         X         X .",
+"                       .",
+" X   X X   X   X X   X .",
+"                       .",
+" X   X     X     X   X .",
+"                       .",
+" X   X X X X X X X   X .",
+"                       .",
+" X X     X   X     X X .",
+"                       .",
+" X   X X X X X X X   X .",
+"                       .",
+" X   X     X X X   X X .",
+"                       .",
+" X   X X   X X   X X X .",
+"                       .",
+" X         X   X X X X .",
+"                       .",
+" X X X X X X X X X X X .",
+"                       .",
+"........................"
+} ;

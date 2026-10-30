@@ -1,0 +1,40 @@
+#ident	"@(#)olpixmap:olpixmap.ad	1.4"
+
+*allowGadgetGrabs:	true
+
+*File.mnemonic:	F
+*View.mnemonic:	V
+*Edit.mnemonic:	E
+*Draw.mnemonic:	D
+*Palette.mnemonic:	P
+*Properties.mnemonic:	O
+
+*Show Pixmap.mnemonic:	S
+*Zoom.mnemonic:	Z
+*Zoom In.mnemonic:	I
+*Zoom Out.mnemonic:	O
+
+*Fill.mnemonic:	F
+*Clear.mnemonic:	E
+*Copy.mnemonic:	C
+*Move.mnemonic:	M
+*Roll.mnemonic:	R
+
+*Open.mnemonic:	O
+*Browse.mnemonic:	B
+*Save.mnemonic:	S
+*Discard.mnemonic:	D
+*Cancel.mnemonic:	C
+
+*Text Edit*Undo.mnemonic:	U
+*Text Edit*Cut.mnemonic:	X
+*Text Edit*Copy.mnemonic:	C
+*Text Edit*Paste.mnemonic:	P
+*Text Edit*Delete.mnemonic:	D
+
+*Apply.mnemonic:	A
+*Reset.mnemonic:	R
+
+*Apply.default:	True
+*Open.default:	True
+*FileNotice*Save.default:	True

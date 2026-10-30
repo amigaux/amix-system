@@ -1,0 +1,36 @@
+#define d_format 1
+#define d_width 24
+#define d_height 24
+#define d_ncolors 3
+#define d_chars_per_pixel 1
+static char * d_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#AAAA55550000",
+"X" , "#FFFFAAAA0000"
+} ;
+static char * d_pixels[] = {
+"                        ",
+"                        ",
+"                        ",
+"                        ",
+"               .......  ",
+"              .XXXXXXX. ",
+"..............XXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+"........................"
+} ;

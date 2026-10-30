@@ -1,0 +1,38 @@
+#define olfm1_format 1
+#define olfm1_width 24
+#define olfm1_height 24
+#define olfm1_ncolors 5
+#define olfm1_chars_per_pixel 1
+static char * olfm1_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#000000000000",
+"X" , "#FFFFFFFF0000",
+"o" , "#AAAA55550000",
+"O" , "#FFFFAAAA0000"
+} ;
+static char * olfm1_pixels[] = {
+"     .................  ",
+"    .XXXXXXXXXXXXXXXo.  ",
+"   .XXXXXXXXXXXXXXXoo.  ",
+"  .XXXXXXXXXXXXXXXooo.  ",
+"  .OOOOOOOOOOOOOOOooo.  ",
+"  .O.............Oooo.  ",
+"  .O.OOOOOOOOOOO.Oooo.  ",
+"  .O.OOOOOOOOOOO.Oooo.  ",
+"  .O.OOO.OOO.OOO.Oooo.  ",
+"  .O.OOO....OOOO.Oooo.  ",
+"  .O.OOOOOOOOOOO.Oooo.  ",
+"  .O.OOOOOOOOOOO.Oooo.  ",
+"  .O.............Oooo.  ",
+"  .OOOOOOOOOOOOOOOooo.  ",
+"  .O.............Oooo.  ",
+"  .O.OOOOOOOOOOO.Oooo.  ",
+"  .O.OOOOOOOOOOO.Oooo.  ",
+"  .O.OOO.OOO.OOO.Oooo.  ",
+"  .O.OOO....OOOO.Oooo.  ",
+"  .O.OOOOOOOOOOO.Oooo.  ",
+"  .O.OOOOOOOOOOO.Oooo.  ",
+"  .O.............Ooo.   ",
+"  .OOOOOOOOOOOOOOOo.    ",
+"  .................     "
+} ;

@@ -1,0 +1,507 @@
+#ident	"@(#)olwsm:olwsm.defaults	1.19"
+
+!#########
+!
+! Initial state:
+!#########
+!olwsm.workspace:		XtDefaultBackground (nominally)
+!olwsm.helpDirectory:		(computed)
+olwsm.menuPinned:		true
+olwsm.programsMenuPinned:	true
+!olwsm.warnings:		false (don't complain)
+!olwsm.depthThreshold:		8 (this depth or greater gets sliders)
+
+!#########
+!
+! Globals:
+!#########
+*allowRootHelp:			true
+*allowGadgetGrabs:		true
+
+!#########
+!
+! Popup menus and their buttons:
+!#########
+*category.menu.title:				Settings
+*category.menu.pushpin:				none
+*category.lowerControlArea.layoutType:		fixedrows
+*category.lowerControlArea.vPad:		4
+*category.lowerControlArea.hPad:		4
+*category.lowerControlArea.hSpace:		0
+*category*apply.label:				Apply
+*category*apply.mnemonic:			A
+*category*apply.default:			true
+*category*reset.label:				Reset
+*category*reset.mnemonic:			R
+*category*factory.label:			Reset to Factory
+*category*factory.mnemonic:			F
+*category*applyAll.label:			Apply All
+*properties*Text Edit*Undo.mnemonic:		U
+*properties*Text Edit*Cut.mnemonic:		X
+*properties*Text Edit*Copy.mnemonic:		C
+*properties*Text Edit*Paste.mnemonic:		P
+*properties*Text Edit*Delete.mnemonic:		D
+
+!#########
+!
+! Notices:
+!#########
+*NoticeShell*OblongButton.recomputeSize:	true
+*NoticeShell*Continue.mnemonic:			C
+*NoticeShell*Abort.mnemonic:			A
+*NoticeShell*Abort.default:			true
+*NoticeShell*Yes.mnemonic:			Y
+*NoticeShell*No.mnemonic:			N
+*NoticeShell*No.default:			true
+*NoticeShell.pane.hPad:				0
+*NoticeShell.pane.vPad:				0
+*NoticeShell.pane.vSpace:			0
+*NoticeShell.pane.textarea.vSpace:		30 vertical points
+*NoticeShell.pane.textarea.hSpace:		20 horizontal points
+*NoticeShell.pane.textarea.font:		-*-lucida-bold-r-*-*-*-*-*-*-*-*-iso8859-1
+*NoticeShell.pane.controlarea.hSpace:		8 horizontal points
+!
+! Sorry, the following can't be set from here.
+!*NoticeShell.pane.controlarea.vPad:		8 vertical points
+!*NoticeShell.pane.controlarea.hPad:		20 horizontal points
+
+!#########
+!
+! Workspace menu labels, mnemonics:
+!#########
+*Programs.label:			Programs
+*Programs.mnemonic:			P
+*Utilities.label:			Utilities
+*Utilities.mnemonic:			U
+*Properties.label:			Properties
+*Properties.mnemonic:			O
+*Exit.label:				Exit
+*Exit.mnemonic:				X
+*Xterm.label:				Xterm...
+*Xterm.mnemonic:			T
+*File Manager.label:			File Manager...
+*File Manager.mnemonic:			F
+*Network Administration.label:		Network Administration
+*Network Administration.mnemonic:	N
+*Accepted Remote Hosts.label:		Accepted Remote Hosts...
+*Accepted Remote Hosts.mnemonic:	A
+*Outgoing Remote Displays.label:	Outgoing Remote Displays...
+*Outgoing Remote Displays.mnemonic:	O
+*Refresh.label:				Refresh
+*Refresh.mnemonic:			R
+*Print Screen.label:			Print Screen...
+*Print Screen.mnemonic:			P
+*Color.label:				Color...
+*Color.mnemonic:			C
+*Icons.label:				Icons...
+*Icons.mnemonic:			I
+*Keyboard Properties.label:		Keyboard Functions
+*Keyboard Properties.mnemonic:		K
+*Miscellaneous.label:			Miscellaneous...
+*Miscellaneous.mnemonic:		M
+*Mouse Modifiers.label:			Mouse Modifiers...
+*Mouse Modifiers.mnemonic:		O
+*Mouse Settings.label:			Mouse Settings...
+*Mouse Settings.mnemonic:		S
+*Programs Submenu.label:		Programs Submenu...
+*Programs Submenu.mnemonic:		P
+*Core.label:				Core...
+*Core.mnemonic:				C
+*Editing.label:				Editing...
+*Editing.mnemonic:			E
+*Mouse.label:				Mouse...
+*Mouse.mnemonic:			M
+*Navigation.label:			Navigation...
+*Navigation.mnemonic:			N
+*Scrolling.label:			Scrolling...
+*Scrolling.mnemonic:			S
+*Selection.label:			Selection...
+*Selection.mnemonic:			L
+*System.label:				System...
+*System.mnemonic:			y
+
+!#########
+!
+! Workspace menu sub-system:
+!
+! Note: The programs sub-menu has a hard-wired layoutType of fixedcols
+! (sorry!). You can change the number of columns, but you can't change
+! the layout to row-ordered or fixed size.
+!#########
+*Programs.menu_form.pane.measure:		1
+
+!#########
+!
+! Property window:
+!#########
+*properties.title:			Workspace:  Properties
+*properties.menuButton:			false
+*properties.resizeCorners:		true
+*properties.pushpin:			out
+*properties.winType:			command
+
+!#########
+!
+! Property window size.
+!
+! Three choices:
+!
+! Choice 1:
+! Force a fixed size to the property sheets, to avoid ``bounce.''
+! Because the workspace manager doesn't create the controls in
+! a sheet until the sheet is needed, a new sheet may need to be bigger
+! than a previous sheet, causing a resize of the property window.
+! By ensuring that the property window is large enough to handle the
+! biggest sheet initially, no resize is necessary.
+!
+! *category.pageWidth:                    6.6 horizontal inches
+! *category.pageHeight:                   6.0 vertical inches
+! *category.layoutWidth:                  ignore
+! *category.layoutHeight:                 ignore
+! 
+! Choice 2:
+! Let the property window grow as needed, but don't let it shrink:
+!
+!*category.layoutWidth:                  maximize
+!*category.layoutHeight:                 maximize
+!
+! Choice 3:
+! Let the property window always be just large enough to fit:
+!
+*category.layoutWidth:                  minimize
+*category.layoutHeight:                 minimize
+!
+!#########
+
+!#########
+!
+! Property sheets:
+!#########
+*category.showFooter:				true
+*category.Control.borderWidth:			0
+*category.Control.allowChangeBars:		true
+*category.Control.vPad:				12 vert points
+*category.Control.hPad:				8 horz points
+*category*Caption.font:		-*-lucida-bold-r-*-*-*-*-*-*-*-*-iso8859-1
+*category*Caption.space:			.1 horizontal inches
+*category*Caption.position:			left
+*category*Caption.alignment:			top
+*category.traversalOn:				false
+
+!#########
+!
+! Color sheet:
+!#########
+*category.Color.layoutType:			fixedcols
+*category.Color.measure:			1
+*category.Color.vPad:				.2 vertical inches
+*category.Color.vSpace:				.25 vertical inches
+*category.Color.sameSize:			none
+*category.Color.center:				true
+!
+! Black and White:
+*category.Color*video.label:			Video Choice:
+!
+! StaticGray, GrayScale for color poor screens:
+*category.Color*colorCaption.label:		Color Choices:
+*category.Color*colorCaption.position:		top
+*category.Color*colorCaption.alignment:		left
+*category.Color*colormenu4.layoutType:		fixedcols
+*category.Color*colormenu4.measure:		16
+*category.Color*colormenu4.itemMinWidth:	18 horizontal points
+*category.Color*colormenu4.itemMinHeight:	23 vertical points
+*category.Color*colormenu8.layoutType:		fixedcols
+*category.Color*colormenu8.measure:		32
+*category.Color*colormenu8.itemMinWidth:	12 horizontal points
+*category.Color*colormenu8.itemMinHeight:	23 vertical points
+!
+! Color rich screens:
+*category.Color*rubberBox.orientation:		horizontal
+*category.Color*Slider.orientation:		horizontal
+*category.Color*Slider.span:			2 horz inches
+*category.Color*Slider.stopPosition:		granularity
+*category.Color*Slider.dragCBType:		granularity
+*category.Color*Slider.sliderValue:		1
+*category.Color*Slider.sliderMin:		1
+*category.Color*Slider.sliderMax:		256
+! GrayScale, StaticGray:
+*category.Color*graySlider.label:		Shades of Gray:
+*category.Color*grayChip.borderWidth:		1 horizontal point
+*category.Color*grayChip.space:			.15 horizontal inches
+*category.Color*grayChip.width:			.25 horizontal inches
+*category.Color*grayChip.height:		.25 horizontal inches
+! PseudoColor, StaticColor (and DirectColor, TrueColor):
+*category.Color*colorSlidersBox.layoutType:	fixedcols
+*category.Color*colorSlidersBox.alignCaptions:	true
+*category.Color*redSlider.label:		Red:
+*category.Color*greenSlider.label:		Green:
+*category.Color*blueSlider.label:		Blue:
+*category.Color*chipBox.space:			.15 horizontal inches
+*category.Color*chipBox.orientation:		vertical
+*category.Color*chipBox.foo.weight:		1
+*category.Color*chipBox.foo.width:		1
+*category.Color*chipBox.foo.height:		1
+*category.Color*chipBox.colorChip.weight:	0
+*category.Color*chipBox.bar.weight:		1
+*category.Color*chipBox.bar.width:		1
+*category.Color*chipBox.bar.height:		1
+*category.Color*colorChip.borderWidth:		1 horizontal point
+*category.Color*colorChip.width:		.4 horizontal inches
+*category.Color*colorChip.height:		.4 horizontal inches
+!
+*category.Color.bottom.hSpace:			.25 horizontal inches
+*category.Color*elements.layoutType:		fixedcols
+*category.Color*elements.measure:		1
+*category.Color*elements.vPad:			0
+*category.Color*elements.font:	-*-lucida-bold-r-*-*-*-*-*-*-*-*-iso8859-1
+*category.Color*elements.itemMinHeight:		20 vertical points
+*category.Color*elements.allowChangeBars:	true
+*category.Color*workspace.borderWidth:		1 vertical point
+*category.Color*window.xOffset:			3 horizontal millimeters
+*category.Color*window.yOffset:			3 vertical millimeters
+*category.Color*window.xAttachOffset:		3 horizontal millimeters
+*category.Color*window.yAttachOffset:		3 vertical millimeters
+*category.Color*client.layoutType:		fixedcols
+*category.Color*client.hPad:			0
+*category.Color*client.vPad:			0
+*category.Color*client.vSpace:			0
+*category.Color*upper.hPad:			0
+*category.Color*upper.OblongButton.traversalOn:	false
+*category.Color*upper.button1.label:		File
+*category.Color*upper.button2.label:		Edit
+*category.Color*upper.button3.label:		View
+*category.Color*scroll.forceVerticalSB:		true
+*category.Color*scroll.exampleText.traversalOn:	false
+*category.Color*scroll.exampleText.leftMargin:	 .25 horizontal inches
+*category.Color*scroll.exampleText.rightMargin:	 .25 horizontal inches
+*category.Color*scroll.exampleText.topMargin:	 .25 vertical inches
+*category.Color*scroll.exampleText.bottomMargin: .25 vertical inches
+*category.Color*scroll.exampleText.charsVisible: 28
+*category.Color*scroll.exampleText.linesVisible: 7
+*category.Color*scroll.exampleText.charsVisible: 25
+*category.Color*scroll.exampleText.editType:	textread
+*category.Color*scroll.exampleText.source:	Use this area to dynamically preview your color scheme. Any choices you make from this property window are immediately reflected here. Colors are not applied until you click on the Apply button.
+!
+*category.Color.top.layoutType:			fixedcols
+*category.Color.top.sameSize:			none
+*category.Color.top.center:			false
+*category.Color.top.vSpace:			.15 vertical inches
+*category.Color.top.factoryList.label:		Color Combinations:
+*category.Color.top.factoryList.space:		.1 horizontal inches
+*category.Color.top*box.preview.xOffset:	.3 horizontal inches
+*category.Color.top*box.preview.string:		Custom
+*category.Color.top*box.preview.width:		2 horizontal inches
+*category.Color.top*box.preview.height:		18 vertical points
+*category.Color.top*box.preview.alignment:	left
+*category.Color.top*box.preview.wrap:		false
+*category.Color.top*box.preview.recomputeSize:	false
+*category.Color.top*box.preview.gravity:	northwest
+*category.Color.top*factoryChoices.layoutType:	fixedcols
+*factoryColorLists: \
+	(Factory,#AAA,#0AF,#FA0,#FA0,#000,#0AF),\
+	(Spring Meadow,#0A0,#0AF,#0A0,#FF0,#000,#FFF),\
+	(Sunny Day,#0AF,#AAA,#0AF,#FF0,#000,#FFF),\
+	(Ocean View,#00A,#0AF,#A0A,#0FF,#000,#FFF),\
+	(Steel Head,#AAA,#0AF,#0A0,#FA0,#FFF,#00A),\
+	(Blue Danube,#AAA,#0AF,#F00,#F00,#000,#0A0),\
+	(RGB (TRC),#00F,#AAA,#F00,#F00,#000,#0AF),\
+	(Forestry Service,#0A0,#AAA,#FA0,#FA0,#FF0,#A50),\
+	(Industrial Blight,#000,#AAA,#FFF,#FFF,#000,#AAA),\
+	(Spring Time in NJ,#0A0,#AAA,#0AF,#A50,#000,#AAA),\
+	(Emerald Sea,#0A0,#0AF,#A0A,#A0A,#000,#0AF),\
+	(Two-tone and Sky,#0AF,#A50,#FA0,#FA0,#000,#A50),\
+	(Artificial Turf,#A50,#0A0,#FA0,#FA0,#000,#0A0),\
+	(Violet-Grey,#AAA,#A0A,#FFF,#F0F,#000,#A0A)
+
+!#########
+!
+! Icons sheet:
+!#########
+*category.Icons.layoutType:		fixedcols
+*category.Icons.alignCaptions:		true
+*category.Icons.location.label:		Location:
+*category.Icons.border.label:		Border:
+
+!#########
+!
+! Miscellaneous sheet:
+!#########
+*category.Miscellaneous.layoutType:		fixedcols
+*category.Miscellaneous.alignCaptions:		true
+*category.Miscellaneous.beep.label:		Beep:
+*category.Miscellaneous.windowLayering.label:	Window Layering:
+*category.Miscellaneous.startAtLogin.label:	Start OPEN LOOK GUI at login:
+*category.Miscellaneous.selectMousePress.label:	SELECT Mouse Press:
+*category.Miscellaneous.helpModel.label:	Help Model:
+*category.Miscellaneous.inputArea.label:	Set Input Area:
+*category.Miscellaneous.interfaceAppearance.label: Interface Appearance:
+*category.Miscellaneous.mnemonics.label:	Mnemonics:
+*category.Miscellaneous.accelerators.label:	Accelerators:
+
+!#########
+!
+! Mouse Settings sheet:
+!#########
+*category.Mouse Settings.layoutType:			fixedcols
+*category.Mouse Settings.measure:			1
+*category.Mouse Settings.alignCaptions:			true
+*category.Mouse Settings.center:			true
+*category.Mouse Settings.sameSize:			columns
+*category.Mouse Settings.borderWidth:			0
+*category.Mouse Settings.vSpace:			12 vertical points
+*category.Mouse Settings*Slider.orientation:		horizontal
+*category.Mouse Settings*Slider.span:			2 horz inches
+*category.Mouse Settings*Slider.leftMargin:		0.3 horz inches
+*category.Mouse Settings*Slider.stopPosition:		granularity
+*category.Mouse Settings*Slider.dragCBType:		release
+!*category.Mouse Settings.acceleration.sensitive:	false
+!*category.Mouse Settings.acceleration.label:	Mouse Acceleration:
+!*category.Mouse Settings.acceleration*sliderValue:	100
+!*category.Mouse Settings.acceleration*sliderMin:	100
+!*category.Mouse Settings.acceleration*minLabel:	1 (none)
+!*category.Mouse Settings.acceleration*sliderMax:	1000
+!*category.Mouse Settings.acceleration*maxLabel:	10
+!*category.Mouse Settings.acceleration*ticks:		100
+!*category.Mouse Settings.acceleration*tickUnit:	slidervalue
+*category.Mouse Settings.multiClick.label:	Multi-click Timeout:
+*category.Mouse Settings.multiClick*granularity:	25
+*category.Mouse Settings.multiClick*sliderValue:	100
+*category.Mouse Settings.multiClick*sliderMin:		100
+*category.Mouse Settings.multiClick*minLabel:		0.1 sec
+*category.Mouse Settings.multiClick*sliderMax:		1000
+*category.Mouse Settings.multiClick*maxLabel:		1.0 sec
+*category.Mouse Settings.multiClick*ticks:		100
+!*category.Mouse Settings.multiClick*tickUnit:		none
+*category.Mouse Settings.mouseDamping.label:	Mouse Damping:
+*category.Mouse Settings.mouseDamping*sliderValue:	1
+*category.Mouse Settings.mouseDamping*sliderMin:	1
+*category.Mouse Settings.mouseDamping*minLabel:		1 pixel
+*category.Mouse Settings.mouseDamping*sliderMax:	20
+*category.Mouse Settings.mouseDamping*maxLabel:		20 pixels
+*category.Mouse Settings.mouseDamping*ticks:		2
+!*category.Mouse Settings.mouseDamping*tickUnit:	none
+*category.Mouse Settings.dragRight.label:	Drag-Right Distance:
+*category.Mouse Settings.dragRight*sliderValue:		1
+*category.Mouse Settings.dragRight*sliderMin:		1
+*category.Mouse Settings.dragRight*minLabel:		1 pixel
+*category.Mouse Settings.dragRight*sliderMax:		40
+*category.Mouse Settings.dragRight*maxLabel:		40 pixels
+*category.Mouse Settings.dragRight*ticks:		4
+!*category.Mouse Settings.dragRight*tickUnit:		none
+*category.Mouse Settings.menuMarkR.label:	Menu Mark Region:
+*category.Mouse Settings.menuMarkR*sliderValue:		1
+*category.Mouse Settings.menuMarkR*sliderMin:		1
+*category.Mouse Settings.menuMarkR*minLabel:		1 pixel
+*category.Mouse Settings.menuMarkR*sliderMax:		40
+*category.Mouse Settings.menuMarkR*maxLabel:		40 pixels
+*category.Mouse Settings.menuMarkR*ticks:		4
+!*category.Mouse Settings.menuMarkR*tickUnit:		none
+
+!#########
+!
+! Mouse Modifiers sheet:
+!#########
+*category.Mouse Modifiers.layoutType:		fixedcols
+*category.Mouse Modifiers.measure:		3
+*category.Mouse Modifiers.alignCaptions:	true
+*category.Mouse Modifiers.center:		true
+*category.Mouse Modifiers.sameSize:		none
+*category.Mouse Modifiers.borderWidth:		0
+*category.Mouse Modifiers.heading1.string:	Modifier
+*category.Mouse Modifiers.heading1.font:	-*-lucida-bold-r-*-*-*-*-*-*-*-*-iso8859-1
+*category.Mouse Modifiers.heading2.string:
+*category.Mouse Modifiers.heading3.string:	Mouse Button
+*category.Mouse Modifiers.heading3.font:	-*-lucida-bold-r-*-*-*-*-*-*-*-*-iso8859-1
+*category.Mouse Modifiers.SELECT.label:			SELECT:
+*category.Mouse Modifiers.ADJUST.label:			ADJUST:
+*category.Mouse Modifiers.MENU.label:			MENU:
+*category.Mouse Modifiers.Constrain.label:		Constrain:
+*category.Mouse Modifiers.Duplicate.label:		Duplicate:
+*category.Mouse Modifiers.Scroll by Panning.label:	Scroll by Panning:
+*category.Mouse Modifiers.Set Menu Default.label:	Set Menu Default:
+*category.Mouse Modifiers.modifiers.width:		90 horz pt
+*category.Mouse Modifiers.modifiers.recomputeSize:	false
+*category.Mouse Modifiers.modifiers.gravity:		west
+*category.Mouse Modifiers*FlatNonexclusives.layoutType:	fixedcols
+
+!#########
+!
+! Programs Submenu sheet:
+!#########
+*category*workarea.allowChangeBars:			true
+*category.Programs Submenu.layoutType:			fixedcols
+*category.Programs Submenu.center:			true
+*category.Programs Submenu.sameSize:			none
+*category.Programs Submenu.borderWidth:			0
+*category.Programs Submenu.workarea.layoutType:		fixedcols
+*category.Programs Submenu.workarea.alignCaptions:	true
+*category.Programs Submenu.workarea.borderWidth:	0
+*category.Programs Submenu.workarea.menuLabels.label:	Menu Labels:
+*category.Programs Submenu.workarea*list*viewHeight:	5
+*category.Programs Submenu.workarea*list*traversalOn:	true
+*category.Programs Submenu.workarea*list*recomputeWidth: true
+*category.Programs Submenu.workarea*list*selectable:	false
+*category.Programs Submenu.workarea.name.label:		Name:
+*category.Programs Submenu.workarea.name.field.width:	2 horz inches
+*category.Programs Submenu.workarea.invocation.label:	Invocation String:
+*category.Programs Submenu.workarea.invocation.field.width: 4 horz inches
+*category.Programs Submenu.workarea.mnemonic.label:	Mnemonic:
+*category.Programs Submenu.workarea.mnemonic.field.width: .4 horz inches
+*category.Programs Submenu.workarea.mnemonic.field.maximumSize: 1
+*category.Programs Submenu.buttonarea.insert.label:	Insert
+*category.Programs Submenu.buttonarea.insert.mnemonic:	I
+*category.Programs Submenu.buttonarea*Before.mnemonic:	B
+*category.Programs Submenu.buttonarea*After.mnemonic:	A
+*category.Programs Submenu.buttonarea.delete.label:	Delete
+*category.Programs Submenu.buttonarea.delete.mnemonic:	D
+*category.Programs Submenu.buttonarea.applyEdits.label:	Apply Edits
+*category.Programs Submenu.buttonarea.applyEdits.mnemonic:	E
+
+!#########
+!
+! Keyboard sheets:
+!#########
+*category.Core.pageLabel:		Keyboard Core Functions
+*category.Mouse.pageLabel:		Keyboard Mouse Functions
+*category.Navigation.pageLabel:		Keyboard Navigation Functions
+*category.Scrolling.pageLabel:		Keyboard Scrolling Functions
+*category.Text Selection.pageLabel:	Keyboard Text Selection Functions
+*category.Text Edit.pageLabel:		Keyboard Text Edit Functions
+*category.System.pageLabel:		Keyboard System Functions
+*category.Core.layoutType:		fixedcols
+*category.Core.measure:			2
+*category.Mouse.layoutType:		fixedcols
+*category.Mouse.measure:		2
+*category.Navigation.layoutType:	fixedcols
+*category.Navigation.measure:		2
+*category.Scrolling.layoutType:		fixedcols
+*category.Scrolling.measure:		2
+*category.Text Selection.layoutType:	fixedcols
+*category.Text Selection.measure:	2
+*category.Text Edit.layoutType:		fixedcols
+*category.Text Edit.measure:		2
+*category.System.layoutType:		fixedcols
+*category.System.measure:		2
+*keyComplaint*textEdit.blinkRate:	0
+*keyComplaint*textEdit.editType:	textread
+*keyComplaint*textEdit.wrapMode:	wrapoff
+*keyComplaint*textEdit.traversalOn:	false
+*keyComplaint*textEdit.font:		-*-lucida-bold-r-*-*-*-*-*-*-*-*-iso8859-1
+*keyComplaint*textEdit.bottomMargin:	30 vertical points
+*keyComplaint*textEdit.topMargin:	30 vertical points
+*keyComplaint*textEdit.leftMargin:	20 horizontal points
+*keyComplaint*textEdit.rightMargin:	20 horizontal points
+*keyComplaint*textEdit.width:		540 horizontal points
+*FlatKeys.itemGravity:			northwest
+*FlatKeys.layoutWidth:			maximize
+*FlatKeys.layoutHeight:			maximize
+*FlatKeys.vPad:				4 vertical points
+*FlatKeys.hPad:				4 horizontal points
+*FlatKeys.vSpace:			2 vertical points
+*keys1.allowChangeBars:			true
+*keys2.allowChangeBars:			true
+*keys1.gravity:				East
+*keys2.gravity:				West
+
+
+

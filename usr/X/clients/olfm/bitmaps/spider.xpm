@@ -1,0 +1,36 @@
+#define spider_format 1
+#define spider_width 24
+#define spider_height 24
+#define spider_ncolors 3
+#define spider_chars_per_pixel 1
+static char * spider_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#000000000000",
+"X" , "#AAAA55550000"
+} ;
+static char * spider_pixels[] = {
+"                        ",
+"                        ",
+"                        ",
+"                        ",
+"                        ",
+"     ..    XX    ..     ",
+"    .  .  XXXX  .  .    ",
+"   .    . XXXX .    .   ",
+"  .  ..   XXXX   ..  .  ",
+"  . .  .   XX   .  . .  ",
+"   .    . XXXX .    .   ",
+"  .  ..   XXXX   ..  .  ",
+"  . .  .  XXXX  .  . .  ",
+"   .    . XXXX .    .   ",
+"  .  ...  XXXX  ...  .  ",
+"  . .   . XXXX .   . .  ",
+"    .     XXXX     .    ",
+"    .      XX      .    ",
+"    .              .    ",
+"                        ",
+"                        ",
+"                        ",
+"                        ",
+"                        "
+} ;

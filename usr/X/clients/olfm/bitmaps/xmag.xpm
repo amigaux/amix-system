@@ -1,0 +1,38 @@
+#define xmag_format 1
+#define xmag_width 24
+#define xmag_height 24
+#define xmag_ncolors 5
+#define xmag_chars_per_pixel 1
+static char * xmag_colors[] = {
+" " , "#0000FFFFFFFF",
+"." , "#FFFFFFFFFFFF",
+"X" , "#AAAAAAAAAAAA",
+"o" , "#FFFFFFFF0000",
+"O" , "#000000000000"
+} ;
+static char * xmag_pixels[] = {
+"           .......      ",
+"         ..XXXXXXX..    ",
+"        .XXXoooooXXX.   ",
+"       .XXoooooooooXX.  ",
+"      .XXoooooooooooXXX ",
+"      XXooOOOOOoooooOXX ",
+"     .XXooOOooOOoooOOoXX",
+" OO  .XoooOOooOOoooOOoXX",
+"O  O .XoooOOooOOoooOOoXX",
+"O  O .XoooOOOOOooooOOoXX",
+"OOOO .XoooOOoooOOooOOoXX",
+"O  O .XoooOOoooOOooOOoXX",
+"     .XXooOOoooOOooOOXXX",
+"     .XXooOOOOOOooooXXX ",
+"      .XXoooooooooooXXO ",
+"       XXXoooooooooXXO  ",
+"      .OXXXXoooooXXXO   ",
+"     .OO OOXXXXXXXOO    ",
+"    .OO    OOOOOOO      ",
+"   .OO                  ",
+"  .OO                   ",
+" .OO                    ",
+".OO                     ",
+"OO                      "
+} ;

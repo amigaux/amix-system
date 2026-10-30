@@ -1,0 +1,39 @@
+#define init_format 1
+#define init_width 24
+#define init_height 24
+#define init_ncolors 6
+#define init_chars_per_pixel 1
+static char * init_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#000000000000",
+"X" , "#AAAAAAAAAAAA",
+"o" , "#FFFF00000000",
+"O" , "#FFFFFFFF0000",
+"+" , "#0000FFFF0000"
+} ;
+static char * init_pixels[] = {
+"        .............   ",
+"        .XXXXXXXXXXX.   ",
+"     ....XXXX...XXXX....",
+"      ...XXX.ooo.XXX... ",
+"       ..XXX.ooo.XXX..  ",
+"       ..XXX.ooo.XXX..  ",
+"        .XXXX...XXXX.   ",
+"        .XXXXXXXXXXX.   ",
+"        .XXXXXXXXXXX.   ",
+"     ....XXXX...XXXX....",
+"      ...XXX.OOO.XXX... ",
+"       ..XXX.OOO.XXX..  ",
+"       ..XXX.OOO.XXX..  ",
+"        .XXXX...XXXX.   ",
+"        .XXXXXXXXXXX.   ",
+"        .XXXXXXXXXXX.   ",
+"     ....XXXX+++XXXX....",
+"   .  ...XXX+++++XXX... ",
+".....  ..XXX+++++XXX..  ",
+"......  .XXX+++++XXX..  ",
+".....   .XXXX+++XXXX.   ",
+"   .    .XXXXXXXXXXX.   ",
+"        .............   ",
+"                        "
+} ;

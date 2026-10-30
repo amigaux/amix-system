@@ -1,0 +1,53 @@
+#
+# Patchlevel: Xservers_1.3
+#
+# Xservers file, workstation prototype
+#
+# This file should contain an entry to start the server on the
+# local display; if you have more than one display (not screen),
+# you can add entries to the list (one per line).  If you also
+# have some X terminals connected which do not support XDMCP,
+# you can add them here as well.  Each X terminal line should
+# look like:
+#	XTerminalName:0 foreign
+#
+# Uncomment ONLY ONE line per SCREEN_GROUP below.
+# The SCREEN_GROUP number is the ALT-Function Key number for the display.
+#
+# Since the Amiga has multiple displays, you need to be circumspect in
+# your choice of display number.  Especially refrain from using :0 as
+# the display number.  :0 is the display number used if a user simply
+# types X.  If you use :0 for XDM, that user's X will NOT work unless
+# they explicitly set DISPLAY in the environment.  The screen group makes
+# an excellent choice for the display number.
+#
+#
+# INSTRUCTIONS FOR CONFIGURATION OF THIS FILE:
+#
+# The amixadm script ONLY handles xdm on Alt-F10.
+# You should uncomment only ONE of the executable lines below.
+# To use a different window manager, edit the .xsession file in 
+# the user's home directory.
+#
+# ALT-F10, and SCREEN_GROUP 10 ARE THE DEFAULTS.
+#
+# NOTE: a trailing :10 means that X will run as DISPLAY=hostname:10.0
+#
+#
+# A2410 card at 1024x768:
+#:10 local /usr/bin/env SCREEN_GROUP=10 /usr/bin/X11/X -tiga :10
+#
+# A2410 card at 800x600:
+#:10 local /usr/bin/env SCREEN_GROUP=10 /usr/bin/X11/X -tiga -tm 3 :10
+#
+# DMI Resolver card at 800x600:
+#:10 local /usr/bin/env SCREEN_GROUP=10 /usr/bin/X11/X -res -tm 0 :10
+#
+# DMI Resolver card at 1024x768:
+#:10 local /usr/bin/env SCREEN_GROUP=10 /usr/bin/X11/X -res -tm 2 :10
+#
+# DMI Resolver card at 1280x1024:
+#:10 local /usr/bin/env SCREEN_GROUP=10 /usr/bin/X11/X -res -tm 3 :10
+#
+# Monochrome X: 1024x768 on A2024 or Moniterm, 640x480 on other monitors
+:10 local /usr/bin/env SCREEN_GROUP=10 /usr/bin/X11/X :10

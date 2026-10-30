@@ -1,0 +1,38 @@
+#define object_format 1
+#define object_width 24
+#define object_height 24
+#define object_ncolors 5
+#define object_chars_per_pixel 1
+static char * object_colors[] = {
+" " , "#000000000000",
+"." , "#0000AAAAFFFF",
+"X" , "#00000000FFFF",
+"o" , "#FFFFFFFF0000",
+"O" , "#FFFFFFFFFFFF"
+} ;
+static char * object_pixels[] = {
+"                  ......",
+" XXXXXXXXXXXXXXXX  .....",
+" XXXoXXXXooXXXXoX O ....",
+" XXooXXXoXXoXXooX  O ...",
+" XXXoXXXoXXoXXXoX O O ..",
+" XXXoXXXoXXoXXXoX  O O .",
+" XXXoXXXoXXoXXXoX       ",
+" XXoooXXXooXXXoooXXXXXX ",
+" XXXXXXXXXXXXXXXXXXXXXX ",
+" XXooXXXXXoXXXXooXXXXoX ",
+" XoXXoXXXooXXXoXXoXXooX ",
+" XoXXoXXXXoXXXoXXoXXXoX ",
+" XoXXoXXXXoXXXoXXoXXXoX ",
+" XoXXoXXXXoXXXoXXoXXXoX ",
+" XXooXXXXoooXXXooXXXooo ",
+" XXXXXXXXXXXXXXXXXXXXXX ",
+" XXXXoXXXXooXXXXXoXXXXo ",
+" XXXooXXXoXXoXXXooXXXoX ",
+" XXXXoXXXoXXoXXXXoXXXoX ",
+" XXXXoXXXoXXoXXXXoXXXoX ",
+" XXXXoXXXoXXoXXXXoXXXoX ",
+" XXXoooXXXooXXXXoooXXXo ",
+" XXXXXXXXXXXXXXXXXXXXXX ",
+"                        "
+} ;

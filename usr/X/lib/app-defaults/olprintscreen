@@ -1,0 +1,53 @@
+#ident	"@(#)olps:olps.ad	1.1"
+
+!########
+!
+! Control Area:
+!########
+*File.mnemonic:			F
+*Print.mnemonic:		R
+*Capture Image.mnemonic:	C
+*Properties.mnemonic:		P
+
+!########
+!
+! File Menu:
+!########
+*Open.mnemonic:			O
+*Save As.mnemonic:		A
+
+!########
+!
+! Print:
+!########
+*Contents.mnemonic:		C
+*Window.mnemonic:		W
+*Area.mnemonic:			A
+*Screen.mnemonic:		S
+*Image File.mnemonic:		I
+
+!########
+!
+! Capture Image:
+!########
+*Window.mnemonic:		W
+*Area.mnemonic:			A
+*Screen.mnemonic:		S
+
+!########
+!
+! Properties:
+!########
+*Default Pathname.mnemonic:	D
+*Output Format.mnemonic:	U
+*Print Command.mnemonic:	C
+*Orientation.mnemonic:		I
+*Reverse Video.mnemonic:	V
+*Header.mnemonic:		H
+*Footer.mnemonic:		T
+*Pages.mnemonic:		P
+*Scale.mnemonic:		E
+*Left Offset.mnemonic:		L
+*Top Offset.mnemonic:		O
+*Max width.mnemonic:		W
+*Max height.mnemonic:		M

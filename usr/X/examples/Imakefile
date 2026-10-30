@@ -1,0 +1,17 @@
+#define IHaveSubdirs
+#define PassCDebugFlags 'CDEBUGFLAGS=$(CDEBUGFLAGS)'
+
+SUBDIRS = Xaw text
+
+MakeSubdirs($(SUBDIRS))
+DependSubdirs($(SUBDIRS))
+
+#ifdef	AmixArchitecture
+install::
+	echo "Installing examples..."
+	(cd ..; \
+	 find examples -print -depth | grep -v '\.o$$' | \
+		cpio -pduv $(ATTDESTDIR) \
+	)
+	echo "Install of examples done"
+#endif

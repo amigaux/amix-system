@@ -1,0 +1,38 @@
+#define packed_format 1
+#define packed_width 24
+#define packed_height 24
+#define packed_ncolors 5
+#define packed_chars_per_pixel 1
+static char * packed_colors[] = {
+" " , "#000000000000",
+"." , "#0000AAAAFFFF",
+"X" , "#FFFFFFFFFFFF",
+"o" , "#AAAAAAAAAAAA",
+"O" , "#0000FFFFFFFF"
+} ;
+static char * packed_pixels[] = {
+"                   .....",
+" XXXXXXXXXXXXXXXXX  ....",
+" XXXXXXXXX    XXXX X ...",
+" XXXXXX          X  X ..",
+" XXXXXXXXX    XXXX X X .",
+" XXXXXXXX      XXX      ",
+" XXXXXXXXX    XXXXXXXXX ",
+" XXXXXXXX      XXXXXXXX ",
+" XXXXXXXXX    XXXXXXXXX ",
+" XXXXooXX      XXooXXXX ",
+" XXX                XXX ",
+" XXX                XXX ",
+" XXXXooXX..O.O.XXooXXXX ",
+" XXXXooXX.O.O..XXooXXXX ",
+" XXXXooXX..OO..XXooXXXX ",
+" XXXXooXX....OOXXooXXXX ",
+" XXXXooXX.OO.O.XXooXXXX ",
+" XXXXooXX...O..XXooXXXX ",
+" XXXXooXX.OO...XXooXXXX ",
+" XXXXooXX...OO.XXooXXXX ",
+" XXX                XXX ",
+" XXX                XXX ",
+" XXXXooXXXXXXXXXXooXXXX ",
+"                        "
+} ;

@@ -1,0 +1,28 @@
+#ident	"%W"
+#copyright  "%c%"
+
+
+*Edit.mnemonic: E
+*Redraw.mnemonic: R
+*Soft Reset.mnemonic: S
+*Full Reset.mnemonic: F
+*Properties.mnemonic: P
+*Show Tek window.mnemonic: O
+*Interrupt.mnemonic: I
+*Hangup.mnemonic: H
+*Terminate.mnemonic: T
+*Kill.mnemonic: K
+*Send.mnemonic: S
+*Paste.mnemonic: P
+*Copy.mnemonic: C
+*Cut.mnemonic: X
+
+*PAGE.mnemonic: A
+*RESET.mnemonic: E 
+*COPY.mnemonic: C
+*Hide VT window.mnemonic: D
+
+*Apply.mnemonic: A
+*Reset.mnemonic: r
+
+*container.scrollbar.space: 2 points

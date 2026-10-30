@@ -1,0 +1,5 @@
+#ident	"@(#)olpkg:adm/.olvars	1.2"
+
+DISPLAY=unix:0 export DISPLAY	#!@ Do not edit this line !@
+OLINVOKE=no export OLINVOKE	#!@ Do not edit this line !@
+PATH=$PATH:/usr/X/bin export PATH	#!@ Do not edit this line !@

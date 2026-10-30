@@ -1,0 +1,38 @@
+#define xcalc_format 1
+#define xcalc_width 24
+#define xcalc_height 24
+#define xcalc_ncolors 5
+#define xcalc_chars_per_pixel 1
+static char * xcalc_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#FFFFFFFFFFFF",
+"X" , "#AAAAAAAAAAAA",
+"o" , "#000000000000",
+"O" , "#AAAA0000AAAA"
+} ;
+static char * xcalc_pixels[] = {
+" ...................... ",
+" .XXXXXXXXXXXXXXXXXXXXo ",
+" .XooooooooooooooooooXo ",
+" .Xo................oXo ",
+" .Xo................oXo ",
+" .Xo................oXo ",
+" .XooooooooooooooooooXo ",
+" .XXXXXXXXXXXXXXXXXXXXo ",
+" .XXXXXXXXXXXXXXXXXXXXo ",
+" .XOOoXXOOoXXOOoXXOOoXo ",
+" .XOOoXXOOoXXOOoXXOOoXo ",
+" .XoooXXoooXXoooXXoooXo ",
+" .XXXXXXXXXXXXXXXXXXXXo ",
+" .XXXXXXXXXXXXXXXXXXXXo ",
+" .XOOoXXOOoXXOOoXXOOoXo ",
+" .XOOoXXOOoXXOOoXXOOoXo ",
+" .XoooXXoooXXoooXXoooXo ",
+" .XXXXXXXXXXXXXXXXXXXXo ",
+" .XXXXXXXXXXXXXXXXXXXXo ",
+" .XOOoXXOOoXXOOoXXOOoXo ",
+" .XOOoXXOOoXXOOoXXOOoXo ",
+" .XoooXXoooXXoooXXoooXo ",
+" .XXXXXXXXXXXXXXXXXXXXo ",
+" .ooooooooooooooooooooo "
+} ;

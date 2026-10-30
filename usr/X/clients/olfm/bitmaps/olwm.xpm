@@ -1,0 +1,36 @@
+#define olwm_format 1
+#define olwm_width 24
+#define olwm_height 24
+#define olwm_ncolors 3
+#define olwm_chars_per_pixel 1
+static char * olwm_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#000000000000",
+"X" , "#FFFFFFFFFFFF"
+} ;
+static char * olwm_pixels[] = {
+"                        ",
+"                        ",
+"........................",
+"....XXXXXXXXXXXXXXXX....",
+"..XXXXXXXXXXXXXXXXXXXX..",
+"..X..XXXXXXXXXXXXXXXXX..",
+".XX..XXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XX..................XX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+"..XXXXXXXXXXXXXXXXXXXX..",
+"..XXXXXXXXXXXXXXXXXXXX..",
+"....XXXXXXXXXXXXXXXX....",
+"........................"
+} ;

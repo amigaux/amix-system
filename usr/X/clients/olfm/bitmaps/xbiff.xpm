@@ -1,0 +1,40 @@
+#define xbiff_format 1
+#define xbiff_width 24
+#define xbiff_height 24
+#define xbiff_ncolors 7
+#define xbiff_chars_per_pixel 1
+static char * xbiff_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#000000000000",
+"X" , "#FFFFFFFFFFFF",
+"o" , "#AAAAAAAAAAAA",
+"O" , "#FFFF00000000",
+"+" , "#0000FFFF0000",
+"@" , "#AAAA55550000"
+} ;
+static char * xbiff_pixels[] = {
+"                      . ",
+"                XXXX .. ",
+"              XXXoXo.O. ",
+"             XoXoXo.OO. ",
+"            XoXoXo.OOO. ",
+"           XoXoXo.OOOO. ",
+"          XoXoXoX.OOO.  ",
+"         XoXoXoXo.OO.o. ",
+"        XoXoXoXoo.O.oo. ",
+"       XoooooXooo..ooo. ",
+"      Xooooooo.oo.oooo. ",
+"      oooooooo.oo.oooo. ",
+"     Xooo...ooo.o.oooo. ",
+"+++  oooooooooo.o.ooo.  ",
+"     Xooooooooo.oooo.   ",
+"+++  oooooooooo.ooo.   +",
+"     Xooooooooo.oo.     ",
+"+++  oooooooooo.o.    ++",
+"     Xooooooooo...      ",
+"+++  o..........@.   +++",
+"             .@.@.      ",
+"+++++        .@.@.  ++++",
+"             .@.@.      ",
+"+++++++++++  .@.@.  ++++"
+} ;

@@ -1,0 +1,7 @@
+The Path Pane displays the current path for the base window.  You can use the glyphs in this pane to "Open" a new directory higher up in the path or to change properties of the directories in the path.  Double clicking SELECT is the quick way to "open" a new directory.  An alternative mechanism involves SELECTing a directory and then using the MENU button to pop-up the Path Commands Menu.
+
+The Path Commands MENU has buttons which can be used to "Open" the SELECTed directory  or to change its "Properties".
+
+The "Open" button causes the File Manager to change the working directory to the selected directory and display its contents.
+
+"Properties" brings up the file property window to allow changes to the directory name, the owner name, the group name, and permissions on the directory.

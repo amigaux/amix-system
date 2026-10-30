@@ -1,0 +1,36 @@
+#define headers_format 1
+#define headers_width 24
+#define headers_height 24
+#define headers_ncolors 3
+#define headers_chars_per_pixel 1
+static char * headers_colors[] = {
+" " , "#000000000000",
+"." , "#0000AAAAFFFF",
+"X" , "#FFFFFFFFFFFF"
+} ;
+static char * headers_pixels[] = {
+"                  ......",
+" XXXXXXXXXXXXXXXX  .....",
+" XXXXXXXXXXXXXXXX X ....",
+" XXXXXXXXXXXXXXXX  X ...",
+" XXXXXXXXXXXXXXXX X X ..",
+" XXXXXXXXXXXXXXXX  X X .",
+" XXXXXXXX  XXXXXX       ",
+" XXXXXXXX  XXXXXXXXXXXX ",
+" XXXXXXXX  XXXXXXXXXXXX ",
+" XXXXXXXX  XXXXXXXXXXXX ",
+" XXXXXXXX  XXXXXXXXXXXX ",
+" XXXXXXXX  XXXXXXXXXXXX ",
+" XXXXXXXX  X     XXXXXX ",
+" XXXXXXXX         XXXXX ",
+" XXXXXXXX   XXXX  XXXXX ",
+" XXXXXXXX  XXXXXX  XXXX ",
+" XXXXXXXX  XXXXXX  XXXX ",
+" XXXXXXXX  XXXXXX  XXXX ",
+" XXXXXXXX  XXXXXX  XXXX ",
+" XX   XXX  XXXXXX  XXXX ",
+" XX   XXX  XXXXXX  XXXX ",
+" XX   XXX  XXXXXX  XXXX ",
+" XXXXXXXXXXXXXXXXXXXXXX ",
+"                        "
+} ;

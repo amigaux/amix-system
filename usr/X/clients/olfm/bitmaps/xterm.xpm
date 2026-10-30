@@ -1,0 +1,38 @@
+#define xterm_format 1
+#define xterm_width 24
+#define xterm_height 24
+#define xterm_ncolors 5
+#define xterm_chars_per_pixel 1
+static char * xterm_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#00000000FFFF",
+"X" , "#AAAAAAAAAAAA",
+"o" , "#000000000000",
+"O" , "#FFFFFFFFFFFF"
+} ;
+static char * xterm_pixels[] = {
+" ...................... ",
+"........................",
+"...XXXXXXXXXXXXXXXXXX...",
+"..XXoooooooooooooooXXX..",
+"..XXoOOOOOOOOOOOOOoXXX..",
+"..XXoOoooOooooOOOOoXXX..",
+"..XXoOOOOOOOOOOOOOoXXX..",
+"..XXoOoooooOooOooOoXXX..",
+"..XXoOOOOOOOOOOOOOoooX..",
+"..XXoOooOoooOOOOOOoOoX..",
+"..XXoOOOOOOOOOOOOOoOoX..",
+"..XXoOooOOOOOOOOOOoOoX..",
+"..XXoOOOOOOOOOOOOOoOoX..",
+"..XXoOOOOOOOOOOOOOoOoX..",
+"..XXoooooooooooooooOoX..",
+"..XXXXXXXXoOOOOOOOOOoX..",
+"..XXXXXXXXoooooooooooX..",
+"...XXXXXXXXXXXXXXXXXX...",
+"........................",
+" ...................... ",
+"                        ",
+"                        ",
+"                        ",
+"                        "
+} ;

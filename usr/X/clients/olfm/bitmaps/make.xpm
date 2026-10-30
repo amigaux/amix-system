@@ -1,0 +1,41 @@
+#define make_format 1
+#define make_width 24
+#define make_height 24
+#define make_ncolors 8
+#define make_chars_per_pixel 1
+static char * make_colors[] = {
+" " , "#000000000000",
+"." , "#0000AAAAFFFF",
+"X" , "#0000FFFFFFFF",
+"o" , "#AAAA55550000",
+"O" , "#FFFFFFFFFFFF",
+"+" , "#00000000AAAA",
+"@" , "#FFFF00000000",
+"#" , "#AAAAAAAAAAAA"
+} ;
+static char * make_pixels[] = {
+"                  ......",
+" XXXXXXoooXXXXXXX  .....",
+" XXXXXoooooXXXXXX O ....",
+" XXXXXoooooXXXXXX  O ...",
+" XXXXXoooooXXXXXX O O ..",
+" XXXXXoooooXXXXXX  O O .",
+" XXXXXXoooXXXXXXX       ",
+" XXX+++++++++XXXXXXXXXX ",
+" XX++O++O++O++XXXXXXXXX ",
+" XX++O+++++O++XXXXXXXXX ",
+" XX++O++O++O++XXXXXXXXX ",
+" XX++O+++++O++XXXXXXXXX ",
+" XX++O+++++O++XXXXXXXXX ",
+" XX++O@@@@@O++XXXXXXXXX ",
+" ###+O@@@@@O++X######## ",
+" @@#X       XXX#@@@@@#@ ",
+" @@#X       XXX#@@@@@#@ ",
+" ###################### ",
+" @@@@@#@@@@@#@@@@@#@@@@ ",
+" @@@@@#@@@@@#@@@@@#@@@@ ",
+" ###################### ",
+" @@#@@@@@#@@@@@#@@@@@#@ ",
+" @@#@@@@@#@@@@@#@@@@@#@ ",
+"                        "
+} ;

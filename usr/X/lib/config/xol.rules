@@ -1,0 +1,101 @@
+
+/*
+** OLIT Rules
+*/
+
+/*
+ * Install multiple help files for OPEN LOOK(tm)
+ */
+#define	InstallMultipleHelpFiles(list,dest)				@@\
+install:: list								@@\
+	@-if [ ! -d dest ]; then \					@@\
+	   mkdir -p dest; \						@@\
+	fi								@@\
+	@for i in list; do \						@@\
+	(set -x; \
+	mkdir /tmp/$$$$; \
+	awk	'/\\$$/ {printf "%s", substr($$0, 0, length($$0)-1)} \
+		!/\\$$/ {print $$0}' $$i > /tmp/$$$$/`basename $$i`; \
+	/etc/install $(INSTALLFLAGS) -f dest /tmp/$$$$/`basename $$i`; \
+	rm -rf /tmp/$$$$); \
+	done
+
+/*
+**
+*/
+
+#define MixedLibraryObjectRule()					@@\
+.c.o:									@@\
+	@if [ -d shared ]; then \					@@\
+		echo \\t$(CC) -c -fpic $(CFLAGS) $<; \			@@\
+		$(CC) -c -fpic $(CFLAGS) $<; \ 				@@\
+		$(RM) shared/$*.o; \					@@\
+		echo \\t$(MV) $*.o shared; \				@@\
+		$(MV) $*.o shared; \					@@\
+	fi								@@\
+	$(CC) -c $(CFLAGS) $<
+/*
+**
+*/
+
+#define SpecialMixedObjectRule(objs,depends,options)			@@\
+objects: depends							@@\
+	@if [ -d shared ]; then \					@@\
+		echo \\t$(CC) -c -fpic $(CFLAGS) options $*.c \	@@\
+		$(CC) -c -fpic $(CFLAGS) options $*.c \			@@\
+		$(RM) shared/$*.o; \					@@\
+		echo \\t$(MV) $*.o shared; \				@@\
+		$(MV) $*.o shared; \					@@\
+	fi								@@\
+	$(CC) -c $(CFLAGS) options $*.c
+
+/*
+**
+*/
+
+#define SharedLibraryTarget(libname)					@@\
+lib/**/libname/**/.so::							@@\
+	@if [ ! -d shared ]; then \					@@\
+		mkdir shared; \						@@\
+	fi								@@\
+lib/**/libname/**/.so:: $(SHAREDOBJS)					@@\
+	$(RM) lib/**/libname/**/.so 					@@\
+	cd shared; \							@@\
+	$(CC) $(YFLAGS) -G $(SHAREDOBJS) -o lib/**/libname/**/.so $(SHLIBFLAGS) @@\
+	$(MV) shared/lib/**/libname/**/.so .				@@\
+	-rm -f /usr/lib/libXol.so					@@\
+	-ln -s `pwd`/libXol.so /usr/lib/libXol.so			@@\
+clean clobber::								@@\
+	@if [ -d shared ]; then \					@@\
+		echo \\t$(RM) -rf shared; \				@@\
+		$(RM) -rf shared; \					@@\
+	fi
+
+/*
+**
+*/
+
+#define ArchiveLibraryTarget(libname,objects)				@@\
+PreciousObject(lib/**/libname.a)					@@\
+									@@\
+lib/**/libname.a:: objects						@@\
+	ar rv $@ $?
+
+/*
+**
+*/
+
+#define	ArchiveLibraryTarget2(libname,objects1,objects2)		@@\
+PreciousObject(lib/**/libname.a)					@@\
+									@@\
+lib/**/libname.a:: objects1						@@\
+	ar rv $@ $?							@@\
+lib/**/libname.a:: objects2						@@\
+	ar rv $@ $?
+
+/*
+**
+*/
+
+#define PreciousObject(object)						@@\
+.PRECIOUS:: object

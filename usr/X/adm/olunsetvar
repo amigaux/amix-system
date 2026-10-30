@@ -1,0 +1,76 @@
+#ident	"@(#)olpkg:adm/olunsetvar	1.3"
+
+if [ "$1" = "" ]
+then
+	echo "\nUsage: olunsetvar variable [user]"
+	exit 1
+fi
+
+if [ "$HOME" = "" ]
+then
+	echo "\n\t\$HOME variable not set." >& 2
+	exit 1
+fi
+
+VAR=$1
+LOGIN=`echo ${2:-\`basename $HOME\`}`
+#  Special case of HOME = /
+if [ "$LOGIN" = "/" ]
+then
+	LOGIN=root
+fi
+
+#
+# Now will validate login
+#
+
+VALIDATE=0
+PASS=`grep $LOGIN /etc/passwd | cut -d: -f1,6`
+for ENTRY in $PASS
+do
+        FIRST=`echo $ENTRY | cut -d: -f1`
+        if [ "$LOGIN" = "$FIRST" ]
+    	then
+    	        VALIDATE=1
+                LOGINDIR=`echo $ENTRY | cut -d: -f2`
+             	break
+  	fi
+done
+if [ $VALIDATE = 0 ]
+then
+    	echo "\n\tInvalid user login ID."  >& 2
+	exit 1
+fi
+if [ "$LOGINDIR" = "" ]
+then
+	echo "\n\tUser's home directory not found."  >& 2
+	exit 1
+fi
+
+#
+# Found the home directory, now see if .olsetup there, then modify it
+#
+
+if [ ! -r $LOGINDIR -o ! -w $LOGINDIR -o ! -x $LOGINDIR ]
+then
+	echo "\n\t$LOGINDIR does not exist, or has invalid permissions."  >& 2
+	exit 1
+fi
+
+cd $LOGINDIR
+
+if [ ! -r .olsetup -o ! -w .olsetup ]
+then
+	echo "\n\t${LOGINDIR}/.olsetup does not exist, or has invalid permissions."  >& 2
+	exit 1
+fi
+
+ed .olsetup >/dev/null <<!
+g/^$VAR=/d
+w
+q
+!
+
+chmod 0644   .olsetup 2> /dev/null
+chown $LOGIN .olsetup 2> /dev/null
+exit 0

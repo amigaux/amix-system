@@ -1,0 +1,5 @@
+Terminal Emulator...#	T:	exec xterm -ls
+OpenLook Terminal...#	L:	exec olterm
+Pixmap Editor...#	P:	exec olpixmap
+Calculator...#	C:	exec xcalc
+Clock...#	O:	exec xclock

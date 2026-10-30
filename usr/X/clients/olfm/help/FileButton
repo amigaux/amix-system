@@ -1,0 +1,47 @@
+The "File" button is used to "Open" a selected object, "Copy", "Move", "Link", or "Print" selected objects, "Create <a> Directory", and "Create <a> File".
+
+The "Open" button causes the File Manager to execute the default action for the selected object which can be a file, a directory, or an executable program.  The default action is the action that the file is programmed to execute and is set by changing the binding file ".olfmrc".  The following factory defaults are supplied by the OPEN LOOK Interface in the binding file.
+
+Directory:  Change the working directory to the selected directory and display its contents.
+
+Data File:  Place the selected Data File in a Terminal Emulator window for editing.  The editing environment is determined by using the shell variable EDITOR.
+
+Executable:  Execute the selected executable file.
+
+The "Copy" button supplies you with a window with a text field in which you type the name of the file or directory into which you wish to copy the selected files or directories.  There are two buttons on this window:
+
+Copy button:  Select this button to initiate the "Copy" action after you have entered the destination of the files or directories in the text field.
+
+Cancel button:  Select this button to cancel proceedings.
+
+As copy procedures begin, a notice with an "Abort" button will appear.  If you select the "Abort" button then the entire copy action will be canceled as if you never selected "Copy" from the "File" menu.
+
+The "Move" button supplies you with a window with a text field in which you type the name of the file or directory into which you wish to move the selected files or directories.  There are two buttons on this window:
+
+Move button:  Select this button to initiate the "Move" action after you have entered the destination of the files or directories in the text field.
+
+Cancel button:  Select this button to cancel proceedings.
+
+As move procedures begin, a notice with an "Abort" button will appear.  If you select the "Abort" button then the entire copy action will be canceled as if you never selected "Move" from the "File" menu.
+
+The "Link" button supplies you with a window with a text field in which you type the name of the file or directory into which you wish to link the selected files or directories.  There are two buttons on this window:
+
+Link button:  Select this button to initiate the "Link" action after you have entered the destination of the files or directories in the text field.
+
+Cancel button:  Select this button to cancel proceedings.
+
+As link procedures begin, a notice with an "Abort" button will appear.  If you select the "Abort" button then the entire link action will be canceled as if you never selected "Link" from the "File" menu.
+
+The "Print" button causes the File Manager to send the selected objects to default printer for printing.
+
+The "Create <a> Directory" button supplies you with a window with a text field in which you type the name of the directory you wish to create.  There are two buttons on this window:
+
+Create Directory: Select this button to create the directory you named.
+
+Cancel: Select this button to cancel proceedings.
+
+The "Create <a> File" button supplies you with a window with a text field in which you type the name of the file you wish to create.  There are two buttons on this window:
+
+Create File: Select this button to create the file you named.
+
+Cancel: Select this button to cancel proceedings.

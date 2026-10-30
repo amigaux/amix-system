@@ -1,0 +1,37 @@
+#define network_format 1
+#define network_width 24
+#define network_height 24
+#define network_ncolors 4
+#define network_chars_per_pixel 1
+static char * network_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#000000000000",
+"X" , "#AAAAAAAAAAAA",
+"o" , "#FFFF00000000"
+} ;
+static char * network_pixels[] = {
+" .......                ",
+".XXXXXXX.               ",
+".XXXXXXX.               ",
+".XXXXXXX.o              ",
+".XXXXXXX.oo     ....... ",
+".XXXXXXX. oo   .XXXXXXX.",
+".XXXXXXX.  oo  .XXXXXXX.",
+".XXXXXXX.   oo .XXXXXXX.",
+" .......    ooo.XXXXXXX.",
+"   ...     oo o.XXXXXXX.",
+" .......  oo   .XXXXXXX.",
+"         oo     ....... ",
+"        oo        ...   ",
+"       oo      .........",
+"      oo                ",
+"    ........            ",
+"   .XXXXXXXX.           ",
+"   .XXXXXXXX.           ",
+"   .XXXXXXXX.           ",
+"   .XXXXXXXX.           ",
+"   .XXXXXXXX.           ",
+"    ........            ",
+"       ..               ",
+"    ........            "
+} ;

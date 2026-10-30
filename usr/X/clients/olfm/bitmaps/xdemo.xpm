@@ -1,0 +1,36 @@
+#define xdemo_format 1
+#define xdemo_width 24
+#define xdemo_height 24
+#define xdemo_ncolors 3
+#define xdemo_chars_per_pixel 1
+static char * xdemo_colors[] = {
+" " , "#000000000000",
+"." , "#FFFFFFFF0000",
+"X" , "#0000FFFFFFFF"
+} ;
+static char * xdemo_pixels[] = {
+"   .   .   .   .  ..... ",
+"   .   .  .........    X",
+"   ........ ...        X",
+"....  .  ....          X",
+"  .   .....           X ",
+"  .  ....             X ",
+"  .... .              XX",
+"... ...              XX ",
+"  . ..               XX ",
+"  ...                XX ",
+" ....               X XX",
+". ..                X X ",
+" ...               XXX  ",
+" ..               XX X  ",
+" ..               XX XXX",
+"..               X XXX  ",
+" .              XXXX X  ",
+" .            XXXXX  X  ",
+"..           XXX  X  X  ",
+"..         XXX X X   XXX",
+".        XXX  XXXXXXX   ",
+".      XXXXXXXX  X  X   ",
+".  XXXXXX    X  X   X   ",
+" XXXX  X    X   X   X   "
+} ;

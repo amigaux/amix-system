@@ -1,0 +1,90 @@
+#define OPENLOOK
+/*
+** System stuff
+*/
+
+#define	SystemV				YES
+
+#define	OSName				AT&T Unix System V Release 4.0
+#define	OSMajorVersion			4
+#define	OSMinorVersion			0
+
+#define	ExecableScripts			YES
+#define	RemoveTargetProgramByMoving	YES
+#define StripInstalledPrograms		YES
+#define	BootstrapCFlags			-DSYSV -DSVR4 -DSVR4_0 -DAMIX
+#define	StandardDefines			-DSYSV -DSVR4 -DSVR4_0 -DAMIX
+#define	StandardCppDefines		-DSYSV -DSVR4 -DSVR4_0 -DAMIX
+#define InstallOldHeaderFiles		NO	/* set to YES for compat with R3 Xaw */
+
+#define ConnectionFlags			-DTCPCONN -DUNIXCONN
+
+#define BandAidLibraryNeeded		YES
+#define BandAidLibrarySources		bcmp.c bcopy.c bzero.c index.c random.c rindex.c
+#define BandAidLibraryObjects		bcmp.o bcopy.o bzero.o index.o random.o rindex.o
+
+#define BandAidLibraryMake()		        		@@\
+bcmp.c: sysVr4/bcmp.c			        		@@\
+	-$(RM) bcmp.c			        		@@\
+	-$(LN) sysVr4/bcmp.c .		        		@@\
+bcopy.c: sysVr4/bcopy.c			        		@@\
+	-$(RM) bcopy.c			        		@@\
+	-$(LN) sysVr4/bcopy.c .		        		@@\
+bzero.c: sysVr4/bzero.c			        		@@\
+	-$(RM) bzero.c			        		@@\
+	-$(LN) sysVr4/bzero.c .		        		@@\
+index.c: sysVr4/index.c			        		@@\
+	-$(RM) index.c			        		@@\
+	-$(LN) sysVr4/index.c .		        		@@\
+random.c: sysVr4/random.c					@@\
+	-$(RM) random.c						@@\
+	-$(LN) sysVr4/random.c .				@@\
+rindex.c: sysVr4/rindex.c					@@\
+	-$(RM) rindex.c						@@\
+	-$(LN) sysVr4/rindex.c .				
+
+#define	ExtraLoadFlags			-lsocket -lnsl
+
+#define UNCOMPRESSPATH			/usr/bin/uncompress
+
+#define InstallCmd			/usr/ucb/install
+#define InstPgmFlags		 	-o x -g sys -s
+
+#define BuildContrib			YES
+#define BuildExamples			YES
+
+/* Copiler stuff */
+#define HasGcc				YES
+#define GccOptions			-fwritable-strings -finline-functions -fcombine-regs
+#define ServerCcCmd			gcc GccOptions
+#define CcCmd				gcc GccOptions -traditional
+#define	CppCmd				/usr/public/lib/gcc-cpp -traditional
+
+/* Library Stuff */
+#define HasSunOSSharedLibraries YES
+
+/* Server Stuff */
+#define	BuildServer			YES
+#define XamixServer			Xamix
+#define ServerToLinkToX			XamixServer
+#define ServerTigaDefs			-DCBM_TIGA
+#define ServerDefines			-DXDMCP StandardDefines FontDefines ExtensionDefines ServerTigaDefs
+#define HasNdbm				NO
+
+/* Client Stuff */
+#define InstallXinitConfig		YES
+#define XLoadLocalLibaries		-lelf
+#define	MakeDev				/usr/lib/font/makedev
+#define MvCmd				mv -f
+#define LnCmd				ln -f
+
+/* Some dirs [NOT] to build */
+#define BuildDoc			NO
+#define BuildFonts			YES
+
+/* Check why these are needed someday */
+#define	BandAidCompiler			"/dev/null"
+
+#ifdef OPENLOOK
+#include <xol.cf>
+#endif

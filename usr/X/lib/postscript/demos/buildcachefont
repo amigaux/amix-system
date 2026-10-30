@@ -1,0 +1,19 @@
+%!
+%% Build the font cache
+%% By John G. Myers
+
+% fontname pointsize cachefont --
+/cachefont {
+	exch findfont exch scalefont setfont
+	5 5 moveto
+	( !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ) show
+	([\\]^_`abcdefghijklmnopqrstuvwxyz{|}~) show
+	(\251\252\256\257\261\267\272\320) show
+	savecurrentfont
+	erasepage
+} def
+
+[  /Times-Roman /Helvetica /Times-Bold /Times-Italic /Helvetica-Oblique ]
+{ dup 10 cachefont dup 12 cachefont 14 cachefont }
+forall
+

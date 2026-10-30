@@ -1,0 +1,4 @@
+#define sperma_width 3
+#define sperma_height 7
+static char sperma_bits[] = {
+   0x02, 0x01, 0x02, 0x04, 0x02, 0x01, 0x02};

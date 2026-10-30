@@ -1,0 +1,1 @@
+The "Directory" field is used to perform directory traversal.  After you have entered the directory name in the "Directory" field, select the "Match" button to change the current working directory and display its contents.

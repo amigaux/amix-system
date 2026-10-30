@@ -1,0 +1,19 @@
+
+#ifndef BuildXolExamples
+#define BuildXolExamples	YES	/* only olexamples/tutorial built now */
+#endif
+
+#define XolLibToUse libXol.so
+
+#define XolLibsToBuild libXol.so libXol.a
+
+    XolLIB_TO_USE = XolLibToUse
+
+ XolLIBS_TO_BUILD = XolLibsToBuild
+
+        ATTLIBSRC = $(TOP)/olit/lib
+        USRINCDIR = $(INCROOT)		/* header files, for Xol use */
+       XOLFONTSRC = $(BDFSRC)/Xol
+        XOLLIBSRC = $(ATTLIBSRC)/Xol
+           XOLLIB = -L$(XOLLIBSRC) -lXol
+        DEPXOLLIB = 

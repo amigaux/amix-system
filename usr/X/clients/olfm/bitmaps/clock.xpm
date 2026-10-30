@@ -1,0 +1,37 @@
+#define clock_format 1
+#define clock_width 24
+#define clock_height 24
+#define clock_ncolors 4
+#define clock_chars_per_pixel 1
+static char * clock_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#00000000FFFF",
+"X" , "#FFFFFFFF0000",
+"o" , "#000000000000"
+} ;
+static char * clock_pixels[] = {
+"        .......         ",
+"      ..XXXXXXX..       ",
+"    ..XXXXXXXXXXX..     ",
+"   .XXXXXXXoXXXXXXX.    ",
+"  .XXXXXXXXoXXXXXXXX.   ",
+"  .XXXXXXXXoXXXXXXXX.   ",
+" .XXXXXXXXXoXXXXXXXXX.  ",
+" .XXXXXXXXXoXXXXXXXXX.  ",
+".XXXXXXXXXXoXXXXXXXXXX. ",
+".XXXXXXXXXXoXXXXXXXXXX. ",
+".XXXXXXXXXXoXXXXXXXXXX. ",
+".oooXXXXXXXoXXXXXXXooo. ",
+".XXXXXXXXXXXoXXXXXXXXX. ",
+".XXXXXXXXXXXXoXXXXXXXX. ",
+".XXXXXXXXXXXXXoXXXXXXX. ",
+" .XXXXXXXXXXXXXoXXXXX.  ",
+" .XXXXXXXXXXXXXXXXXXX.  ",
+"  .XXXXXXXXXXXXXXXXX.   ",
+"  .XXXXXXXXXXXXXXXXX.   ",
+"   .XXXXXXXoXXXXXXX.    ",
+"    ..XXXXXoXXXXX..     ",
+"      ..XXXoXXX..       ",
+"        .......         ",
+"                        "
+} ;

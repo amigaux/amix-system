@@ -1,0 +1,47 @@
+#ifndef NOIDENT
+#ident	"@(#)olfm:olfm.defaults	1.6"
+#endif
+
+*File.mnemonic: F
+*View.mnemonic: V
+*Edit.mnemonic:E
+*Match.mnemonic:M
+*Directory.mnemonic:D
+*Pattern.mnemonic:P
+*Open.mnemonic:O
+*Copy.mnemonic:C
+*Move.mnemonic:M
+*Link.mnemonic:L
+*Print.mnemonic:P
+*Create Directory.mnemonic:D
+*Create File.mnemonic:F
+*Sort.mnemonic:S
+*Name.mnemonic:N
+*Newest.mnemonic:W
+*Oldest.mnemonic:O
+*Largest.mnemonic:L
+*Smallest.mnemonic:S
+*Type.mnemonic:T
+*Detail.mnemonic:D
+*Name.mnemonic:N
+*Brief.mnemonic:B
+*Full.mnemonic:F
+*Order.mnemonic:O
+*Column Major.mnemonic:C
+*Row Major.mnemonic:R
+*Select All.mnemonic:S
+*Delete.mnemonic:D
+*Cancel.mnemonic:N
+*File Properties.mnemonic:F
+*Properties.mnemonic:P
+*Undo.mnemonic:U
+*Edit File.mnemonic:E
+*Compile.mnemonic:C
+*Apply.mnemonic:A
+*Reset.mnemonic:R
+*Set Defaults.mnemonic:S
+*Reset To Factory.mnemonic:F
+*Overwrite.mnemonic:W
+*Skip.mnemonic:S
+*Match.default:	True
+*allowGadgetGrabs: true

@@ -1,0 +1,40 @@
+#define graph_format 1
+#define graph_width 24
+#define graph_height 24
+#define graph_ncolors 7
+#define graph_chars_per_pixel 1
+static char * graph_colors[] = {
+" " , "#FFFFFFFFFFFF",
+"." , "#0000AAAAFFFF",
+"X" , "#000000000000",
+"o" , "#FFFFAAAA0000",
+"O" , "#AAAA55550000",
+"+" , "#FFFF00000000",
+"@" , "#0000AAAA0000"
+} ;
+static char * graph_pixels[] = {
+" . . . . . . . . . . . .",
+". . . . . . . . . . . . ",
+" . . . . . . . . . . . .",
+"    . . . . . . . . . . ",
+" XX  . . . . . . . . . .",
+" X  . . . . . . . . . . ",
+" X   . . . . . . . . . .",
+" XX . . . . . . .       ",
+" X   . . . . . . . ooo .",
+" X  . .       . .  ooo  ",
+" XX  . . OOO . . . ooo .",
+" X  . .  OOO  . .  ooo  ",
+" X       OOO . . . ooo .",
+" XX +++  OOO  . .  ooo  ",
+" X  +++  OOO       ooo .",
+" X  +++  OOO  @@@  ooo  ",
+" XX +++  OOO  @@@  ooo .",
+" X  +++  OOO  @@@  ooo  ",
+" X  +++  OOO  @@@  ooo  ",
+" XXXXXXXXXXXXXXXXXXXXXX ",
+"                        ",
+". . . . . . . . . . . . ",
+" . . . . . . . . . . . .",
+". . . . . . . . . . . . "
+} ;

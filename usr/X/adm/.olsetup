@@ -1,0 +1,15 @@
+#ident	"@(#)olpkg:adm/.olsetup	1.5"
+# Patchlevel: .olsetup_1.2
+
+if [ -z "${DISPLAY}" ]
+then
+	DISPLAY=unix:0 export DISPLAY		
+	PATH=$PATH:/usr/X/bin export PATH	#!@ Do not edit this line !@
+fi
+OLINVOKE=no export OLINVOKE			#!@ Do not edit this line !@
+XWINFONTPATH="/usr/X/lib/fonts/Xol,/usr/X/lib/fonts/misc,/usr/X/lib/fonts/75dpi,/usr/X/lib/fonts/100dpi" export XWINFONTPATH
+
+if [ "$OLINVOKE" = "yes" -a -r /usr/X/bin/olinit -a -x /usr/X/bin/olinit -a -r /usr/X/bin/olwsm -a -x /usr/X/bin/olwsm ]
+then
+	/usr/X/bin/olinit /usr/X/bin/olwsm -- 
+fi

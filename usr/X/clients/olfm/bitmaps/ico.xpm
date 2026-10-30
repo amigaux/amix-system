@@ -1,0 +1,38 @@
+#define ico_format 1
+#define ico_width 24
+#define ico_height 24
+#define ico_ncolors 5
+#define ico_chars_per_pixel 1
+static char * ico_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#FFFF00000000",
+"X" , "#FFFFFFFF0000",
+"o" , "#0000AAAA0000",
+"O" , "#0000FFFFFFFF"
+} ;
+static char * ico_pixels[] = {
+"                        ",
+"           .XX          ",
+"         ...XXXX        ",
+"       .....XXXXXX      ",
+"     .......XXXXXXXX    ",
+"   .........XXXXXXXXXX  ",
+" ...........XXXXXXXXXXXX",
+".............XXXXXXXXXoo",
+"OOO..........XXXXXXXoooo",
+" OOOO........XXXXXooooo ",
+"  OOOOOO.....XXXooooooo ",
+"   OOOOOOO...Xoooooooo  ",
+"    OOOOOOOOOOoooooooo  ",
+"     OOOOOOOOOooooooo   ",
+"      OOOOOOOOooooooo   ",
+"       OOOOOOOOoooooo   ",
+"        OOOOOOOooooo    ",
+"         OOOOOOooooo    ",
+"          OOOOOoooo     ",
+"           OOOOoooo     ",
+"            OOOOoo      ",
+"             OOOoo      ",
+"              OOo       ",
+"               Oo       "
+} ;

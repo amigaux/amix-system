@@ -1,0 +1,41 @@
+#define c_format 1
+#define c_width 24
+#define c_height 24
+#define c_ncolors 8
+#define c_chars_per_pixel 1
+static char * c_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#AAAA55550000",
+"X" , "#0000AAAA0000",
+"o" , "#000000000000",
+"O" , "#AAAAAAAAAAAA",
+"+" , "#FFFFFFFFFFFF",
+"@" , "#00000000AAAA",
+"#" , "#FFFFAAAA0000"
+} ;
+static char * c_pixels[] = {
+"  ....................  ",
+" .XXXXXXXXXXXXXXXXXXXX. ",
+".XXooooooooooooooooooXX.",
+".XoO+O+O+O+O+O+O+O+O+oX.",
+".Xo+O+O+O+O+O+O+O+O+OoX.",
+".XoO+O+++O+++O+O+O+O+oX.",
+".Xo+O+++O+++O+++O+O+OoX.",
+".XoO+++O+++O+++O+O+O+oX.",
+".Xo+++O+++O+++O+O+O+OoX.",
+".XoO+O+++O+++O+O+O+O+oX.",
+".Xo+O+++O+++O+O+O+O+OoX.",
+".XoO+O+O+O+O+O+O+O+O+oX.",
+".Xo+O+O+O+O+O+O+O+O+OoX.",
+".XXooooooooooooooooooXX.",
+" .XXXXXXXXXXXXXXXXXXXX. ",
+"  ....................  ",
+"                        ",
+"  @@@@@@@@@@@@@@@@@@@@  ",
+" @####################@ ",
+" @##@#@#@#@#@#@#@#@#@#@ ",
+" @####################@ ",
+" @##@#@#@#@#@#@#@#@#@#@ ",
+" @####################@ ",
+"  @@@@@@@@@@@@@@@@@@@@  "
+} ;

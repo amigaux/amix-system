@@ -1,0 +1,93 @@
+menu cprog 'C Program Source'
+     'Compile'    'exec xterm -e /bin/sh -c "cc -c %s 2>&1 | /usr/bin/pg"';
+
+on 'core',
+   '*.bak'   -         'exec xterm -e ${EDITOR:-vi} %s'        junk.icon
+                       '(cat %s | lp -c)';
+
+on '*.c',
+   '*.z'  
+             cprog 
+                       'exec xterm -e ${EDITOR:-vi} %s'        csource.icon 
+                       '(cat %s | lp -c)';
+
+on 'makefile', 
+   'Makefile', 
+   'S.makefile', 
+   'S.Makefile', 
+   '*.mk'
+             -         'exec xterm -e ${EDITOR:-vi} %s'        make.icon 
+                       '(cat %s | lp -c)';
+
+on '*.icon'  -         'exec bitmap %s'                        icon.icon
+                       '(cat %s | lp -c)';
+on 'muncher'  -         'exec  %s'                        muncher.icon
+                       '(cat %s | lp -c)';
+on 'plaid'  -         'exec  %s'                        plaid.icon
+                       '(cat %s | lp -c)';
+on 'ico'  -         'exec  %s'                        ico.icon
+                       '(cat %s | lp -c)';
+on '*.h'  -         'exec xterm -e ${EDITOR:-vi} %s'      headers.icon
+                       '(cat %s | lp -c)';
+on 'xeyes'  -         'exec  %s'                       xeyes.icon
+                       '(cat %s | lp -c)';
+on 'xfish'  -         'exec  %s'                       xfish.icon
+                       '(cat %s | lp -c)';
+on 'train'  -         'exec  %s'                       train.icon
+                       '(cat %s | lp -c)';
+on 'xbiff'  -         'exec  %s'                       xbiff.icon
+                       '(cat %s | lp -c)';
+on 'xcalc'  -         'exec  %s'                       xcalc.icon
+                       '(cat %s | lp -c)';
+on 'xlock'  -         'exec  %s'                       xlock.icon
+                       '(cat %s | lp -c)';
+on 'xmag'  -         'exec  %s'                       xmag.icon
+                       '(cat %s | lp -c)';
+on 'xlogo'  -         'exec  %s'                       xlogo.icon
+                       '(cat %s | lp -c)';
+on 'xsol'  -         'exec  %s'                       xsol.icon
+                       '(cat %s | lp -c)';
+on 'xterm'  -         'exec  %s'                       xterm.icon
+                       '(cat %s | lp -c)';
+on 'maze'  -         'exec  %s'                       maze.icon
+                       '(cat %s | lp -c)';
+on 'break'  -         'exec  %s'                      break.icon
+                       '(cat %s | lp -c)';
+on 'olfm'  -         'exec  %s'                       olfm1.icon
+                       '(cat %s | lp -c)';
+on 'olprintscreen'  -         'exec  %s'             olprt.icon
+                       '(cat %s | lp -c)';
+on 'xplaid'  -         'exec  %s'                      plaid.icon
+                       '(cat %s | lp -c)';
+on 'hexcalc'  -         'exec  %s'                       hexcalc.icon
+                       '(cat %s | lp -c)';
+on 'olpixmap'  -         'exec  %s'                       olpix.icon
+                       '(cat %s | lp -c)';
+on '*puzzle'  -         'exec  %s'                       puzzle.icon
+                       '(cat %s | lp -c)';
+on 'xdemo'  -         'exec  %s'                       xdemo.icon
+                       '(cat %s | lp -c)';
+on 'spider'  -         'exec  %s'                       spider.icon
+                       '(cat %s | lp -c)';
+on 'olam'  -         'exec  %s'                       network.icon
+                       '(cat %s | lp -c)';
+on 'xhosts'  -         'exec  %s'                       network.icon
+                       '(cat %s | lp -c)';
+on 'xpostit'  -         'exec  %s'                       xpostit.icon
+                       '(cat %s | lp -c)';
+on '*clock'  -         'exec  %s'                       clock.icon
+                       '(cat %s | lp -c)';
+on '*fplot'  -         'exec  %s'                     fplot.icon
+                       '(cat %s | lp -c)';
+on '*compress'  -         'exec  %s'                   compress.icon
+                       '(cat %s | lp -c)';
+on '*init'  -         'exec  %s'                     init.icon
+                       '(cat %s | lp -c)';
+on 'olwm'  -         'exec  %s'                     olwm.icon
+                       '(cat %s | lp -c)';
+on '*tennis'  -         'exec  %s'                     tennis.icon
+                       '(cat %s | lp -c)';
+on '*break*'  -         'exec  %s'                     break.icon
+                       '(cat %s | lp -c)';
+on '*.xpm*'  -         'exec  olpixmap %s'               bitmap.icon
+                       '(cat %s | lp -c)';

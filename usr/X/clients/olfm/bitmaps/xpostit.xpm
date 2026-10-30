@@ -1,0 +1,37 @@
+#define xpostit_format 1
+#define xpostit_width 24
+#define xpostit_height 24
+#define xpostit_ncolors 4
+#define xpostit_chars_per_pixel 1
+static char * xpostit_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#000000000000",
+"X" , "#FFFFFFFF0000",
+"o" , "#FFFFFFFFFFFF"
+} ;
+static char * xpostit_pixels[] = {
+"                        ",
+"........................",
+".XXXXXXXXXXXXXXXXXXXXXX.",
+".X.XXX.XXXXXXXXXXXXXXXX.",
+".X..XX.XXXXXXXXXXXXXXXX.",
+".X.X.X.XXXXXXXXXXXXXXXX.",
+".X.XX..XXXXXXXXXXXXXXXX.",
+".X.XXX.X...XXXXXXXXXXXX.",
+".X.XXX.X.X.XX.XXXXXXXXX.",
+".XXXXXXX.X.X...XXXXXXXX.",
+".XXXXXXX...XX.XX.XXXXXX.",
+".XXXXXXXXXXXX.X.X.XXXXX.",
+".XXXXXXXXXXXX.X...XX..X.",
+"......XXXXXXXXX.XXX.XXX.",
+"..o.o.XXXXXXXXX...XX.XX.",
+".X.o..XXXXXXXXXXXXXXX.X.",
+".XX.o.XXXXXXXXXXXXX..XX.",
+".XXX..XXXXXXXXXXXXXXXXX.",
+"........................",
+"                        ",
+"                        ",
+"                        ",
+"                        ",
+"                        "
+} ;

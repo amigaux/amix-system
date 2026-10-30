@@ -1,0 +1,55 @@
+#!/bin/sh
+#
+# Patchlevel: Xsession_1.3
+#
+# Xsession
+#
+# This is the program that is run as the client
+# for the display manager.  This example is
+# quite friendly as it attempts to run a per-user
+# .xsession file instead of forcing a particular
+# session layout
+#
+
+if [ "`type xterm`" = "xterm not found" ]
+then
+	PATH=$PATH:/usr/X/bin export PATH
+fi
+
+. /etc/TIMEZONE # For xclock started from olwsm
+
+case $# in
+1)
+	case $1 in
+	failsafe)
+		exec xterm -geometry 80x24-0-0 -ls
+		;;
+	esac
+esac
+
+startup=$HOME/.xsession
+
+# Make sure user has .xsession file and it is current:
+grep "Patchlevel: .xsession_1.2" $startup >/dev/null 2>&1
+if [ $? -ne 0 ] ; then 
+	# File does not exist or string was not found.  Update.
+	rm -f $startup
+	cp /usr/X/lib/xdm/.xsession $startup
+	chmod +rwx $startup 2> /dev/null
+fi
+
+if [ ! -f $startup ] ; then
+	startup=/usr/X/lib/xdm/.xsession
+fi
+
+# Make sure user has the current .olsetup or none
+grep "Patchlevel: .olsetup_1.2" $HOME/.olsetup >/dev/null 2>&1
+if [ $? -eq 1 ] ; then 
+	# File exists and string was not found.  Update.
+	rm -f $HOME/.olsetup
+	cp /usr/X/adm/.olsetup $HOME
+fi
+
+
+exec $startup
+exec /bin/sh $startup

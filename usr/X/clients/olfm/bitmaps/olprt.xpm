@@ -1,0 +1,39 @@
+#define olprt_format 1
+#define olprt_width 24
+#define olprt_height 24
+#define olprt_ncolors 6
+#define olprt_chars_per_pixel 1
+static char * olprt_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#000000000000",
+"X" , "#AAAAAAAAAAAA",
+"o" , "#FFFF00000000",
+"O" , "#FFFFFFFF0000",
+"+" , "#FFFFAAAA0000"
+} ;
+static char * olprt_pixels[] = {
+"      ..............    ",
+"      ..XXXXXXXXXX..    ",
+"      .XXXXXXXXXXXX.    ",
+"    ooooooooXXXXXXX.    ",
+"   o  .XXXXXXXXXXXX.    ",
+"  o   .XXXXXXXXXXXX.    ",
+"  o   ..XXXXXXXXXX..    ",
+"  o   ..............    ",
+"  o         ..          ",
+"   o  o  ........       ",
+"    o o                 ",
+"     oo                 ",
+"   oooo                 ",
+"                        ",
+"      ..................",
+".    .O.OOOOOOOOOOOOOOO.",
+" .   .O.OOOO......OOOOO.",
+"  .  ...OOOOOOOOOOOOOO. ",
+"   . .................  ",
+"    ..++++++++++++++.   ",
+"     .++++++++++++++.   ",
+"     .++++++++++++++.   ",
+"     ................   ",
+"        ...     ...     "
+} ;

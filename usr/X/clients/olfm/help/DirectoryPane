@@ -1,0 +1,20 @@
+The Directory Pane displays the contents of the current directory which match the pattern supplied in the Pattern field and all sub-directories.  You use the glyphs in this pane to perform file management functions such as copying, deleting, moving, and changing attributes of files and directories.  To perform any of these operations you must SELECT a set of glyphs.  This is done by clicking SELECT on any of the glyphs in the pane.  The selection can be extended using the ADJUST button.  Once you have selected a set of glyphs you use either the menus under the File and Edit buttonstacks or the Directory Commands pop-up menu to select the operation to be performed.  Alternatively you can use the direct manipulation mechanism to copy, move, and open glyphs.
+
+The Directory Commands pop-up menu can be used to "Open", "Delete", or to change "Properties" of a file or a directory.  You activate this menu by pressing MENU while in the Directory Pane.
+
+The "Open" button causes the File Manager to execute the default action for the selected object which can be a file, a directory, or an executable program.  The default action is the action that the file is programmed to execute and is set by changing the binding file ".olfmrc".  The following factory defaults are supplied by the OPEN LOOK Interface in the binding file.
+
+Directory:  Change the working directory to the selected directory and display its contents.
+
+Data File:  Place the selected Data File in a Terminal Emulator window for editing.  The editing environment is determined by using the shell variable EDITOR.
+
+Executable:  Execute the selected executable file.
+
+The "Delete" button is used to remove the selected files or directories from the system.  As delete procedures begin, a notice window with an "Abort" button appears.  If you select "Abort" then the delete action will be canceled as if you never selected "Delete" from the "Directory Commands" menu.
+
+The "Properties" button invokes the Files property window to allow changes to the file name, the owner name, and the group name and permissions on the file.  You enter the name in the Name, the Owner, or the Group field to change the file name, the owner name, or the group name respectively.  You select the Read, Write, or Execute boxes to change one or all of owner access, group access, or other access permissions.
+
+Apply button:  Select this button to incorporate your changes.
+Reset button:  Select this button to return to the default properties.
+
+The direct manipulation mechanism allows you to directly manipulate glyphs by dragging them across the display and dropping them on other objects in the OPEN LOOK environment.  In particular, you can drag and drop glyphs to move them within the system, while pressing the SHIFT key drag and drop glyphs to copy them to another place, or drag and drop an object onto the Workspace to execute the deafult action for the glyph.  Additionally, other OPEN LOOK application allow you to drop glyphs on their windows to perform actions defined by the application (for example to edit or print a file).

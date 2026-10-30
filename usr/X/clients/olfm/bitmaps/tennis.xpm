@@ -1,0 +1,37 @@
+#define tennis_format 1
+#define tennis_width 24
+#define tennis_height 24
+#define tennis_ncolors 4
+#define tennis_chars_per_pixel 1
+static char * tennis_colors[] = {
+" " , "#0000AAAAFFFF",
+"." , "#FFFFFFFFFFFF",
+"X" , "#0000AAAA0000",
+"o" , "#FFFFAAAA0000"
+} ;
+static char * tennis_pixels[] = {
+"                        ",
+"                        ",
+"         ............   ",
+"         .XXXXX.XXXX.   ",
+"        .XXXXX.XXXXX.   ",
+"        .............   ",
+"       .XXXXXXXXXXXX.   ",
+"       .XXXXXXXXXXXX.   ",
+"     ooooooooooooooooo  ",
+"     o.oXoXoXoXoXoXo.o  ",
+"     ooooooooooooooooo  ",
+"     .XXXXXXXXXXXXXX.   ",
+"     .XXXXXXXXXXXXXX.   ",
+"    .XXXXXXXXXXXXXXX.   ",
+"    .XXXXXXXXXXXXXXX.   ",
+"   ..................   ",
+"   .XXXXXXXX.XXXXXXX.   ",
+"  .XXXXXXXXX.XXXXXXX.   ",
+"  .XXXXXXXX.XXXXXXXX.   ",
+" .XXXXXXXXX.XXXXXXXX.   ",
+" ....................   ",
+"                        ",
+"                        ",
+"                        "
+} ;
