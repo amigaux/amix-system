@@ -1,0 +1,2 @@
+#!/sbin/sh
+exec dd if=/dev/zero bs=11k count=80

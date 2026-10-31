@@ -1,0 +1,18 @@
+#!/sbin/sh
+#
+# Patchlevel: duplicate_1.0
+#
+echo "Insert master disk and press return: \c"
+read ans
+dd if=/dev/dsk/fd0 of=/tmp/dskimage bs=22k count=40
+while :
+do
+	echo "Insert WRITABLE target disk and press return [q]: \c"
+	read ans
+	case "$ans" in
+	"q" | "Q")
+		exit 0
+		;;
+	esac
+	dd of=/dev/rdsk/fd0f if=/tmp/dskimage bs=22k count=40
+done

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+exec 3>/dev/audio
+/usr/amiga/bin/au -p 448 >&3
+/usr/amiga/bin/sayclock | dd obs=1k >&3 2>/dev/null
+exec 3<&-

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+echo "\nWhat is this machine's network address? \c"
+read MY_ADDR
+echo "What is the second machine's nodename? \c"
+read HOST_NAME
+echo "What is the second machine's network address? \c"
+read HOST_ADDR
+
+	echo "#ident	\"@(#)cmd-inet:etc/hosts	1.1\"
+#
+# Internet host table
+#
+127.1		localhost loghost loopback me
+$MY_ADDR	`uname -n`
+$HOST_ADDR	$HOST_NAME" > /etc/inet/hosts
+
+echo "\n/etc/inet/hosts created."

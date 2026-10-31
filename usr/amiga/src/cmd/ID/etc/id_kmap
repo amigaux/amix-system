@@ -1,0 +1,74 @@
+
+KMAPDIR=/etc/kmap
+DEFKMAP=12
+
+echo "\nAvailable key mappings are:
+
+ 1)	cdn	Canadien Français
+ 2)	ch1	Suisse
+ 3)	ch2	Schweiz
+ 4)	d	Deutsch
+ 5)	dk	Dansk
+ 6)	e	Español
+ 7)	f	Français
+ 8)	gb	British
+ 9)	i	Italiano
+10)	n	Norsk
+11)	s	Svenska
+12)	usa	American
+13)	usa0	American 1.0
+14)	usa2	American Dvorak
+"
+
+
+unset KMAP
+while [ "$KMAP" = "" ]
+do
+	echo "\nWhich keyboard are you using? [$DEFKMAP] \c"
+	read ask
+
+	if [ "$ask" = "" ]
+	then
+		ask="$DEFKMAP"
+	fi
+
+	case $ask in
+		1)	KMAP=cdn
+			;;
+		2)	KMAP=ch1
+			;;
+		3)	KMAP=ch2
+			;;
+		4)	KMAP=d
+			;;
+		5)	KMAP=dk
+			;;
+		6)	KMAP=e
+			;;
+		7)	KMAP=f
+			;;
+		8)	KMAP=gb
+			;;
+		9)	KMAP=i
+			;;
+		10)	KMAP=n
+			;;
+		11)	KMAP=s
+			;;
+		12)	KMAP=usa
+			;;
+		13)	KMAP=usa0
+			;;
+		14)	KMAP=usa2
+			;;
+	esac
+done
+
+if [ "$KMAP" = "usa" ]
+then
+	unset KMAP
+	sioc 5
+else
+	sioc 5 $KMAPDIR/$KMAP
+fi
+

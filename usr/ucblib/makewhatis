@@ -1,0 +1,36 @@
+#!/bin/sh
+
+
+cd ${MANPATH=/usr/share/man}
+for i in [0-9]*
+do
+    if [ -d $i ]
+    then
+
+	SECT="$i"
+
+	cd $i
+
+	find * -type f -print | egrep -v "^ol[A-Z]" | \
+	    xargs /usr/ucblib/getNAME $SECT | sed \
+		-e 's/\\-/-/' \
+		-e 's/\\\*-/-/' \
+		-e 's/ VAX-11//' \
+		-e 's/\\f[PRIB0-9]//g' \
+		-e 's/\.[BIP] //' \
+		-e 's/\... //' \
+		-e 's/\\\&//' \
+		-e 's/\\\*Sd //' \
+		-e 's/\\\*Ps //' \
+		-e 's/\\s[-+0-9]*//g' \
+		-e 's/\\(em/-/' \
+		-e 's///' \
+		-e 's/^\([^(]*\)\(([^)]*) *\)\1: */\1\2/'
+
+	cd ..
+    fi
+done | cat -s - base_whatis | sort -u -f -t'(' +1 +0 > whatis
+chmod 644 whatis
+chown bin whatis
+chgrp bin whatis
+

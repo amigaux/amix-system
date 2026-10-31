@@ -1,0 +1,177 @@
+/dev/null
+1760 192
+d--777 0 0
+	bin	d--777 0 0
+		amixpkg		---777 0 0 /usr/amiga/bin/amixpkg
+		cat		---777 0 0 /usr/bin/cat
+		chmod		---777 0 0 /usr/bin/chmod
+		cpio		---777 0 0 /usr/bin/cpio
+		dd		---777 0 0 /usr/bin/dd
+		expr		---777 0 0 /usr/bin/expr
+		fsck_s5		---777 0 0 /usr/lib/fs/s5/fsck
+		fsck_ufs	---777 0 0 /usr/lib/fs/ufs/fsck
+		init		---777 0 0 etc/init
+		lf		---777 0 0 /usr/bin/lf
+		ll		---777 0 0 /usr/bin/ll
+		ln		---777 0 0 /usr/bin/ln
+		ls		---777 0 0 /usr/bin/ls
+		mkdir		---777 0 0 /usr/bin/mkdir
+		mknod		---777 0 0 /sbin/mknod
+		rm		---777 0 0 /usr/bin/rm
+		sh		---777 0 0 /usr/bin/sh
+		swap		---777 0 0 /usr/sbin/swap
+		sync		---777 0 0 /usr/bin/sync
+		mkfs_s5		---777 0 0 /usr/lib/fs/s5/mkfs
+		mkfs_ufs	---777 0 0 /usr/lib/fs/ufs/mkfs
+		zcat		---777 0 0 /usr/bin/zcat
+	$
+	dev	d--777 0 0
+		amiga		c--777 0 0 6 0
+		cage		b--777 0 0 16 255
+		console		c--777 0 0 0 0
+		fakeswap	b--777 0 0 19 0
+		kmem		c--777 0 0 3 1
+		mem		c--777 0 0 3 0
+		noise		c--777 0 0 4 0
+		null		c--777 0 0 3 2
+		scsi		c--777 0 0 11 0
+		machid		c--777 0 0 12 0
+		tty		c--777 0 0 2 0
+		zero		c--777 0 0 3 3
+		rmt		d--777 0 0
+			4		c--777 0 0 16 4
+			4n		c--777 0 0 16 132
+		$
+		rdsk		d--777 0 0
+			c0d0s0		c--777 0 0 40   0
+			c0d0s1		c--777 0 0 40  16
+			c0d0s2		c--777 0 0 40  32
+			c0d0s3		c--777 0 0 40  48
+			c0d0s4		c--777 0 0 40  64
+			c0d0s5		c--777 0 0 40  80
+			c0d0s6		c--777 0 0 40  96
+			c0d0s7		c--777 0 0 40 112
+			c1d0s0		c--777 0 0 40   1
+			c1d0s1		c--777 0 0 40  17
+			c1d0s2		c--777 0 0 40  33
+			c1d0s3		c--777 0 0 40  49
+			c1d0s4		c--777 0 0 40  65
+			c1d0s5		c--777 0 0 40  81
+			c1d0s6		c--777 0 0 40  97
+			c1d0s7		c--777 0 0 40 113
+			c2d0s0		c--777 0 0 40   2
+			c2d0s1		c--777 0 0 40  18
+			c2d0s2		c--777 0 0 40  34
+			c2d0s3		c--777 0 0 40  50
+			c2d0s4		c--777 0 0 40  66
+			c2d0s5		c--777 0 0 40  82
+			c2d0s6		c--777 0 0 40  98
+			c2d0s7		c--777 0 0 40 114
+			c3d0s0		c--777 0 0 40   3
+			c3d0s1		c--777 0 0 40  19
+			c3d0s2		c--777 0 0 40  35
+			c3d0s3		c--777 0 0 40  51
+			c3d0s4		c--777 0 0 40  67
+			c3d0s5		c--777 0 0 40  83
+			c3d0s6		c--777 0 0 40  99
+			c3d0s7		c--777 0 0 40 115
+			c5d0s0		c--777 0 0 40   5
+			c5d0s1		c--777 0 0 40  21
+			c5d0s2		c--777 0 0 40  37
+			c5d0s3		c--777 0 0 40  53
+			c5d0s4		c--777 0 0 40  69
+			c5d0s5		c--777 0 0 40  85
+			c5d0s6		c--777 0 0 40 101
+			c5d0s7		c--777 0 0 40 117
+			c6d0s0		c--777 0 0 40   6
+			c6d0s1		c--777 0 0 40  22
+			c6d0s2		c--777 0 0 40  38
+			c6d0s3		c--777 0 0 40  54
+			c6d0s4		c--777 0 0 40  70
+			c6d0s5		c--777 0 0 40  86
+			c6d0s6		c--777 0 0 40 102
+			c6d0s7		c--777 0 0 40 118
+			fd0f		c--777 0 0 17 16
+		$
+		dsk		d--777 0 0
+			c0d0s0		b--777 0 0 18   0
+			c0d0s1		b--777 0 0 18  16
+			c0d0s2		b--777 0 0 18  32
+			c0d0s3		b--777 0 0 18  48
+			c0d0s4		b--777 0 0 18  64
+			c0d0s5		b--777 0 0 18  80
+			c0d0s6		b--777 0 0 18  96
+			c0d0s7		b--777 0 0 18 112
+			c1d0s0		b--777 0 0 18   1
+			c1d0s1		b--777 0 0 18  17
+			c1d0s2		b--777 0 0 18  33
+			c1d0s3		b--777 0 0 18  49
+			c1d0s4		b--777 0 0 18  65
+			c1d0s5		b--777 0 0 18  81
+			c1d0s6		b--777 0 0 18  97
+			c1d0s7		b--777 0 0 18 113
+			c2d0s0		b--777 0 0 18   2
+			c2d0s1		b--777 0 0 18  18
+			c2d0s2		b--777 0 0 18  34
+			c2d0s3		b--777 0 0 18  50
+			c2d0s4		b--777 0 0 18  66
+			c2d0s5		b--777 0 0 18  82
+			c2d0s6		b--777 0 0 18  98
+			c2d0s7		b--777 0 0 18 114
+			c3d0s0		b--777 0 0 18   3
+			c3d0s1		b--777 0 0 18  19
+			c3d0s2		b--777 0 0 18  35
+			c3d0s3		b--777 0 0 18  51
+			c3d0s4		b--777 0 0 18  67
+			c3d0s5		b--777 0 0 18  83
+			c3d0s6		b--777 0 0 18  99
+			c3d0s7		b--777 0 0 18 115
+			c5d0s0		b--777 0 0 18   5
+			c5d0s1		b--777 0 0 18  21
+			c5d0s2		b--777 0 0 18  37
+			c5d0s3		b--777 0 0 18  53
+			c5d0s4		b--777 0 0 18  69
+			c5d0s5		b--777 0 0 18  85
+			c5d0s6		b--777 0 0 18 101
+			c5d0s7		b--777 0 0 18 117
+			c6d0s0		b--777 0 0 18   6
+			c6d0s1		b--777 0 0 18  22
+			c6d0s2		b--777 0 0 18  38
+			c6d0s3		b--777 0 0 18  54
+			c6d0s4		b--777 0 0 18  70
+			c6d0s5		b--777 0 0 18  86
+			c6d0s6		b--777 0 0 18 102
+			c6d0s7		b--777 0 0 18 118
+			fd0		b--777 0 0 16 0
+			fd1		b--777 0 0 16 32
+			fd2		b--777 0 0 16 64
+		$
+	$
+	etc		d--777 0 0
+		atdevs		---777 0 0	/usr/amiga/etc/atdevs
+		ddsize		---777 0 0 	/usr/amiga/bin/ddsize
+		dioc		---777 0 0 	etc/dioc
+		group		---666 0 0 	etc/group
+		id_kmap		---777 0 0 	etc/id_kmap
+		mount		---777 0 0	etc/mount
+		passwd		---666 0 0	etc/passwd
+		profile		---777 0 0	profile
+		rdb		---777 0 0	/usr/amiga/bin/rdb
+		romsize		---777 0 0	etc/romsize
+		sioc		---777 0 0	/usr/amiga/bin/sioc
+		uadmin		---777 0 0	/sbin/uadmin
+		kmap		d--777 0 0
+		$
+	$
+	usr		d--777 0 0
+		share		d--777 0 0
+		$
+		lib		d--777 0 0
+			libc.so.1	---777 0 0	/usr/lib/libc.so.1
+		$
+	$
+	mnt		d--777 0 0
+	$
+	tmp		d--777 0 0
+	$
+$

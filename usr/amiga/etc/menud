@@ -1,0 +1,15 @@
+#!/bin/sh
+exec < /dev/term/con1 > /dev/term/con1
+/usr/amiga/bin/sioc setgroup 0 > /dev/null
+echo "\n\n\n\n\n\n\n\n"
+echo "                     You logged out of a virtual screen.\n"
+echo "          Please use an ALT-FUNCTIONKEY combination to select a new"
+echo "                              virtual screen."
+
+stty -echo raw
+TERM=amiga tput home
+
+while read foo
+do
+	:
+done

@@ -1,0 +1,14 @@
+.TH SCRMENU 1A
+.SH NAME
+scrmenu \- provide description of active screens
+.SH SYNOPSIS
+scrmenu
+.SH DESCRIPTION
+scrmenu
+provides a description of what programs are running on various
+screens.  It allows the user to interactively select
+(using the arrow keys), and activate (using the
+return key) a screen.  It is intended to be run automatically during
+system startup.
+.SH SEE ALSO
+sioc(1A), screen(7A)

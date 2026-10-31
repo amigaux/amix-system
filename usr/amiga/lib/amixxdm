@@ -1,0 +1,114 @@
+#!/bin/sh
+#
+# Patchlevel: amixxdm_1.2
+#
+
+BIN=/usr/X/bin
+PATH=/usr/sbin:/sbin:/usr/bin:/usr/amiga/bin
+TMP=/tmp/xdm$$
+SAC=/etc/saf/_sactab
+
+if pkginfo -q Xcore ; then
+  :
+else
+  echo "
+Cannot configure XDM - the Xcore package is not installed.
+
+PRESS RETURN: \c"
+  read ask
+  exit 0
+fi
+
+while true
+do
+
+echo "
+Configure X Windows Login screen
+
+  1)   Enable
+  2)   Disable
+  q)   Quit
+
+Option number: \c"
+
+read ask
+case $ask in
+	"1")
+		# remove initial # and chg :x: to ::
+		if sed 's/^.*xdm:xdm:x:/xdm:xdm::/' <$SAC >$TMP ; then
+		    cp $TMP $SAC
+		else
+		   echo "Problem modifying $SAC."
+		   echo "xdm not enabled."
+		fi
+				    
+		# Pmadm, sacadm complain when this is run from system.setup
+		# because sac has not been started yet:
+		pmadm -d -p screens -s con10 >/dev/null 2>&1
+		sacadm -s -p xdm >/dev/null 2>&1
+		echo "
+
+MONOCHROME MODE
+
+	o  Default XDM setup is black and white
+	o  Connect monitor to Amiga's video port
+	o  Press Alt-F10
+
+
+COLOR MODE
+
+	o  Read and edit /usr/X/lib/xdm/Xservers to configure
+	o  Connect monitor to port on color graphics adaptor
+	o  Press Alt-F10 to activate the keyboard and mouse
+
+
+WINDOW MANAGERS
+
+	o  Read and edit .xsession in home directory to select
+	o  OpenLook	included
+	o  Twm		included
+	o  TvTwm	included
+	o  Motif	available
+
+Press return: \c"
+
+		read ask
+		break
+		;;
+	"2")
+		if sed 's/^.*xdm:xdm::/xdm:xdm:x:/' <$SAC >$TMP ; then
+		    cp $TMP $SAC
+		else
+		   echo "Problem modifying $SAC."
+		   echo "xdm not disabled."
+		   break
+		fi
+
+				    
+		# Pmadm, sacadm complain when this is run from system.setup
+		# because sac has not been started yet:
+		sacadm -k -p xdm >/dev/null 2>&1
+		pmadm -e -p screens -s con10 >/dev/null 2>&1
+		echo "
+Disabled.
+
+Press return: \c"
+		read ask
+				
+		break
+		;;
+	[qQ]*)
+		break
+		;;
+	*)
+		echo "
+Option not recognized."
+		sleep 1
+		;;
+esac
+done
+
+rm -f $TMP
+
+
+

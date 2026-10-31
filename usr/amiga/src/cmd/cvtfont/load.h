@@ -1,0 +1,15 @@
+#define hunk_unit    0x03E7
+#define hunk_name    0x03E8
+#define hunk_code    0x03E9
+#define hunk_data    0x03EA
+#define hunk_bss     0x03EB
+#define hunk_reloc32 0x03EC
+#define hunk_reloc16 0x03ED
+#define hunk_reloc8  0x03EE
+#define hunk_ext     0x03EF
+#define hunk_symbol  0x03F0
+#define hunk_debug   0x03F1
+#define hunk_end     0x03F2
+#define hunk_header  0x03F3
+#define hunk_overlay 0x03F5
+#define hunk_break   0x03F6

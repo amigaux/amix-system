@@ -1,0 +1,46 @@
+#!/bin/sh
+
+PATH=/sbin:/usr/bin:/usr/amiga/bin
+
+
+ksh /usr/amiga/etc/TZ
+. /etc/TIMEZONE
+
+while [ "$ONE" = "" ]
+do
+	ONED=`date +%m%d%y`
+	echo "\nWhat is the current date (mmddyy)? [$ONED] \c"
+	read ask
+
+	case $ask in
+		[0-9][0-9][0-9][0-9][0-9][0-9])
+			ONE=$ask
+
+		;;
+
+		"" )
+			ONE=$ONED
+	esac
+done
+
+while [ "$TWO" = "" ]
+do
+	TWOD=`date +%H%M`
+	echo "\nWhat is the current time (hhmm)? [$TWOD] \c"
+	read ask
+
+	case $ask in
+		[0-9][0-9][0-9][0-9])
+			TWO=$ask
+		;;
+		"" )
+			TWO=$TWOD
+	esac
+done
+
+THREE="`expr $ONE : '\(....\)..'`${TWO}`expr $ONE : '....\(..\)'"
+
+echo "\nDate set to \c"
+date $THREE
+unset ONE TWO
+

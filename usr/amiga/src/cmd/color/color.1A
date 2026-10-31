@@ -1,0 +1,103 @@
+.TH color 1A 
+.SH NAME
+\f4color\f1 \- set or show screen colors
+.SH SYNOPSIS
+.nf
+\f4color\f1 [\f4-bc\f1 \f2color\f1] [\f4-fc\f1 \f2color\f1] [\f4-c\f2nn\f1 \f2color\f1] [\f4-over\f1] [\f4-showall\f1]
+.fi
+.SH DESCRIPTION
+Typing \f4color\f1 without any arguments shows the colors relevant for your screen.
+The foreground color is set by using the
+\f4-fc\f1
+option followed by the name of a color.
+A color name may be one of the standard colors:
+\f4black\f1, \f4blue\f1, \f4green\f1, \f4cyan\f1,
+\f4red\f1, \f4magenta\f1, \f4yellow\f1, and \f4white\f1.
+You may also construct a shaded color by giving a hexadecimal number for
+a name.
+.PP
+The following options are recognized by color:
+.TP
+\f4-bc\f1
+This sets the background color.
+You must specify the name of a color after the
+\f4-bc\f1
+option.
+.TP
+\f4-fc\f1
+This sets the foreground color.
+A color must be specified after the
+\f4-fc\f1
+option.
+.TP
+\f4-c\f2nn\f1
+This sets color \f2nn\f1 to the specified color.
+Note that color 00 is the background color and color 01 is the foreground
+color.
+.TP
+\f4-over\f1
+An attempt is made to prevent you from setting the same color
+as your background and foreground.
+This option lets you override the check.
+.TP
+\f4-showall\f1
+Shows the entire color map.
+.PP
+In its simplest form, a shaded color is given by typing a three digit
+hexadecimal number.
+The first digit is the red component, the second is the green while the
+third corresponds to blue.
+The colors are additive.
+Thus
+\f4F0F\f1
+would give a magenta color (red and blue).
+.PP
+In its more complex form,
+colors have a gray scale componenet and a red/green/blue (rgb) component.
+Both the gray scale and the rgb components are maintained and may be set
+separately.
+The rgb component is used when a color monitor is configured while the gray
+scale component is in effect when using a monochrome monitor.
+.PP
+The rgb component may be a three digit hexadecimal number as in the simple
+form or it may be a six digit hexadecimal number.
+In the case of a six digit number,
+the red component corresponds to the first two hex digits,
+the next two are green and the final two are blue.
+The gray scale component may either be a single or dual digit hex number.
+The color is specified by concatenating the single or dual digit gray scale
+component with the three or six digit rgb component.
+.SH EXAMPLES
+Set the background to be white and the characters to be red:
+.PP
+.RS
+.ft 4
+color -bc white -fc red
+.ft 1
+.RE
+.PP
+Set your colors so that the characters are grey and the background is lavender with
+the gray scale component set to black for the background and white for the
+foreground:
+.PP
+.RS
+.ft 4
+color -bc 00545 -fc F686868
+.ft 1
+.RE
+.PP
+Note that the rgb component of the background is 504050 and the gray scale
+component of the background is 00 (black).
+The rgb component of the foreground is 686868 while the gray scale component
+is F0 (almost completely white).
+.PP
+Show your current color settings:
+.PP
+.RS
+.ft 4
+color
+.ft 1
+.RE
+.PP
+.SH "SEE ALSO"
+Getting Started chapter in the Using Amiga Unix manual.

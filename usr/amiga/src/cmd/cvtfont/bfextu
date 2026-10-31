@@ -1,0 +1,126 @@
+From amix.commodore.com!deuterium.commodore.com!ford Wed Sep 13 04:21:22 1989
+Return-Path: <@amix.commodore.com:ford@deuterium.commodore.com>
+Received: by hydrogen.commodore.com (/\=-/\ Smail3.1.17.5 #17.7)
+	id <m0g4Url-0001YfC@hydrogen.commodore.com>; Wed, 13 Sep 89 04:21 EDT
+Received: by amix.commodore.com (/\=-/\ Smail3.1.17.5 #17.7)
+	id <m0g4Vp4-0004hTC@amix.commodore.com>; Wed, 13 Sep 89 05:22 EDT
+Received: by deuterium.commodore.com (/\=-/\ Smail3.1.17.5 #17.7)
+	id <m0g4VmW-0001sEC@deuterium.commodore.com>; Wed, 13 Sep 89 05:19 EDT
+Message-Id: <m0g4VmW-0001sEC@deuterium.commodore.com>
+Date: Wed, 13 Sep 89 05:20 EDT
+From: ford@deuterium.commodore.com (Mike Ditto)
+To: skrenta@amix
+Subject: bfextu function
+Status: RO
+
+
+Here is a header file that allows use of the 68020 bitfield instructions.
+The one you are probably interested in is "bfextu", bitfield extract unsigned.
+You give it a buffer, a bit number, and a # of bits, and it gives you those
+specified bits with the rest of the longword zeroed out, exactly like you need
+to grab the bits from the AmigaDos font bitmap.  The bit number can be large,
+and it will calculate which bytes within the buffer to use.  It works on
+fields up to 32 bits.
+					-=] Ford [=-
+
+
+# This is a shell archive.  Remove anything before this line,
+# then unpack it by saving it in a file and typing "sh file".
+#
+# This archive contains:
+#	bfinline.h	
+#
+# Error checking via wc(1) will be performed.
+
+echo x - bfinline.h
+cat >bfinline.h <<'@EOF'
+
+asm unsigned int bfffo(buf, bitoff, nbits)
+{
+%	mem	buf, bitoff, nbits;
+
+	mov.l	buf,%a0
+	mov.l	bitoff,%d0
+	mov.l	nbits,%d1
+	long	0xEDD00821
+}
+/* 0xEDD00821 is: bfffo (%a0){%d0,%d1},%d0 */
+
+asm void bfchg(buf, bitoff, nbits)
+{
+%	mem	buf, bitoff, nbits;
+
+	mov.l	buf,%a0
+	mov.l	bitoff,%d0
+	mov.l	nbits,%d1
+	long	0xEAD00821
+}
+/* 0xEAD00821 is: bfchg (%a0){%d0,%d1} */
+
+asm void bfclr(buf, bitoff, nbits)
+{
+%	mem	buf, bitoff, nbits;
+
+	mov.l	buf,%a0
+	mov.l	bitoff,%d0
+	mov.l	nbits,%d1
+	long	0xECD00821
+}
+/* 0xECD00821 is: bfclr (%a0){%d0,%d1} */
+
+asm void bfset(buf, bitoff, nbits)
+{
+%	mem	buf, bitoff, nbits;
+
+	mov.l	buf,%a0
+	mov.l	bitoff,%d0
+	mov.l	nbits,%d1
+	long	0xEED00821
+}
+/* 0xEED00821 is: bfset (%a0){%d0,%d1} */
+
+asm long bfexts(buf, bitoff, nbits)
+{
+%	mem	buf, bitoff, nbits;
+
+	mov.l	buf,%a0
+	mov.l	bitoff,%d0
+	mov.l	nbits,%d1
+	long	0xEBD00821
+}
+/* 0xEBD00821 is: bfexts (%a0){%d0,%d1},%d0 */
+
+asm unsigned long bfextu(buf, bitoff, nbits)
+{
+%	mem	buf, bitoff, nbits;
+
+	mov.l	buf,%a0
+	mov.l	bitoff,%d0
+	mov.l	nbits,%d1
+	long	0xE9D00821
+}
+/* 0xE9D00821 is: bfextu (%a0){%d0,%d1},%d0 */
+
+asm void bfins(buf, bitoff, nbits, val)
+{
+%	mem	buf, bitoff, nbits, val;
+
+	mov.l	buf,%a0
+	mov.l	bitoff,%d0
+	mov.l	nbits,%d1
+	mov.l	%d2,%a1
+	mov.l	val,%d2
+	long	0xEFD02821
+	mov.l	%a1,%d2
+}
+/* 0xEFD02821 is: bfins %d2,(%a0){%d0,%d1} */
+@EOF
+if test "`wc -lwc <bfinline.h | sed -e 's/  */:/g'`" != ':80:192:1324'
+then
+	echo ERROR: wc results of bfinline.h are `wc -lwc <bfinline.h | sed -e 's/  */:/g'` should be :80:192:1324
+fi
+
+chmod 644 bfinline.h
+
+exit 0
+

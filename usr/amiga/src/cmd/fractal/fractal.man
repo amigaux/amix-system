@@ -1,0 +1,163 @@
+.TH fractal 1A
+.SH NAME
+fractal, julia \- Display Mandelbrot and Julia sets on Amiga Unix
+/dev/screen device
+.SH SYNOPSIS
+fractal
+[-?JMbB] [-xyiIpPqaeHWDhwdmf float]
+.SH DESCRIPTION
+.B fractal
+commands have changed from the previous release.  New mouse and
+key hacks are available.
+.B fractal
+by default opens the largest possible screen on the default monitor
+under the screens device (/dev/screen).
+.B fractal proceeds to display a Mandelbrot (or Julia) set
+for the current coordinates.
+.SH OPTIONS
+.TP
+J
+Julia computation.
+.TP
+M
+Mandelbrot computation
+.TP
+x float
+X (real component of Z) center of fractal to compute.
+.TP
+y float
+Y (imaginary component of Z) center of fractal to compute.
+.TP
+i float
+X interation increment.
+.TP
+I float
+Y interation increment.
+.TP
+p float
+real componant of C.
+.TP
+q imaginary component of C.
+.TP
+a
+Attractor point.  Interration of Z = Z^2 + C will stop when
+Z is greater than a.
+.TP
+e
+Escape point or max interrations.  Interration of Z = Z^2 + C will
+terminate if the interration number exceeds e.
+.TP
+w
+Actual screen width.
+.TP
+h
+Actual screen height.
+.TP
+d
+Actual screen depth.
+.TP
+f
+scrtype flags (see screen(1A)).
+.TP
+m
+scrtype modes (see screen(1A)).
+.TP
+W
+Virtual screen width.
+.TP
+H
+Virtual screen height.
+.TP
+D
+Virtual screen depth.
+.TP
+B
+Batch mode (no display, save on exit)
+.TP
+b
+Same as `B' (batch mode) but will display screen while fractal is
+being computed.
+.TP
+F
+Filename for Amiga-s (save gif file) key hack.
+.SH MOUSE HACKS
+To zoom into the fractal drag a box around the part of the fractal
+you wish to display.  If the SHIFT key is held down while dragging the
+mouse the box will not be contrained to square sides.
+
+If a zoom box is displayed and CONTROL key is held down while dragging
+the mouse the zoom box will move.  If no zoom box is display the screen
+will move around the virtual screen (see command line options -H, -W,
+and -D).
+
+Use Amiga-z (or the RETURN key) to zoom in, Amiga-Z to zoom out.
+
+Use ESC to terminate zoom box mode.
+.SH KEY HACKS
+Most key hacks are now modified by the Amiga-key.
+.TP
+Amiga-q
+Quit fractal.
+.TP
+ESC
+Quit a zoom grab.
+.TP
+Amiga-c
+Change the color map.  See the section
+.B COLORS
+for more information.
+.TP
+TAB
+Toggle color cycling.
+.TP
+Amiga-s
+Save fractal as frac.gif in current directory.
+.TP
+Amiga-j
+Redraw the Julia Set that corresonds to the position of the pointer.
+(only valid while drawing a Mandlebrot Set).
+.TP
+Amiga-m
+Redraw the Mandelbrot Set that corresonds to the position of the pointer.
+(only valid while drawing a Julia Set).
+.TP
+Amiga-w
+Write out a gif file of the current screen using the current name
+given on the command line with the -F argument.
+.SH COLOR
+While in color mode you can use the pointer to click on one of the
+color boxs representing your current color palette and change it by selecting the
+color in the color selection box to the left or by dragging the red, green, and
+blue slide gadgets at the bottom of the screen that correspond to 
+red, green, and blue color intensities.  Use the Return Key to return
+the fractal with the new colors installed.  Use ESC to abort.
+.SH NOTES
+This version of
+.B Fractal 
+has a better user interface then the previous version but it still
+need work.  If you'd like to work on it--do it.  Please
+send me any hacks you have for it.
+.PP
+Partial hacks are in for raising Z to an arbitrary power.  I did not
+have time to finish this so the code lay in NEWcompute.c in the source
+directory.  It is slow as a dog.
+.PP
+There needs to be a text interface to dump and modify the current fractal
+coordinates.  This was deemed to hairy for 2.0.
+.PP
+I ment to fix up a 4-d fractal render program.  There is a simple
+attempt called fracslice and is in the source directory.  Maybe
+someone can use it.
+.PP
+scrcols (the color selection) is actually a separate program. You
+may use it to set your text screen, cursor colors.  scrcols has problems
+on systems that by default use overscan.
+.PP
+Someday I will write a decent manual page.
+.SH AUTHOR
+.RS
+.PP
+Keith M. Gabryelski (ag@amix.commodore.com)
+.PP
+This program was written for my wife, Laura, and Bexley, my son.  Peace.
+.RE

@@ -1,0 +1,32 @@
+amiga|Amiga Unix console screen (pseudo-ansi),
+	km, am, xenl,
+
+	cols#80, lines#25,
+
+	bel=^G, cr=\r, ind=\233S, ri=\233T, ht=\t,
+	cub=\233%p1%dD, cub1=\b,
+	cud=\233%p1%dB, cud1=\n,
+	cuf=\233%p1%dC, cuf1=\233C,
+	cuu=\233%p1%dA, cuu1=\233A,
+	cup=\233%i%p1%d;%p2%dH,
+	home=\233H, ed=\233J, el=\233K, clear=\233H\233J,
+
+	ich1=\233@, ich=\233%p1%d@,
+	dch1=\233P,
+	il1=\233L, il=\233%p1%dL,
+	dl1=\233M, dl=\233%p1%dM,
+
+	smso=\2337m, rmso=\233m,
+	bold=\2331m,
+	rev=\2337m,
+	sgr=\233%?%p1%t7;%;%?%p2%t4;%;%?%p3%t7;%;%?%p4%t5;%;%?%p6%t1;%;m%?%p9%t^N%e^O%;,
+	sgr0=\2330m,
+	acsc=``aabbccddeeffgghhiijjkkllmmnnooppqqrrssttuuvvwwxxyyzz{{||}}~~,
+	rmacs=^O, smacs=^N,
+
+	khlp=\233?~,
+	kbs=\b, kcub1=\233D, kcuf1=\233C, kcuu1=\233A, kcud1=\233B,
+	kf1=\2330~, kf2=\2331~, kf3=\2332~, kf4=\2333~, kf5=\2334~,
+	kf6=\2335~, kf7=\2336~, kf8=\2337~, kf9=\2338~, kf10=\2339~,
+	kf11=\23310~, kf12=\23311~, kf13=\23312~, kf14=\23313~, kf15=\23314~,
+	kf16=\23315~, kf17=\23316~, kf18=\23317~, kf19=\23318~, kf20=\23319~,

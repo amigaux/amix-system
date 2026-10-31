@@ -1,0 +1,197 @@
+#!/bin/sh
+# Patchlevel: system.setup_1.2
+
+PATH=/sbin:/usr/bin:/usr/amiga/bin
+
+
+stty erase '^H' kill '^U' intr '^C' eof '^D' quit '^\'
+stty iexten echoke echoe echoctl echoprt -istrip tab0
+
+while :
+do
+
+. /usr/amiga/lib/amixnode
+
+echo "\nDo you want to create a small network hosts file"
+echo "with two addresses? [n] \c"
+
+read ask
+case $ask in
+	[yY]* )
+		. /usr/amiga/lib/amixhosts
+	;;
+
+	*)
+		if [ "$NODENAME" != "" ]
+		then
+			echo "#ident	\"@(#)cmd-inet:etc/hosts	1.1\"
+#
+# Internet host table
+#
+127.1		localhost loghost loopback me $NODENAME
+" > /etc/inet/hosts
+		fi
+	;;
+esac
+
+/usr/amiga/lib/amixdate
+. /etc/TIMEZONE
+
+
+if [ "$REPEAT" = "" ]
+then
+	echo "\nWould you like to assign a password to all of the"
+	echo "system accounts? [y] \c"
+
+	read ask
+	case $ask in
+	[nN]*)
+		SYSPASS="n"
+		;;
+	*)
+		SYSPASS="y"
+		/usr/amiga/bin/passwdall
+		;;
+	esac
+
+
+	echo "\nWould you like to assign a password to the guest account? [$SYSPASS] \c"
+
+	read ask
+	case $ask in
+		[nN]*)
+		;;
+		[yY]*)
+			passwd guest
+		;;
+		*)
+			if [ "$SYSPASS" = "y" ]
+			then
+				passwd guest
+			fi
+		;;
+	esac
+fi
+
+
+while [ "$USER_ADDED" = "" ]
+do
+	echo "\nWould you like to create a user account? [n] \c"
+
+	read ask
+	case $ask in
+		[yY]*)
+			/usr/amiga/lib/amixmkuser && USER_ADDED="done"
+			;;
+
+		[nN]* | "")
+			USER_ADDED="done"
+			;;
+	esac
+done
+
+
+if /usr/amiga/bin/A2024
+then
+	DEFMON="y"
+else
+	DEFMON="n"
+fi
+echo "\nAre you using an A2024 or Moniterm high resolution monitor? [$DEFMON] \c"
+
+read ask
+
+if [ "$ask" = "" ]
+then
+	ask=$DEFMON
+fi
+
+case $ask in
+	[yY]*)
+		rm -f /usr/amiga/bin/A2024
+		ln /usr/bin/true /usr/amiga/bin/A2024
+	;;
+	*)
+		rm -f /usr/amiga/bin/A2024
+		ln /usr/bin/false /usr/amiga/bin/A2024
+	;;
+esac
+
+
+
+if pkginfo -q Xcore ; then
+    ask="n"
+    echo "\nDo you wish to configure X Windows for a color graphics card? [n] \c"
+    read ask
+    
+    case $ask in
+	    [yY]*)
+		    /usr/amiga/lib/amixcolorx
+	    ;;
+    esac
+    
+    ask="n"
+    echo "\nDo you wish to configure an X Windows login screen? [n] \c"
+    read ask
+    
+    case $ask in
+	    [yY]*)
+		    /usr/amiga/lib/amixxdm
+	    ;;
+    esac
+fi
+
+
+if [ -f /usr/public/lib/news/inews ]
+then
+	ask="n"
+	echo "\nDo you wish to configure Netnews for either local or networked operation? [n] \c"
+	read ask
+
+	case $ask in
+		[yY]*)
+			/usr/amiga/lib/amixnews
+		;;
+	esac
+fi
+
+echo ""
+echo "Nodename:		`uname -n`"
+echo "Domain:			`cat /etc/domain`"
+echo "Date:			`date`"
+if /usr/amiga/bin/A2024
+then
+echo "Monitor:		Moniterm or A2024"
+else
+echo "Monitor:		not a Moniterm or A2024"
+fi
+
+if [ -f /usr/public/lib/news/inews ]
+then
+	inewssum="`sum < /usr/public/bin/inews`"
+	cnewssum="`sum < /usr/public/lib/newsbin/inject/inews`"
+	if [ "$inewssum" = "$cnewssum" ]
+	then
+	echo "NetNews:		cnews"
+	else
+	echo "NetNews:		nntp"
+	fi
+fi
+
+REPEAT=""
+while [ "$REPEAT" = "" ]
+do
+	echo "\nDo you wish to change any of these? [n] \c"
+	read ask
+	case $ask in
+		[nN]* | "" )
+			chmod -x /usr/amiga/bin/system.setup
+			exit 0
+			;;
+		[yY]* )
+			REPEAT="y"
+			;;
+	esac
+done
+
+done

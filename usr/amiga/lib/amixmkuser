@@ -1,0 +1,25 @@
+
+echo "Enter the login ID of the account: \c"
+read login_id
+echo "Enter the user's full name: \c"
+read login_name
+
+useradd -s /usr/bin/ksh -c "$login_name" $login_id || exit 1
+
+cp -r /etc/skel /home/$login_id
+chown -R $login_id /home/$login_id
+chgrp -R other /home/$login_id
+passwd -d $login_id
+
+echo "Account created."
+
+echo "\nWould you like to assign a password to your user account? [n] \c"
+read ask
+
+case $ask in
+	[yY]*)
+		passwd $login_id
+		;;
+esac
+
+exit 0

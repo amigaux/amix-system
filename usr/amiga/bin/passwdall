@@ -1,0 +1,31 @@
+#!/sbin/sh
+
+SECURELIST="root daemon bin sys adm uucp nuucp sync amiga lp listen setup powerdown sysadm checkfsys makefsys mountfsys umountfsys games news x nobody"
+
+set -e
+
+if [ $# -gt 0 ]
+then
+	case "$1" in
+	"-d")
+		PW=""
+		;;
+	* )
+		echo "usage:  $0 [ -d ]" >&2
+		exit 1
+		;;
+	esac
+else
+	/bin/passwd root
+
+	PW=`sed -n 's/^root:\([^:]*\):.*/\1/p' /etc/shadow`
+fi
+
+(
+    for i in $SECURELIST
+    do
+	echo "g,^${i}:[^:]*:,s,,${i}:${PW}:,"
+    done
+    echo w
+) | ed - /etc/shadow
+

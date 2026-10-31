@@ -1,0 +1,183 @@
+#!/bin/ksh
+
+
+integer i=0
+
+Z[i]=":GMT"
+Z[i+=1]=":Australia/Broken-Hill"
+Z[i+=1]=":Australia/LHI"
+Z[i+=1]=":Australia/NSW"
+Z[i+=1]=":Australia/North"
+Z[i+=1]=":Australia/Queensland"
+Z[i+=1]=":Australia/South"
+Z[i+=1]=":Australia/Sturt"
+Z[i+=1]=":Australia/Tasmania"
+Z[i+=1]=":Australia/Victoria"
+Z[i+=1]=":Australia/West"
+Z[i+=1]=":Australia/Yancowinna"
+Z[i+=1]=":Brazil/Acre"
+Z[i+=1]=":Brazil/DeNoronha"
+Z[i+=1]=":Brazil/East"
+Z[i+=1]=":Brazil/West"
+Z[i+=1]=":CET"
+Z[i+=1]=":Canada/Atlantic"
+Z[i+=1]=":Canada/Central"
+Z[i+=1]=":Canada/East-Saskatchewan"
+Z[i+=1]=":Canada/Eastern"
+Z[i+=1]=":Canada/Mountain"
+Z[i+=1]=":Canada/Newfoundland"
+Z[i+=1]=":Canada/Pacific"
+Z[i+=1]=":Canada/Yukon"
+Z[i+=1]=":Chile/Continental"
+Z[i+=1]=":Chile/EasterIsland"
+Z[i+=1]=":EET"
+Z[i+=1]=":GB-Eire"
+Z[i+=1]=":Hongkong"
+Z[i+=1]=":Iceland"
+Z[i+=1]=":Israel"
+Z[i+=1]=":Japan"
+Z[i+=1]=":MET"
+Z[i+=1]=":Mexico/BajaNorte"
+Z[i+=1]=":Mexico/BajaSur"
+Z[i+=1]=":Mexico/General"
+Z[i+=1]=":NZ"
+Z[i+=1]=":PRC"
+Z[i+=1]=":Poland"
+Z[i+=1]=":ROC"
+Z[i+=1]=":ROK"
+Z[i+=1]=":Singapore"
+Z[i+=1]=":Turkey"
+Z[i+=1]=":US/Arizona"
+Z[i+=1]=":US/Central"
+Z[i+=1]=":US/East-Indiana"
+Z[i+=1]=":US/Eastern"
+Z[i+=1]=":US/Hawaii"
+Z[i+=1]=":US/Mountain"
+Z[i+=1]=":US/Pacific"
+Z[i+=1]=":US/Pacific-New"
+Z[i+=1]=":US/Yukon"
+Z[i+=1]=":W-SU"
+Z[i+=1]=":WET"
+Z[i+=1]="Other (nonstandard)"
+
+integer MAX=i+1
+
+integer DEFZONE=0
+
+
+function set_default_zone
+{
+    integer i=0
+    while (( i < MAX ))
+    do
+	case "${Z[i]}" in
+	($TZ|$TZ\ *)
+	    DEFZONE=i ;;
+	esac
+	(( i += 1 ))
+    done
+}
+
+
+function list_zones
+{
+    typeset -R2 choice
+    typeset -L25 desc1
+    typeset -L20 desc2
+    integer nc=3
+    integer co
+    (( co=(MAX+nc-1)/nc ))
+
+    echo ""
+
+    integer i=0
+    while (( i < co ))
+    do
+	(( choice = i ))
+	desc1=${Z[i]#:}
+	echo "$choice) $desc1  \c"
+	if (( i+co < MAX ))
+	then
+	    (( choice = i+co ))
+	    desc2=${Z[i+co]#:}
+	    echo "$choice) $desc2  \c"
+	fi
+	if (( i+2*co < MAX ))
+	then
+	    (( choice = i+2*co ))
+	    echo "$choice) ${Z[i+2*co]#:}"
+	fi
+	(( i += 1 ))
+    done
+
+    echo ""
+}
+
+
+function prompt_zone
+{
+    integer other=MAX-1
+
+    ZONE=
+    while [[ "$ZONE" = "" ]]
+    do
+	list_zones
+
+	echo "\nWhat timezone are you in? [$DEFZONE] \c"
+
+	read choice
+
+	case "$choice" in
+	("")
+	    ZONE=${Z[DEFZONE]}
+	    ;;
+
+	($other)
+	    echo "\nEnter a valid TZ value (such as GMT0 or PST8PDT): \c"
+	    read ZONE
+	    DEFZONE=$choice
+	    ;;
+	(*)
+	    if (( choice >= 0 && choice < MAX ))
+	    then
+		ZONE=${Z[choice]}
+		DEFZONE=choice
+	    else
+		echo "Invalid choice"
+	    fi
+	    ;;
+	esac
+    done
+}
+
+
+set_default_zone
+
+while
+    prompt_zone
+    [[ "$ZONE" != +([a-zA-Z])+([-0-9])*([a-zA-Z]) &&
+       ! ( "$ZONE" = :* && -r /usr/lib/locale/TZ/${ZONE#:} ) ]]
+do
+    echo "\n$ZONE is not a valid timezone, please try again."
+    sleep 2
+    ZONE=""
+done
+
+
+# Edit /etc/TIMEZONE
+echo "g/^TZ=/d
+g/^export TZ$/d
+\$a
+TZ=$ZONE
+export TZ
+.
+w" | ed - /etc/TIMEZONE || exit
+
+# Create :localtime alias
+case ${ZONE} in
+:*) rm -f /usr/lib/locale/TZ/localtime
+    ln -s ${ZONE#:} /usr/lib/locale/TZ/localtime;;
+esac
+
+
+echo "\nTimezone set to $ZONE."

@@ -1,0 +1,6 @@
+#!/bin/sh
+while true
+do
+	./vdate
+	sleep 900
+done

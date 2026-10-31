@@ -1,0 +1,15 @@
+#!/bin/sh
+
+/usr/bin/sync
+/usr/bin/sync
+/sbin/umountall -l
+
+if [ $? != 0 ]
+then
+	echo "Can't unmount local filesystems" 1>&2
+	exit 1
+fi
+
+/usr/bin/sync
+/usr/bin/sync
+/sbin/uadmin 2 0

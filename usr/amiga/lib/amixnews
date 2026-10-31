@@ -1,0 +1,112 @@
+#!/bin/sh
+
+l_install()
+{
+	rm -f $1
+	ln $2 $1
+}
+
+PATH=/sbin:/usr/bin:/usr/amiga/bin
+
+if [ ! -f /usr/public/bin/inews ]
+then
+	echo "You must have installed the 'public' package before"
+	echo "you can configure the Netnews service."
+	exit
+fi
+
+sum1="`sum < /usr/public/bin/inews`"
+sum2="`sum < /usr/public/lib/newsbin/inject/inews`"
+
+if [ "$sum1" = "$sum2" ]
+then
+	news=1
+else
+	news=2
+fi
+
+cat << \-eof-
+Netnews may be configured in two different ways:
+
+1   News articles are received from another system and are
+    stored on the local system using CNEWS.
+
+2   Articles are stored on a remote system and are accessed via
+    Network News Transfer Protocol (NNTP).
+
+q   Quit; return to main amixadm menu
+
+-eof-
+
+unset CONFIG
+
+while [ "$CONFIG" = "" ]
+do
+    echo "\nWhich configuration would you like to use? [ $news ] \c"
+
+    read config
+
+    case "$config" in
+    "")
+	CONFIG=$news;;
+    "1")
+	CONFIG=1;;
+    "2")
+	CONFIG=2;;
+    [Qq]*)
+	CONFIG=quit;;
+    "?")
+	echo "Please select either '1' for locally stored news or"
+	echo "'2' for remotely stored news."
+	;;
+    esac
+done
+
+if [ "$CONFIG" = '1' ]
+then
+	echo "Configuring Netnews for cnews"
+
+	cp /usr/public/lib/newsbin/inject/inews /usr/public/lib/news/inews
+
+	rm -f /usr/public/bin/inews
+
+	cp /usr/public/lib/newsbin/inject/inews /usr/public/bin/inews
+	chown news /usr/public/bin/inews
+	chgrp news /usr/public/bin/inews
+
+	l_install	/usr/public/lib/newsbin/trn/mthreads \
+			/usr/public/lib/newsbin/trn/mthreads.cnews
+
+	l_install	/usr/public/bin/tmpthread \
+			/usr/public/bin/tmpthread.cnews
+
+	l_install	/usr/public/bin/newsetup \
+			/usr/public/bin/newsetup.cnews
+
+	l_install	/usr/public/bin/newsgroups \
+			/usr/public/bin/newsgroups.cnews
+fi
+if [ "$CONFIG" = '2' ]
+then
+	echo "Configuring Netnews for NNTP"
+
+	cp /usr/public/lib/newsbin/nntp/inews /usr/public/lib/news/inews
+
+	rm -f /usr/public/bin/inews
+
+	cp /usr/public/lib/newsbin/nntp/inews /usr/public/bin/inews
+	chown news /usr/public/bin/inews
+	chgrp news /usr/public/bin/inews
+
+	l_install	/usr/public/lib/newsbin/trn/mthreads \
+			/usr/public/lib/newsbin/trn/mthreads.nntp
+
+	l_install	/usr/public/bin/tmpthread \
+			/usr/public/bin/tmpthread.nntp
+
+	l_install	/usr/public/bin/newsetup \
+			/usr/public/bin/newsetup.nntp
+
+	l_install	/usr/public/bin/newsgroups \
+			/usr/public/bin/newsgroups.nntp
+fi

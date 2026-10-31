@@ -1,0 +1,14 @@
+.TH SNFTOAUF 1A
+.SH NAME
+snftoauf \- convert X-Windows SNF fonts to AUF fonts
+.SH SYNOPSIS
+snftoauf snffontfile auffontfile
+.SH DESCRIPTION
+snftoauf
+converts fonts from X-Windows SNF (server natural format) format
+to AUF (amiga unix format).  AUF format fonts are used by the Amiga Unix
+screen driver to render text.
+.SH EXAMPLES
+snftoauf /usr/X/lib/fonts/75dpi/courR24.snf /usr/amiga/font/courR24
+.SH SEE ALSO
+sioc(1A), screen(7A)

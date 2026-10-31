@@ -1,0 +1,207 @@
+.TH RDB 1A 4-Dec-91 \& \&
+.SH NAME
+rdb \- create and manage hard disk partition tables
+.SH SYNOPSIS
+.nf
+rdb [-v] [-H] [-e] [-E] device
+rdb -c [-s cylindersize] [-L n] -d disksize device [name start length]...
+rdb -a device name start length
+rdb -p partition [-b] [-B] [-m] [-M] [-C n] [-F n] [-P n] [-R n] device
+.fi
+.SH DESCRIPTION
+.I rdb
+has three major purposes:  to display a hard disk partition table, to
+create a hard disk partition table, or to modify a hard disk partition table.
+.PP
+.I rdb
+with no options or with the -H option displays the partition table
+on the specified device, if there is one.
+.PP
+.I rdb
+with the -c option creates a disk partition table on the specified device.
+.I rdb
+with the -a option adds a partition to the partition table.
+.I rdb
+with the -p option modifies parameters associated with the selected
+partition.
+.SH OPTIONS
+.I rdb
+recognizes the following options:
+.TP
+-a
+
+Add a partition to an existing partition table.
+
+Partition starting and length
+parameters must be multiples of the cylinder size.  You must ensure that
+partitions do not overlap each other, the initial reserved cylinders
+or the end of the disk.
+
+The first 100 blocks are reserved for the partition table and rigid
+disk block.  If you expect to install AmigaDos on this disk, you must
+reserve the first 2 cylinders.
+
+The first partition starts at the first cylinder boundary above the
+reserved blocks.
+
+.TP
+-b
+Make the selected partition non-bootable.
+.TP
+-B
+Make the selected partition bootable.
+.TP
+-c
+Create a new partition table and write it to the specified device.
+An optional partition list may follow the arguments.
+
+WARNING: This option destroys all data on the device.
+
+.TP
+-C n
+Set the number of custom boot blocks for the selected partition to n.
+An Amiga Unix boot partition requires 2 custom boot blocks.
+.TP
+-d n
+Set the capacity of the hard drive in blocks.
+The capacity of the drive is rounded down to the nearest cylinder
+boundary.  See the -s option.
+.TP
+-e
+Clear the "last drive in system" bit on the specified device.
+.TP
+-E
+Set the "last drive in system" bit on the specified device.
+.TP
+-F n
+Set the file system type on the selected partition to n, where n is an
+eight digit hex number.  Valid file system types are:
+.PP
+.nf
+0x444f5300      DOS\\0        AmigaDOS old filesystem
+0x444f5301      DOS\\1        AmigaDOS fast filesystem (ffs)
+0x554e4900      UNI\\0        Unix boot partition
+0x554e4901      UNI\\1        Unix s5 filesystem
+0x554e4902      UNI\\2        Unix ufs filesystem
+0x72657376      RESV         Reserved partition (Unix swap)
+.fi
+
+NOTE:  The 0x is required.
+.TP
+-H
+Present partition information in a human-readable form.
+.TP
+-L n
+Make rdb use block n as the default position for the partition table.
+If not set, the default position is block 0.  The -L 2 option is
+is required on systems that do not have Kickstart 2.0 or newer roms,
+for compatibility with AmigaDOS.
+.TP
+-m
+Make the selected partition not mountable.  Non-bootable UNIX partitions
+require -m.
+.TP
+-M
+Make the selected partition mountable.
+Bootable UNIX partitions and all AmigaDOS partitions require -M.
+.TP
+-p n
+Select partition n.  The b, B, C, P, f and F options operate on the
+selected partition.  Partitions are numbered starting at 1.
+.TP
+-P n
+Set the boot priority on the selected partition to n.
+Boot priority 5 is reserved for the floppy drive.
+The system
+boots the bootable (-M -B) partition having the highest boot priority.
+New AmigaUNIX
+systems have priority 2 assigned to the UNIX_Boot partition and 0 or 1
+to AmigaDOS.
+.TP
+-R n
+Set the number of filesystem reserved blocks to n.  AmigaDOS partitions
+require -R 2.
+.TP
+-s cylindersize
+Set the blocks per cylinder to cylindersize.  Default blocks per
+cylinder is 64. A cylinder size of at least 64 blocks is required if
+AmigaDOS partitions are going to be added to the disk.
+.TP
+-v
+Enables verbose output.
+.PP
+The value displayed by the
+.I ddsize
+command may be used as the disksize value.
+.I rdb
+requires that partitions begin and end on cylinder boundaries.
+
+.SH EXAMPLES
+Find out the actual size of the scsi id 6 hard drive using the command
+.nf
+
+        ddsize /dev/dsk/c6d0s0
+
+.fi
+If it displays 205074 for a particular drive, the command
+.nf
+
+        rdb -c -s 64 -L 2 -d 205074 /dev/dsk/c6d0s0
+
+.fi
+will initialize its partition table without creating partitions.
+
+WARNING: The -c option will destroy all data on the disk.
+
+Use the -a option later to add partitions.
+The commands
+.nf
+
+        rdb -a /dev/dsk/c6d0s0 Home  128   81920
+        rdb -a /dev/dsk/c6d0s0 Boot2 82048 4096
+
+.fi
+add a 40 megabyte partition and a 2 megabyte partition as the first
+and second partitions on the disk at scsi id 6.  The start offset 128
+of the first partition allows space for the two 64-block reserved
+cylinders at the beginning of the disk.  Note that all start and
+length offsets are a multiple of the cylinder size.  The command
+.nf
+
+
+        rdb -p 1 -m -F 0x554e4901 /dev/dsk/c6d0s0
+
+.fi
+Sets parameters for partition 1 on scsi disk 6 appropriate for a
+non-bootable UNIX filesystem partition.
+.nf
+
+
+        rdb -p 2 -M -B -C 2 -P 2 -F 0x554e4900 /dev/dsk/c6d0s0
+
+.fi
+Sets parameters for partition 2, scsi id 6 appropriate for an
+AmigaUNIX bootable partition: automount, bootable, 2 custom boot
+blocks, priority 2, and filesystem type UNI\\0.
+
+.SH DIAGNOSTICS
+.I rdb's
+exit status indicates success or failure.  An appropriate message is
+written to standard error output upon failure.
+
+.SH "SEE ALSO"
+ddsize(1A), showrdb(1A)
+
+.SH NOTES
+
+To set up AmigaDOS partitions, leave unallocated space and use the
+tools on the AmigaDOS Install floppy, Version 2.04 or later.
+
+Using HDToolBox on a disk configured with less than 64
+blocks-pre-cylinder is not a pleasant experience.  Don't try it, you
+won't like it.
+
+You must use -L 2 with -c if you do not have Kickstart 2.0 or later.
+
+If you are using a 2090 or 2090A disk controller, you cannot install
+AmigaUNIX and AmigaDOS on the same disk.

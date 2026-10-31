@@ -1,0 +1,145 @@
+#!/bin/sh
+
+PATH=/sbin:/usr/bin:/usr/amiga/bin
+
+TTY=`tty | sed -e 's:/dev/::'`
+
+echo "\nChoose settings for which console screen? [$TTY] \c"
+read ask
+
+if [ "$ask" = "" ]
+then
+	ask="$TTY"
+else
+	ask=`echo $ask | sed -e 's:/dev/::'`
+fi
+
+if [ ! -c /dev/${ask} ]
+then
+	echo "No such device"
+	exit 1
+fi
+
+if grep "^${ask}:" /etc/screendefs > /dev/null 2>&1
+then
+	:
+else
+	echo "Screen not defined in /etc/screendefs"
+	exit 1
+fi
+
+DEV="$ask"
+
+
+DEFKEY=`echo $DEV | sed -e 's/[^0-9]//g'`
+
+while [ "$KEY" = "" ]
+do
+	if [ "$DEFKEY" = "" ]
+	then
+		echo "\nBind screen to which function key? \c"
+	else
+		echo "\nBind screen to which function key? [$DEFKEY] \c"
+	fi
+	read ask
+
+	if [ "$ask" = "" -a "$DEFKEY" != "" ]
+	then
+		ask="$DEFKEY"
+	fi
+
+	case $ask in
+		[0-9]|[0-9][0-9])
+			KEY="$ask"
+			;;
+	esac
+done
+
+while [ "$FORE" = "" ]
+do
+	echo "\nChoose the rgb values for the foreground color: [bb5] \c"
+	read ask
+
+	case $ask in
+		[0-9a-f][0-9a-f][0-9a-f])
+			FORE="$ask"
+			;;
+		"")
+			FORE="bb5"
+			;;
+	esac
+done
+
+while [ "$BACK" = "" ]
+do
+	echo "\nChoose the rgb values for the background color: [022] \c"
+	read ask
+
+	case $ask in
+		[0-9a-f][0-9a-f][0-9a-f])
+			BACK="$ask"
+			;;
+		"")
+			BACK="022"
+			;;
+	esac
+done
+
+while [ "$XRES" = "" ]
+do
+	echo "\nWhat horizontal resolution? [800] \c"
+	read ask
+
+	case $ask in
+		800)
+			XRES="$ask"
+			;;
+		"")
+			XRES="800"
+			;;
+	esac
+done
+
+while [ "$YRES" = "" ]
+do
+	echo "\nWhat vertical resolution? [600] \c"
+	read ask
+
+	case $ask in
+		800)
+			YRES="$ask"
+			;;
+		"")
+			YRES="600"
+			;;
+	esac
+done
+
+while [ "$FONT" = "" ]
+do
+	echo "\nWhat font do you want for the screen? [topaz8] \c"
+	read ask
+
+	if [ "$ask" = "" ]
+	then
+		ask="topaz8"
+	fi
+
+	cd /
+	if [ -f $ask -o -f /usr/amiga/lib/font/$ask ]
+	then
+		FONT="$ask"
+	fi
+done
+
+if [ "$FONT" = "topaz8" ]
+then
+	FONT=""
+fi
+
+sed -e "s&^${DEV}:.*$&$DEV:$KEY:$FORE:$BACK:0:$XRES:$YRES:1:$FONT&"  \
+					/etc/screendefs > /tmp/set$$
+cp /tmp/set$$ /etc/screendefs
+rm /tmp/set$$
+
+

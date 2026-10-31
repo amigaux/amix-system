@@ -1,0 +1,19 @@
+
+DIRS="aen amixpkg atdevs color ddformat ddmode ddsize displaytype elf2coff format fractal getscr mondump mtret null rdb samp scrmenu setclk sioc slattach snftoauf"
+
+NOTWORKING=
+
+
+for i in $DIRS
+do
+	echo "======= $i"
+	cd $i
+	make $*
+	if [ "$?" != "0" ]
+	then
+		echo "Build of $i failed"
+	fi
+	cd ..
+done
+
+

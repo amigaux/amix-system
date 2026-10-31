@@ -1,0 +1,887 @@
+echo "Amiga UNIX install script"
+
+trap '	echo "Running interactive shell..."
+	exec /bin/sh -i' 2
+
+
+#stty erase '^H' kill '^U' intr '^C' eof '^D' quit '^\'
+#stty iexten echoke echoe echoctl echoprt
+
+
+TAPEn=/dev/rmt/4n
+TAPE=/dev/rmt/4
+OFFSET=128		# Number of blocks to leave at beginning of disk
+MINROOT=16		# Minimum size of root filesystem in megabytes
+MINSWAP=5		# Minimum size of swap area in megabytes
+DEFSWAP=15		# Suggested size of swap area in megabytes
+MINBOOT=2		# Minimum size of bootstrap partition in megabytes
+BOOTSIZE=2		# Default bootstrap partition size
+EXTRALEN=0		# Size of extra partition
+
+
+readask()
+{
+	echo "$*\c"
+	read ask ||
+	{
+		echo "\nRunning interactive shell..."
+		exec /bin/sh -i
+	}
+}
+
+restart ()
+{
+	readask "\nPress RETURN to restart the installation script. "
+	umount /mnt/${EPART} > /dev/null 2>&1
+	exit 99
+}
+
+repairdisk ()
+{
+
+	mount $UPART /mnt 0 ${ROOT_FSYS}
+	if [ "$?" = "0" ]
+	then
+		echo "\n$UPART mounted on /mnt"
+		MOUNT=y
+	else
+		while [ "$DO_FSCK" = "" ]
+		do
+			readask "\nDo you want to fsck $UPART? [y] "
+			case $ask in
+			[yY]|[yY][eE][sS] )
+				DO_FSCK="yes"
+				;;
+			[nN]|[nN][oO] )
+				DO_FSCK="no"
+				;;
+			"" )
+				DO_FSCK="yes"
+			esac
+		done
+
+		if [ "$DO_FSCK" = "yes" ]
+		then
+			fsck_${ROOT_FSYS} -y $UPART
+			mount $UPART /mnt 0 ${ROOT_FSYS} > /dev/null 2>&1
+			if [ "$?" = "0" ]
+			then
+				echo "\n$UPART mounted on /mnt"
+				MOUNT=y
+				TMPDIR=/mnt/tmp
+				EXINIT="set dir=/mnt/tmp"
+				export TMPDIR EXINIT
+			else
+				echo "\nMount of $UPART failed"
+			fi
+		fi
+	fi
+
+	echo "\nRunning interactive shell..."
+	echo "Logout with ctrl-D when you are finished"
+
+	(
+		PATH=/etc:/bin:/mnt/usr/bin:/mnt/usr/sbin:/mnt/usr/amiga/bin:/mnt/usr/ccs/bin
+		TERM=amiga
+		export PATH TERM
+		/bin/sh -i
+	)
+	echo "\nShutting down, please wait...\n"
+	cd /
+	sync
+	sync
+	umount /mnt > /dev/null 2>&1
+	uadmin 2 0
+}
+
+
+select_disk ()
+{
+	echo "\nScanning SCSI bus for hard disks..."
+	PID=`sh -c 'cat /dev/noise > /dev/null 2>&1 &
+echo $!'`
+	DEVS=`/etc/atdevs`
+	kill $PID
+
+	if [ "$DEVS" = "" ]
+	then
+		echo "\nNo hard disks are attached to this system."
+		restart
+	fi
+
+
+	echo "\nHard disks attached to this system:\n"
+
+	for i in $DEVS
+	do
+		size=`/etc/ddsize /dev/rdsk/c${i}d0s0`
+		echo "SCSI id $i		`expr $size '/' 2048` megabytes"
+	done
+
+	set -- $DEVS
+	if [ "$#" -gt 1 ]
+	then
+		while [ "$SCSI" = "" ]
+		do
+			readask "\nWhat is the SCSI id of the disk you want to $MODE? "
+
+			if [ "$ask" = "4" ]
+			then
+			  echo "\nSCSI device 4 must be used for the tape drive"
+			else
+				for i in $DEVS
+				do
+					if [ "$ask" = "$i" ]
+					then
+						SCSI=$i
+						break
+					fi
+				done
+			fi
+
+			if [ "$SCSI" = "" ]
+			then
+				echo "\nChoose one of the following:\n$DEVS"
+			fi
+		done
+	else
+		SCSI=$DEVS
+	fi
+
+	DISK=/dev/dsk/c${SCSI}d0s0
+	rDISK=/dev/rdsk/c${SCSI}d0s0
+
+	DISKLEN=`/etc/ddsize $rDISK`
+	echo "\nYour disk is `expr $DISKLEN '/' 2048` megabytes."
+}
+
+
+#############################################################################
+#
+#	Beginning of real code
+#
+#############################################################################
+
+
+umount /mnt > /dev/null 2>&1		# in case we were restarted
+
+. /etc/id_kmap
+
+while [ "$MODE" = "" ]
+do
+	readask "\nDo you want to install or repair? [install] "
+
+	case $ask in
+		"install")	MODE="install"	;;
+		"repair")	MODE="repair"	;;
+		"")		MODE="install"	;;
+	esac
+done
+
+if [ "$MODE" = "install" ]
+then
+	readask "\nInsert UNIX installation tape and press RETURN. "
+fi
+
+select_disk
+
+ROMSIZE=`/etc/romsize`		# small ROM size indicates 1.3 system
+
+set `/etc/dioc 1 < $rDISK`	# what kind of disk controller are we on?
+CONTROLLER=$1
+
+#
+#  If small ROM (indicating version 1.3) or 2090 controller then we
+#  must use the old Johann ROM magic cookie booting method
+#
+
+if [ "$ROMSIZE" -lt 524288 -o "$CONTROLLER" = "A2090" ]
+then
+	OLD_BOOT=1
+else
+	OLD_BOOT=0
+fi
+
+if [ "$MODE" = "install" -a "$OLD_BOOT" = "1" -a "$SCSI" != "0" ]
+then
+	echo "\nWARNING:  UNIX cannot autoboot from the 2620/2630 ROM unless it"
+	echo "            is installed on SCSI device 0."
+fi
+
+
+#
+#############################################################################
+#
+
+if [ "$MODE" = "repair" ]
+then
+	/etc/rdb $DISK > /dev/null 2>&1
+
+	if [ "$?" = "0" ]
+	then
+		STATE=9
+	else
+		echo "Can't find rigid disk block on $DISK"
+		echo "\nRunning interactive shell..."
+		exec /bin/sh -i
+	fi
+	ISFOR="has"
+else
+	ISFOR="is for"
+
+	/etc/rdb $DISK > /dev/null 2>&1
+	if [ "$?" = "0" ]
+	then
+		STATE=1
+	else
+		STATE=5
+	fi
+fi
+
+#
+#############################################################################
+#
+
+unset DONE
+while [ "$DONE" = "" ]
+do
+case $STATE in
+"1")		# is there a "suitable" UNIX rdb?
+	/etc/rdb -h 1 $DISK
+	if [ "$?" = "0" ]
+	then
+		STATE=2
+	else
+		STATE=3
+	fi
+	;;
+
+"2")
+	echo "\nThe following partition table is suitable for UNIX:\n"
+	/etc/rdb -V $DISK
+
+	while :
+	do
+		readask "\nDo you want to use it? [y] "
+		case $ask in
+			[yY]|[yY][eE][sS] )	STATE=8; break	;;
+			[nN]|[nN][oO] )		STATE=3; break	;;
+			"" )			STATE=8; break	;;
+		esac
+	done
+	;;
+
+"3")		# is there a large gap and an existing rdb?
+	GAP=`/etc/rdb -d $DISKLEN -h 6 $DISK`
+	if [ "$?" != "0" ]
+	then
+		STATE=5		# no gap or rdb
+	else
+		set $GAP
+		OFFSET=$1
+		REMAIN=$2
+		GAP=`expr $REMAIN '/' 2048`
+		if [ "$GAP" -gt 23 ]
+		then
+			STATE=4	# large enough gap to install UNIX
+		else
+			STATE=5	# gap is not large enough
+		fi
+	fi
+	;;
+
+"4")
+	echo "\nYou have existing data on this disk:\n"
+	/etc/rdb -V $DISK
+	echo "\nUNIX may be installed in the remaining $GAP megabytes."
+
+	while :
+	do
+		readask "Do you want to install UNIX in the space available? [y] "
+		case $ask in
+			[yY]|[yY][eE][sS] )	STATE=6; break	;;
+			[nN]|[nN][oO] )		STATE=5; break	;;
+			"" )			STATE=6; break	;;
+		esac
+	done
+	;;
+
+"5")
+	/etc/rdb $DISK > /dev/null 2>&1
+	if [ "$?" = "0" ]
+	then
+		echo "\nWARNING:  The following existing data on disk will be destroyed.\n"
+		/etc/rdb -V $DISK
+		while :
+		do
+			readask "\nAre you sure you want to erase this disk? "
+			case $ask in
+				[yY]|[yY][eE][sS] )	break ;;
+				[nN]|[nN][oO] )		restart ;;
+			esac
+		done
+	fi
+
+	/etc/rdb -c -s 64 -L 2 -d $DISKLEN $DISK	# create blank rdb
+	OFFSET=128
+	REMAIN=`expr $DISKLEN '-' $OFFSET`
+
+#
+#  Determine gap to leave for other programs
+#  Consider moving to beginning of state 7
+#
+	unset RESERVE_GAP
+	while [ "$RESERVE_GAP" = "" ]
+	do
+		readask "\nHow many megabytes do you want to set aside for AmigaDOS? [0] "
+
+		case $ask in
+			"" )
+				RESERVE_GAP="0"
+				;;
+
+			[0-9]|[0-9][0-9]|[0-9][0-9][0-9]|[0-9][0-9][0-9][0-9])
+				RESERVE_GAP="$ask"
+				# do a sanity check here
+				;;
+		esac
+	done
+	RESERVE_GAP=`expr $RESERVE_GAP '*' 2048`
+	REMAIN=`expr $REMAIN '-' $RESERVE_GAP`
+
+	STATE=7
+	;;
+
+"6")		# suck gap, set remaining space
+	STATE=7
+	;;
+
+"7")
+	SECTORS=`/etc/rdb -h 7 $DISK`		# determine sectors per track
+
+#
+#  We must round everything to "cylinder" boundaries.
+#
+
+	ROUND=`expr $OFFSET '%' $SECTORS`
+	if [ "$ROUND" -gt 0 ]
+	then
+		NEW_OFFSET=`expr $OFFSET '+' '(' $SECTORS '-' $ROUND ')'`
+	fi
+
+	if [ "$NEW_OFFSET" -gt "$OFFSET" ]
+	then
+		REMAIN=`expr $REMAIN '-' '(' $NEW_OFFSET '-' $OFFSET ')'`
+		OFFSET="$NEW_OFFSET"
+	fi
+
+#
+#  Round down remaining space to cylinder boundary
+#
+	REMAIN=`expr $REMAIN - '(' $REMAIN '%' $SECTORS ')'`
+
+	echo "\nYour boot partition is $BOOTSIZE megabytes."
+	BOOTLEN=`expr $BOOTSIZE '*' 2048`
+	REMAIN=`expr $REMAIN '-' $BOOTLEN`
+
+	ROOTMAX=`expr '(' $REMAIN '-' '(' $MINSWAP '*' 2048 ')' ')' '/' 2048`
+	ROOTSIZE=`expr '(' $REMAIN '-' '(' $DEFSWAP '*' 2048 ')' ')' '/' 2048`
+
+	unset ANS
+	while [ "$ANS" = "" ]
+	do
+	   readask "\nHow many megabytes for the root file system? [$ROOTSIZE] "
+	      case "$ask" in
+		"")
+			ANS="$ROOTSIZE"
+			;;
+
+		[0-9]|[0-9][0-9]|[0-9][0-9][0-9]|[0-9][0-9][0-9][0-9])
+			if [ "$ask" -lt "$MINROOT" ]
+			then
+				echo "\nYour root partition must be at least $MINROOT megabytes."
+			fi
+			if [ "$ask" -gt "$ROOTMAX" ]
+			then
+	echo "\nYou must leave at least $MINSWAP megabytes free for swap space."
+			else
+				ANS="$ask"
+			fi
+		esac
+	done
+
+	ROOTLEN=`expr $ANS '*' 2048`
+	ROOTLEN=`expr $ROOTLEN - '(' $ROOTLEN '%' $SECTORS ')'`
+	REMAIN=`expr $REMAIN '-' $ROOTLEN`
+
+	SWAPSIZE=`expr $REMAIN '/' 2048`
+	if [ "$SWAPSIZE" -gt "$DEFSWAP" ]
+	then
+		SWAPSIZE="$DEFSWAP"
+	fi
+	MAXSWAP=`expr $REMAIN '/' 2048`
+
+	unset ANS
+	while [ "$ANS" = "" ]
+	do
+	     readask "\nHow many megabytes for the swap partition? [$SWAPSIZE] "
+		case "$ask" in
+		"" )
+			ANS="$SWAPSIZE"
+			;;
+
+		[0-9]|[0-9][0-9]|[0-9][0-9][0-9]|[0-9][0-9][0-9][0-9])
+			ANS="$ask"
+			if [ "$ask" -lt "$MINSWAP" ]
+			then
+				echo "\nYou must have at least $MINSWAP megabytes of swap space."
+				unset ANS
+			fi
+			if [ "$ask" -gt "$MAXSWAP" ]
+			then
+				echo "\nYou only have $MAXSWAP remaining megabytes available."
+				unset ANS
+			fi
+		esac
+	done
+
+	SWAPLEN=`expr $ANS '*' 2048`
+
+	if [ "$SWAPLEN" -gt "$REMAIN" ]
+	then
+		SWAPLEN="$REMAIN"
+	fi
+
+	SWAPLEN=`expr $SWAPLEN '-' '(' $SWAPLEN '%' $SECTORS ')'`
+	REMAIN=`expr $REMAIN '-' $SWAPLEN`
+
+	if [ "$REMAIN" -gt 2047 ]
+	then
+		EXTRASIZE=`expr $REMAIN '/' 2048`
+		EXTRALEN=`expr $REMAIN '-' '(' $REMAIN '%' $SECTORS ')'`
+		REMAIN=0
+		echo "\nSpace for remaining partition is $EXTRASIZE megabytes."
+
+		unset ANS
+		while [ "$ANS" = "" ]
+		do
+			echo "Choose a file system type for this partition:"
+			echo ""
+			echo "    s5:  Traditional UNIX file system"
+			echo "   ufs:  Berkeley file system"
+			echo ""
+			readask "What file system type is this partition? [s5] "
+			case $ask in
+			"")
+				ANS="s5"
+				;;
+			"s5")
+				ANS="s5"
+				;;
+			"ufs")
+				ANS="ufs"
+				;;
+			"*")
+				echo "Available file system types are s5 and ufs."
+			esac
+		done
+		EXTRA_FSYS="$ANS"
+	else
+		EXTRALEN=0
+	fi
+
+	/etc/rdb -a $DISK UNIX_Root $OFFSET $ROOTLEN
+	OFFSET=`expr $OFFSET '+' $ROOTLEN`
+	ROOTPART=`/etc/rdb -h 5 $DISK`
+
+	/etc/rdb -a $DISK UNIX_Swap $OFFSET $SWAPLEN
+	OFFSET=`expr $OFFSET '+' $SWAPLEN`
+	SWAPPART=`/etc/rdb -h 5 $DISK`
+
+	/etc/rdb -a $DISK UNIX_Boot $OFFSET $BOOTLEN
+	OFFSET=`expr $OFFSET '+' $BOOTLEN`
+	BOOTPART=`/etc/rdb -h 5 $DISK`
+
+	if [ "$EXTRALEN" -gt 0 ]
+	then
+		/etc/rdb -a $DISK Extra $OFFSET $EXTRALEN
+		EXTRAPART=`/etc/rdb -h 5 $DISK`
+	fi
+
+	echo ""
+	/etc/rdb -V $DISK
+
+	DONE=y
+	;;
+
+"8")		# is partition choice "obvious"?
+	/etc/rdb -h 2 $DISK
+	if [ "$?" != "0" ]
+	then
+		STATE=9
+	else
+		echo "\nUNIX can fit into the following partitions:\n"
+		/etc/rdb -h 3 $DISK
+		echo "\nWARNING:  Data in these partitions will be destroyed!"
+
+		while :
+		do
+			readask "\nDo you want to accept this assignment? [y] "
+			case $ask in
+				[yY]|[yY][eE][sS] )	STATE=10;  break ;;
+				[nN]|[nN][oO] )		STATE=9;   break ;;
+				"" )			STATE=10;  break ;;
+			esac
+		done
+	fi
+	;;
+
+"9")			# ask user for partitions
+	echo ""
+	/etc/rdb -V $DISK
+	unset ROOTPART
+	while [ "$ROOTPART" = "" ]
+	do
+		readask "\nWhich partition $ISFOR the root filesystem? "
+		case "$ask" in
+			[1-9] )
+				ROOTPART="$ask"
+				ROOT_INFO=`/etc/rdb -p $ROOTPART $DISK`
+				if [ "$?" != "0" ]
+				then
+					echo "\nNo such partition is defined."
+					unset ROOTPART
+				fi
+		esac
+
+	done
+
+	unset SWAPPART
+	while [ "$SWAPPART" = "" ]
+	do
+		readask "\nWhich partition $ISFOR the swap space? "
+		case "$ask" in
+			[1-9] )
+				SWAPPART="$ask"
+				SWAP_INFO=`/etc/rdb -p $SWAPPART $DISK`
+				if [ "$?" != "0" ]
+				then
+					echo "\nNo such partition is defined."
+					unset SWAPPART
+				fi
+		esac
+
+		if [ "$ROOTPART" = "$SWAPPART" ]
+		then
+		      echo "\nThe root and swap partitions cannot be the same."
+		      unset SWAPPART
+		fi
+	done
+
+	while [ "$BOOTPART" = "" ]
+	do
+		readask "\nWhich partition $ISFOR the UNIX bootstrap? "
+		case "$ask" in
+			[1-9] )
+				BOOTPART="$ask"
+				BOOT_INFO=`/etc/rdb -p $BOOTPART $DISK`
+				if [ "$?" != "0" ]
+				then
+					echo "\nNo such partition is defined."
+					unset BOOTPART
+				fi
+				;;
+		esac
+
+		if [ "$ROOTPART" = "$BOOTPART" ] ||
+		   [ "$SWAPPART" = "$BOOTPART" ]
+		then
+		      echo "\nThe boot partition must not be the same as root or swap."
+		      unset BOOTPART
+		fi
+	done
+
+	DONE=y
+	;;
+
+"10")		# determine "obvious" partition choices
+	eval `/etc/rdb -h 4 $DISK`
+	DONE=y
+	;;
+
+"*")	echo "install: bad state: $STATE" 1>&2
+	restart
+
+esac
+done	# while "$DONE" = ""
+
+#
+#############################################################################
+#
+
+if [ "$OLD_BOOT" = "0" ]
+then
+	unset ANS
+	while [ "$ANS" = "" ]
+	do
+		echo "\nChoose a file system type for the root partition:"
+		echo ""
+		echo "    s5:  Traditional UNIX file system"
+		echo "   ufs:  Berkeley file system"
+		echo ""
+		readask "What file system type is the root partition? [s5] "
+		case $ask in
+		"")
+			ANS="s5"
+			;;
+		"s5")
+			ANS="s5"
+			;;
+		"ufs")
+			ANS="ufs"
+			;;
+		"*")
+			echo "Available file system types are s5 and ufs."
+		esac
+	done
+	ROOT_FSYS="$ANS"
+else
+	ROOT_FSYS="s5"		# Johann ROM can only boot s5 filesystem
+fi
+
+echo "\nPlease wait while the partitions are checked..."
+
+UPART=/dev/dsk/c${SCSI}d0s${ROOTPART}
+SPART=/dev/dsk/c${SCSI}d0s${SWAPPART}
+BPART=/dev/dsk/c${SCSI}d0s${BOOTPART}
+EPART=/dev/dsk/c${SCSI}d0s${EXTRAPART}
+
+#
+#  Get the real partition sizes and offsets
+#
+set `/etc/rdb -p $ROOTPART $DISK`
+ROOTOFF=$2
+ROOTLEN=$3
+set `/etc/rdb -p $SWAPPART $DISK`
+SWAPOFF=$2
+SWAPLEN=$3
+set `/etc/rdb -p $BOOTPART $DISK`
+BOOTOFF=$2
+BOOTLEN=$3
+
+#
+#  Add the user declared swap partition as swap space
+#
+set `swap -l`
+if [ "$6" = "/dev/fakeswap" ]
+then
+	swap -a $SPART 0 $SWAPLEN
+	swap -d /dev/fakeswap 0
+fi
+
+if [ "$MODE" = "repair" ]
+then
+	repairdisk
+	exit 99
+fi
+
+#
+#  Set necessary flags in UNIX partitions
+#
+/etc/rdb -p $BOOTPART -M -B -C 2 -P 2 -F 0x554e4901 $DISK
+/etc/rdb -p $ROOTPART -m -F 0x554e4900 $DISK
+/etc/rdb -p $SWAPPART -m -F 0x72657376 $DISK
+
+#
+#############################################################################
+#
+
+mkfs_s5 $UPART 200 >/dev/null ||
+{
+	echo "failure: mkfs -F s5 $UPART 200"
+	restart
+}
+
+/etc/mount $UPART /mnt 0 s5 2>/dev/null ||
+{
+	echo "failure: /etc/mount $UPART /mnt 0 s5"
+	restart
+}
+
+mkdir /mnt/tmp
+cd /mnt/tmp
+
+until
+	QUIETCPIO=x /bin/cpio -icdmuB < $TAPEn
+do
+	echo "Read from tape failed."
+	readask "\nInsert UNIX installation tape and press RETURN. "
+done
+
+amixpkg -i -m -d -r /mnt -y standard -s $ROOTLEN ||
+{
+	echo "\nPackage selection failed."
+	restart
+}
+
+cd /
+OPTIONS=`cat /mnt/tmp/options`
+umount /mnt
+
+echo "\nMaking filesystems.  This will take a few minutes."
+
+mkfs_${ROOT_FSYS} $UPART $ROOTLEN >/dev/null ||
+{
+	echo "failure: mkfs -F ${ROOT_FSYS} $UPART $ROOTLEN"
+	restart
+}
+
+/etc/mount $UPART /mnt 0 ${ROOT_FSYS} 2>/dev/null ||
+{
+	echo "failure:  /etc/mount $UPART /mnt 0 ${ROOT_FSYS}"
+	restart
+}
+
+if [ "$EXTRALEN" -gt 0 ]
+then
+	mkfs_${EXTRA_FSYS} $EPART $EXTRALEN > /dev/null ||
+	{
+		echo "failure: mkfs -F ${EXTRA_FSYS} $EPART $EXTRALEN"
+		restart
+	}
+fi
+
+mkdir /mnt/tmp
+cd /mnt/tmp || 
+{
+	echo "failure:  cd /mnt/tmp"
+	restart
+}
+
+< $TAPE
+amixpkg -b -v -r /mnt $OPTIONS ||
+{
+	echo "\nInstallation from tape failed."
+}
+
+cd /
+/mnt/usr/bin/chmod 755 /mnt || echo "failure:  chmod 755 /mnt"
+
+for i in 0 1 2 3 4 5 6 7 8 9
+do
+	for j in 0 1 2 3 4 5 6 7 8 9
+	do
+		> /mnt/lost+found/$i$j
+	done
+done
+/mnt/usr/bin/rm /mnt/lost+found/*
+
+
+echo "\nPatching kernel..."
+
+#  Patch the kernel to boot on the appropriate partition, if necessary
+#  480010
+#      |^-- scsi device #
+#      ^--- partition #
+
+echo "rootdev ?W 4800${ROOTPART}${SCSI}
+swapfile+18 ?W 2f633${SCSI}64
+swapfile+1c ?W 30733${SWAPPART}00
+swapfile+98 ?W 0t${SWAPLEN}" |
+/mnt/usr/bin/adb -w /mnt/stand/unix > /dev/null ||
+{
+	echo "Installation kernel patch failed."
+	restart
+}
+
+
+#
+#  If we have to use the old booting style and the rdb is located
+#  in block 0 of the disk we must move it higher so that the magic
+#  boot cookie will not be clobbered later by HD Toolbox
+#
+
+if [ "$OLD_BOOT" = "1" -a "`rdb -h 8 $DISK`" = 0 ]
+then
+	rdb -r 8 $DISK		# move rdb up to block 8 of the disk
+fi
+
+if [ "$OLD_BOOT" = "1" ]
+then
+echo "\nPatching disk for booting on 2620/2630 ROMs...\n"
+
+echo "?m 0 0x200 0
+0x1f0 ?W 0x556e6978
+0x1f4 ?W 0t$ROOTOFF" |
+	/mnt/usr/bin/adb -w $DISK > /dev/null 2>&1
+else
+	ln -s stand/unix /mnt/unix
+fi
+
+echo > /mnt/etc/vfstab "#	file-system-table format:
+#
+#	column 1:	special- block special device or resource name
+#	column 2: 	fsckdev- char special device for fsck 
+#	column 3:	mountp- mount point
+#	column 4:	fstype- File system type
+#	column 5:	fsckpass- number if to be checked automatically
+#	column 6:	automnt-	yes/no for automatic mount
+#	column 7:	mntopts- -o specific mount options
+
+#	White-space separates columns.
+#	Lines beginning with "#" are comments.  Empty lines are ignored.
+#	a '-' in any field is a no-op.
+
+/dev/dsk/c${SCSI}d0s${ROOTPART}	/dev/rdsk/c${SCSI}d0s${ROOTPART}	/	${ROOT_FSYS}	1	no	-
+proc		proc			/proc	proc	1	no	-
+fd		fd			/dev/fd	fd	1	no	-"
+
+if [ "$OLD_BOOT" = "1" ]
+then
+	BOOTSTYLE="oldboot"
+else
+	BOOTSTYLE="newboot"
+fi
+
+
+echo "BOOTPART= ${BPART}
+SWAPPART= ${SPART}
+SWAPSIZE= ${SWAPLEN}
+ROOTDEV=  0x4800${ROOTPART}${SCSI}" > /mnt/stand/CONFIG
+
+
+echo "/^bootpart: /s/.*/bootpart: ${BOOTSTYLE}/
+w
+" | TMPDIR=/mnt/tmp /mnt/usr/bin/ed - /mnt/stand/Makefile
+
+(
+	PATH=/mnt/usr/bin:/mnt/usr/ccs/bin:/mnt/usr/amiga/bin
+	export PATH
+	cd /mnt/stand
+	TMPDIR=/mnt/tmp QUIETDD=x ROOT=/mnt make bootpart > /dev/null 2>&1
+) ||
+{
+	echo "Installation of boot partition failed."
+	exit 99
+}
+
+#
+#  Set chosen keymap on hard disk
+#
+
+rm -f /mnt/usr/amiga/lib/kmap/default.kmap
+if [ "$KMAP" != "" ]
+then
+	ln /mnt/usr/amiga/lib/kmap/$KMAP /mnt/usr/amiga/lib/kmap/default.kmap
+fi
+
+sync
+sync
+/etc/umount /mnt/${EPART} > /dev/null 2>&1
+/etc/umount $UPART
+
+sync
+sync
+
+exec /etc/uadmin 2 0			# halt system.
+

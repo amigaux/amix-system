@@ -1,0 +1,24 @@
+#!/bin/sh
+
+PATH=/sbin:/usr/bin:/usr/amiga/bin
+
+
+echo "\nWhat is the nodename of this machine? [`uname -n`] \c"
+
+read NODENAME
+
+if [ "$NODENAME" != "" ]
+then
+	uname -S $NODENAME
+fi
+
+echo "\nWhat is this machine's network domain? [`cat /etc/domain`] \c"
+
+read DOMAIN
+
+if [ "$DOMAIN" != "" ]
+then
+	DOMAIN="`echo $DOMAIN | sed -e 's/^\.*/./'`"
+	echo "$DOMAIN" > /etc/domain
+	domainname "$DOMAIN"
+fi

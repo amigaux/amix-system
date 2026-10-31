@@ -1,0 +1,63 @@
+#!/bin/sh
+# Patchlevel: amixadm_1.2
+
+PATH=/sbin:/usr/bin:/usr/amiga/bin:/usr/amiga/lib
+
+echo "\nAmiga Unix System Administration"
+
+while true
+do
+
+echo "
+  1)   Add user
+  2)   Set date, time and timezone
+  3)   Set screen characteristics
+  4)   Set default keymap
+  5)   Set system nodename and domain
+  6)   Assign password to all system accounts
+  7)   Create a new hosts file with two addresses
+  8)   Configure X Windows for a color graphics card
+  9)   Configure xdm, an X Windows login screen
+  10)  Configure Netnews for local vs. networked operation
+  q)   Quit
+
+Choose an option: \c"
+
+read ask
+case $ask in
+	"1")
+		amixmkuser
+		;;
+	"2")
+		amixdate
+		;;
+	"3")
+		amixscreen
+		;;
+	"4")
+		amixkeymap
+		;;
+	"5")
+		amixnode
+		;;
+	"6")
+		passwdall
+		;;
+	"7")
+		amixhosts
+		;;
+	"8")
+		amixcolorx
+		;;
+	"9")
+		amixxdm
+		;;
+	"10")
+		amixnews
+		;;
+	"q" | "Q")
+		exit 0
+		;;
+esac
+
+done

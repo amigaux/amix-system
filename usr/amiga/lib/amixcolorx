@@ -1,0 +1,93 @@
+#!/bin/sh
+#
+# Patchlevel: amixcolorx_1.2
+#
+
+BIN=/usr/X/bin
+PATH=/sbin:/usr/bin:/usr/amiga/bin
+
+TTY=`tty | sed -e 's:/dev/::'`
+
+echo "\nColor X Administration"
+
+if pkginfo -q Xcore
+then
+  :
+else
+  echo "
+
+The Xcore package is not installed.  Xcore must be installed before X
+windows can be configured for a color card.
+
+
+  COMMAND		FUNCTION
+  -----------------	-------------------------------------------------------
+
+  amixpkg -y Xcore	Install the Xcore package from tape to the hard drive
+
+  amixpkg -v		Select packages to install from tape
+
+  pkginfo		List installed packages
+
+  pkgchk PACKAGE	List PACKAGE files that have changed since installation
+
+  pkgrm			Select packages for removal to clear hard drive space
+
+
+PRESS RETURN: \c"
+read ask
+  
+  exit 0
+fi
+
+while true
+do
+
+echo "
+
+  1)   A2410	   Commodore Business Machines, Inc.
+  2)   Resolver	   Digital Micronics, Inc.
+  3)   1600GX	   Ameristar Technologies, Inc.
+  4)   other
+  5)   no color card
+  q)   quit
+
+Option number: \c"
+
+read ask
+case $ask in
+	"1")
+		echo "\nSelecting A2410 X Windows server..."
+		rm -f ${BIN}/X
+		ln ${BIN}/X2410 ${BIN}/X
+		echo "done"
+		sleep 2
+		exit 0
+		;;
+	"2")
+		echo "\nSelecting DMI X Windows server..."
+		rm -f ${BIN}/X
+		ln ${BIN}/Xdmi ${BIN}/X
+		echo "done"
+		sleep 2
+		exit 0
+		;;
+	"3" | "4")
+		echo "\nFollow instructions included with your color card."
+		echo "Questions should be directed to manufacturer of the card."
+		sleep 2
+		exit 0
+		;;
+	"5")
+		echo "\nSelecting Monochrome X Windows server..."
+		rm -f ${BIN}/X
+		ln ${BIN}/X2410 ${BIN}/X
+		echo "done"
+		sleep 2
+		exit 0
+		;;
+	"q" | "Q")
+		exit 0
+		;;
+esac
+done
