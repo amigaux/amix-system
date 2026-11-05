@@ -58,6 +58,8 @@ Amiga Corporation approved releasing Amiga UNIX on 2026-09-23, and these
 files are published under that approval. They are not covered by amix's MIT
 licence.
 
+The stock package datastreams attached to this repository's `stock-1.1` release are published under the same approval. They are not covered by amix's MIT licence.
+
 This site and its developers are not affiliated with, endorsed by, or sponsored by Amiga Corporation. Amiga is a registered trademark of Amiga Corporation.
 
 Amiga UNIX is Commodore's port of AT&T UNIX System V Release 4; portions are
