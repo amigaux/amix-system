@@ -21,6 +21,7 @@ installation made them.
 | `usr/amiga` | the Amiga-specific part: tools, `/usr/amiga/include/amiga` headers, `libscreen.so` and the sources Commodore shipped |
 | `usr/ucblib` | the BSD compatibility part: `libucb.a`, `libdbm.a` and the other BSD libraries, doctools and the dictionary |
 | `usr/sbin/syslogd` | the 2.1p2a `syslogd`, from the patch disk |
+| `usr/sbin/in.ftpd` | the stock FTP server, from the `net` package of 2.1 |
 | `floppies/2.1/amix_21_boot.adf` | the retail 2.1 boot floppy: the bootstrap and the installation kernel |
 | `floppies/2.1/amix_21_root.adf` | the retail 2.1 root floppy: the miniroot the installer runs from |
 | `floppies/2.1/amix_21_patch.adf` | the patch disk: a shell script and a compressed archive of patches that bring an installed 2.1 to 2.1p2a; it holds no kernel, and the 2.1c kernel is relinked on the machine when the patches are applied |
